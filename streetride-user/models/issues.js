@@ -1,5 +1,5 @@
 function Issues(sequelize, DataTypes) {
-    let Issues = sequelize.defin('Issues', {
+    let Issues = sequelize.define('Issues', {
         issueType: {
             type: DataTypes.STRING,
             allowNull: false,
