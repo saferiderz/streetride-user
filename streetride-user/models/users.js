@@ -26,7 +26,7 @@ function Users (sequelize, DataTypes) {
 
 	Users.associate = function (models) {
 		// Associating issues with users
-		// When an user is deleted, also delete any associated issues
+		// When a user is deleted, also delete any associated issues
 		Users.hasMany(models.Issues, {
 			onDelete: "cascade"
 		});
