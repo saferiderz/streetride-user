@@ -3,22 +3,34 @@ function Issues(sequelize, DataTypes) {
         issueType: {
             type: DataTypes.STRING,
             allowNull: false,
+            validate: {
+                // will ensure that the issue submitted is one of our predefined issue types
+                isIn: [['pothole', 'blocked', 'vehicle', 'debris', 'hazard', 'traffic']]
+            }
         },
         comment: {
             type: DataTypes.STRING,
             allowNull: true,
+            validate: {
+                // comment must be at least one character long to prevent blank comments
+                len: [1]
+            }
         },
         latitude: {
             type: DataTypes.INTEGER,
             allowNull: true,
             defaultValue: null,
-            validate: { min: -90, max: 90 }
+            validate: {
+                min: -90, max: 90
+            }
         },
         longitude: {
             type: DataTypes.INTEGER,
             allowNull: true,
             defaultValue: null,
-            validate: { min: -180, max: 180 }
+            validate: {
+                min: -180, max: 180
+            }
         },
     }, {
             validate: {
