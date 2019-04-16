@@ -16,6 +16,10 @@ function Issues(sequelize, DataTypes) {
                 len: [1]
             }
         },
+        address: {
+            type: DataTypes.String,
+            allowNull: true
+        },
         latitude: {
             type: DataTypes.INTEGER,
             allowNull: true,
@@ -35,8 +39,8 @@ function Issues(sequelize, DataTypes) {
     }, {
             validate: {
                 bothCoordsOrNone() {
-                    if ((this.latitude === null) !== (this.longitude === null)) {
-                        throw new Error('Require either both latitude and longitude or neither')
+                    if (((this.latitude === null) !== (this.longitude === null)) || ((this.latitude === null) && (this.longitude === null) && (this.address === null)) || ((this.latitude !== null) && (this.longitude !== null) && (this.address !== null))){
+                        throw new Error('Require either both latitude and longitude or neither. If neither, require an address. Cannot have both an address and latitude and longitude')
                     }
                 }
             }
