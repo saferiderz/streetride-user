@@ -7,6 +7,7 @@ import {
     Text,
     TouchableOpacity,
     View,
+    TextInput
 } from 'react-native';
 
 import { MonoText } from '../components/StyledText';
@@ -20,25 +21,54 @@ export default class ReportIssues extends React.Component {
         return (
             <View style={styles.container}>
                 <ScrollView>
-                    <View style={styles.contentContainer}>
-                        <Image style={{ width: 50, height: 50 }} source={require('../assets/images/close.png')} />
-                        <Text>Closed</Text>
-                        <Image style={{ width: 50, height: 50 }} source={require('../assets/images/debris.png')} />
-                        <Image style={{ width: 50, height: 50 }} source={require('../assets/images/caution.png')} />
-                    </View>
-                    <View style={styles.contentContainer}>
-                        <Image style={{ width: 50, height: 50 }} source={require('../assets/images/traffic.png')} />
-                        <Image style={{ width: 50, height: 50 }} source={require('../assets/images/blocked.png')} />
-                        <Image style={{ width: 50, height: 50 }} source={require('../assets/images/cone.png')} />
-                    </View>
-                </ScrollView>
-                <View style={styles.tabBarInfoContainer}>
-                    <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
+                    <Text style={styles.headerText}>Submit an Issue</Text>
+                    <Text style={styles.subheaderText}>Issue Type</Text>
 
-                    <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-                        <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
+                    <View style={styles.contentContainer}>
+                        <View style={styles.iconTextContainer}>
+                            <Image style={{ width: 50, height: 50 }} source={require('../assets/images/close.png')} />
+                            <Text style={styles.iconText}>Close Call</Text>
+                        </View>
+                        <View style={styles.iconTextContainer}>
+                            <Image style={{ width: 50, height: 50 }} source={require('../assets/images/debris.png')} />
+                            <Text style={styles.iconText}>Debris</Text>
+                        </View>
+                        <View style={styles.iconTextContainer}>
+                            <Image style={{ width: 50, height: 50 }} source={require('../assets/images/caution.png')} />
+                            <Text style={styles.iconText}>Hazard</Text>
+                        </View>
                     </View>
-                </View>
+                    <View style={styles.contentContainer}>
+                        <View style={styles.iconTextContainer}>
+                            <Image style={{ width: 50, height: 50 }} source={require('../assets/images/traffic.png')} />
+                            <Text style={styles.iconText}>Traffic</Text></View>
+                        <View style={styles.iconTextContainer}>
+                            <Image style={{ width: 50, height: 50 }} source={require('../assets/images/blocked.png')} />
+                            <Text style={styles.iconText}>Path Closed</Text></View>
+                        <View style={styles.iconTextContainer}>
+                            <Image style={{ width: 50, height: 50 }} source={require('../assets/images/cone.png')} />
+                            <Text style={styles.iconText}>Pothole</Text></View>
+                    </View>
+                    <View style={{marginTop: 20}}></View>
+                    <Text style={styles.subheaderText}>Location of Issue</Text>
+                    <View style={styles.contentContainer}>
+
+                        <View style={styles.iconTextContainer}>
+                            <Image style={{ width: 50, height: 50 }} source={require('../assets/images/current.png')} />
+                            <Text style={styles.iconText}>Current Location</Text>
+                        </View>
+                        <View style={styles.iconTextContainer}>
+                            <Image style={{ width: 50, height: 50 }} source={require('../assets/images/pin.png')} />
+                            <Text style={styles.iconText}>Drop a Pin</Text>
+                        </View>
+                    </View>
+                    <Text style={styles.subheaderText}>Or</Text>
+
+                    <Text style={styles.subheaderText}>Enter Street Address</Text>
+
+                    <TextInput style={styles.textInput} />
+
+                </ScrollView>
             </View>
         );
     }
@@ -49,37 +79,42 @@ const styles = StyleSheet.create({
     container: {
         flex: 1
     },
-    developmentModeText: {
-        marginBottom: 20,
-        color: 'rgba(0,0,0,0.4)',
-        fontSize: 14,
-        lineHeight: 19,
+    headerText: {
+        marginBottom: 10,
+        marginTop: 30,
+        color: 'rgba(0,0,0,0.9)',
+        fontSize: 40,
+        textAlign: 'center',
+        fontWeight: 'bold'
+    },
+    subheaderText: {
+        marginBottom: 10,
+        marginTop: 10,
+        color: 'rgba(0,0,0,0.9)',
+        fontSize: 25,
         textAlign: 'center',
     },
     contentContainer: {
-        paddingTop: 30,
+        paddingTop: 20,
         backgroundColor: '#fff',
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: "space-around"
     },
+    textInput: {
+        paddingTop: 30,
+        height: 40,
+        borderColor: 'gray',
+        borderWidth: 1,
+        marginRight: 30,
+        marginLeft: 30
+    },
     iconTextContainer: {
-      width: 55,
-      height: 75
+        width: 50,
+        height: 'auto',
     },
-    welcomeImage: {
-        width: 100,
-        height: 80,
-        resizeMode: 'contain',
-        marginTop: 3,
-        marginLeft: -10,
-    },
-    getStartedContainer: {
-        alignItems: 'center',
-        marginHorizontal: 50,
-    },
-    homeScreenFilename: {
-        marginVertical: 7,
+    iconText: {
+        textAlign: 'center'
     },
     codeHighlightText: {
         color: 'rgba(96,100,109, 0.8)',
@@ -88,12 +123,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(0,0,0,0.05)',
         borderRadius: 3,
         paddingHorizontal: 4,
-    },
-    getStartedText: {
-        fontSize: 17,
-        color: 'rgba(96,100,109, 1)',
-        lineHeight: 24,
-        textAlign: 'center',
     },
     tabBarInfoContainer: {
         position: 'absolute',
@@ -119,19 +148,6 @@ const styles = StyleSheet.create({
         fontSize: 17,
         color: 'rgba(96,100,109, 1)',
         textAlign: 'center',
-    },
-    navigationFilename: {
-        marginTop: 5,
-    },
-    helpContainer: {
-        marginTop: 15,
-        alignItems: 'center',
-    },
-    helpLink: {
-        paddingVertical: 15,
-    },
-    helpLinkText: {
-        fontSize: 14,
-        color: '#2e78b7',
-    },
+    }
+
 });
