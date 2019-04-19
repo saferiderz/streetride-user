@@ -25,31 +25,46 @@ export default class ReportIssues extends React.Component {
                     <Text style={styles.subheaderText}>Issue Type</Text>
 
                     <View style={styles.contentContainer}>
-                        <View style={styles.iconTextContainer}>
-                            <Image style={{ width: 50, height: 50 }} source={require('../assets/images/close.png')} />
-                            <Text style={styles.iconText}>Close Call</Text>
-                        </View>
-                        <View style={styles.iconTextContainer}>
-                            <Image style={{ width: 50, height: 50 }} source={require('../assets/images/debris.png')} />
-                            <Text style={styles.iconText}>Debris</Text>
-                        </View>
-                        <View style={styles.iconTextContainer}>
-                            <Image style={{ width: 50, height: 50 }} source={require('../assets/images/caution.png')} />
-                            <Text style={styles.iconText}>Hazard</Text>
-                        </View>
+                        <TouchableOpacity>
+                            <View style={styles.iconTextContainer}>
+                                <Image style={{ width: 50, height: 50 }} source={require('../assets/images/close.png')} />
+                                <Text style={styles.iconText}>Close Call</Text>
+                            </View>
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <View style={styles.iconTextContainer}>
+                                <Image style={{ width: 50, height: 50 }} source={require('../assets/images/debris.png')} />
+                                <Text style={styles.iconText}>Debris</Text>
+                            </View>
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <View style={styles.iconTextContainer}>
+                                <Image style={{ width: 50, height: 50 }} source={require('../assets/images/caution.png')} />
+                                <Text style={styles.iconText}>Hazard</Text>
+                            </View>
+                        </TouchableOpacity>
                     </View>
                     <View style={styles.contentContainer}>
-                        <View style={styles.iconTextContainer}>
-                            <Image style={{ width: 50, height: 50 }} source={require('../assets/images/traffic.png')} />
-                            <Text style={styles.iconText}>Traffic</Text></View>
-                        <View style={styles.iconTextContainer}>
-                            <Image style={{ width: 50, height: 50 }} source={require('../assets/images/blocked.png')} />
-                            <Text style={styles.iconText}>Path Closed</Text></View>
-                        <View style={styles.iconTextContainer}>
-                            <Image style={{ width: 50, height: 50 }} source={require('../assets/images/cone.png')} />
-                            <Text style={styles.iconText}>Pothole</Text></View>
+                        <TouchableOpacity>
+                            <View style={styles.iconTextContainer}>
+                                <Image style={{ width: 50, height: 50 }} source={require('../assets/images/traffic.png')} />
+                                <Text style={styles.iconText}>Traffic</Text>
+                            </View>
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <View style={styles.iconTextContainer}>
+                                <Image style={{ width: 50, height: 50 }} source={require('../assets/images/blocked.png')} />
+                                <Text style={styles.iconText}>Path Closed</Text>
+                            </View>
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <View style={styles.iconTextContainer}>
+                                <Image style={{ width: 50, height: 50 }} source={require('../assets/images/cone.png')} />
+                                <Text style={styles.iconText}>Pothole</Text>
+                            </View>
+                        </TouchableOpacity>
                     </View>
-                    <View style={{marginTop: 20}}></View>
+                    <View style={{ marginTop: 20 }}></View>
                     <Text style={styles.subheaderText}>Location of Issue</Text>
                     <View style={styles.contentContainer}>
 
@@ -107,7 +122,8 @@ const styles = StyleSheet.create({
         borderColor: 'gray',
         borderWidth: 1,
         marginRight: 30,
-        marginLeft: 30
+        marginLeft: 30,
+        borderRadius: 10
     },
     iconTextContainer: {
         width: 50,
@@ -148,6 +164,11 @@ const styles = StyleSheet.create({
         fontSize: 17,
         color: 'rgba(96,100,109, 1)',
         textAlign: 'center',
+    },
+    button: {
+        alignItems: 'center',
+        backgroundColor: '#DDDDDD',
+        padding: 10
     }
 
 });
