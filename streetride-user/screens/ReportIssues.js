@@ -7,10 +7,10 @@ import {
     Text,
     TouchableOpacity,
     View,
-    TextInput
 } from 'react-native';
 
-import { MonoText } from '../components/StyledText';
+import { Icons } from '../components/Icons'
+import IssueIcons from '../components/IssueIcons'
 
 export default class ReportIssues extends React.Component {
     static navigationOptions = {
@@ -21,67 +21,24 @@ export default class ReportIssues extends React.Component {
         return (
             <View style={styles.container}>
                 <ScrollView>
-                    <Text style={styles.headerText}>Submit an Issue</Text>
+                    <Text style={styles.headerText}>Report an Issue</Text>
                     <Text style={styles.subheaderText}>Issue Type</Text>
-
                     <View style={styles.contentContainer}>
-                        <TouchableOpacity>
-                            <View style={styles.iconTextContainer}>
-                                <Image style={{ width: 50, height: 50 }} source={require('../assets/images/close.png')} />
-                                <Text style={styles.iconText}>Close Call</Text>
-                            </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity>
-                            <View style={styles.iconTextContainer}>
-                                <Image style={{ width: 50, height: 50 }} source={require('../assets/images/debris.png')} />
-                                <Text style={styles.iconText}>Debris</Text>
-                            </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity>
-                            <View style={styles.iconTextContainer}>
-                                <Image style={{ width: 50, height: 50 }} source={require('../assets/images/caution.png')} />
-                                <Text style={styles.iconText}>Hazard</Text>
-                            </View>
-                        </TouchableOpacity>
+                        <IssueIcons name={Icons.close.name} icon={Icons.close.uri} />
+                        <IssueIcons name={Icons.debris.name} icon={Icons.debris.uri} />
+                        <IssueIcons name={Icons.hazard.name} icon={Icons.hazard.uri} />
                     </View>
                     <View style={styles.contentContainer}>
-                        <TouchableOpacity>
-                            <View style={styles.iconTextContainer}>
-                                <Image style={{ width: 50, height: 50 }} source={require('../assets/images/traffic.png')} />
-                                <Text style={styles.iconText}>Traffic</Text>
-                            </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity>
-                            <View style={styles.iconTextContainer}>
-                                <Image style={{ width: 50, height: 50 }} source={require('../assets/images/blocked.png')} />
-                                <Text style={styles.iconText}>Path Closed</Text>
-                            </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity>
-                            <View style={styles.iconTextContainer}>
-                                <Image style={{ width: 50, height: 50 }} source={require('../assets/images/cone.png')} />
-                                <Text style={styles.iconText}>Pothole</Text>
-                            </View>
-                        </TouchableOpacity>
+                        <IssueIcons name={Icons.traffic.name} icon={Icons.traffic.uri} />
+                        <IssueIcons name={Icons.pothole.name} icon={Icons.pothole.uri} />
+                        <IssueIcons name={Icons.closed.name} icon={Icons.closed.uri} />
                     </View>
                     <View style={{ marginTop: 20 }}></View>
-                    <Text style={styles.subheaderText}>Location of Issue</Text>
                     <View style={styles.contentContainer}>
-
-                        <View style={styles.iconTextContainer}>
-                            <Image style={{ width: 50, height: 50 }} source={require('../assets/images/current.png')} />
-                            <Text style={styles.iconText}>Current Location</Text>
-                        </View>
-                        <View style={styles.iconTextContainer}>
-                            <Image style={{ width: 50, height: 50 }} source={require('../assets/images/pin.png')} />
-                            <Text style={styles.iconText}>Drop a Pin</Text>
-                        </View>
+                        <TouchableOpacity style={styles.button}>
+                            <Text style={styles.buttonText}>Submit</Text>
+                        </TouchableOpacity>
                     </View>
-                    <Text style={styles.subheaderText}>Or</Text>
-
-                    <Text style={styles.subheaderText}>Enter Street Address</Text>
-
-                    <TextInput style={styles.textInput} />
 
                 </ScrollView>
             </View>
@@ -92,7 +49,8 @@ export default class ReportIssues extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        backgroundColor: 'rgb(242,247,255)'
     },
     headerText: {
         marginBottom: 10,
@@ -111,7 +69,6 @@ const styles = StyleSheet.create({
     },
     contentContainer: {
         paddingTop: 20,
-        backgroundColor: '#fff',
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: "space-around"
@@ -167,8 +124,18 @@ const styles = StyleSheet.create({
     },
     button: {
         alignItems: 'center',
-        backgroundColor: '#DDDDDD',
-        padding: 10
+        backgroundColor: 'rgb(11,63,156)',
+        padding: 10,
+        borderRadius: 25,
+        color: 'white'
+    },
+    buttonText: {
+        marginBottom: 5,
+        marginTop: 5,
+        color: 'white',
+        fontSize: 25,
+        textAlign: 'center',
+        flexBasis: 3
     }
 
 });
