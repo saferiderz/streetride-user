@@ -9,7 +9,7 @@ import {
     View,
 } from 'react-native';
 
-import { Icons } from '../components/Icons'
+import { Icons } from '../components/IconsObject'
 import IssueIcons from '../components/IssueIcons'
 
 export default class ReportIssues extends React.Component {
