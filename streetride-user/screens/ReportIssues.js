@@ -73,69 +73,19 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         justifyContent: "space-around"
     },
-    textInput: {
-        paddingTop: 30,
-        height: 40,
-        borderColor: 'gray',
-        borderWidth: 1,
-        marginRight: 30,
-        marginLeft: 30,
-        borderRadius: 10
-    },
-    iconTextContainer: {
-        width: 50,
-        height: 'auto',
-    },
-    iconText: {
-        textAlign: 'center'
-    },
-    codeHighlightText: {
-        color: 'rgba(96,100,109, 0.8)',
-    },
-    codeHighlightContainer: {
-        backgroundColor: 'rgba(0,0,0,0.05)',
-        borderRadius: 3,
-        paddingHorizontal: 4,
-    },
-    tabBarInfoContainer: {
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        ...Platform.select({
-            ios: {
-                shadowColor: 'black',
-                shadowOffset: { height: -3 },
-                shadowOpacity: 0.1,
-                shadowRadius: 3,
-            },
-            android: {
-                elevation: 20,
-            },
-        }),
-        alignItems: 'center',
-        backgroundColor: '#fbfbfb',
-        paddingVertical: 20,
-    },
-    tabBarInfoText: {
-        fontSize: 17,
-        color: 'rgba(96,100,109, 1)',
-        textAlign: 'center',
-    },
     button: {
-        alignItems: 'center',
-        backgroundColor: 'rgb(11,63,156)',
-        padding: 10,
+        backgroundColor: "#000080",
         borderRadius: 25,
-        color: 'white'
+        width: 200,
+        height: 35,
+        color: "#ffffff"
     },
     buttonText: {
-        marginBottom: 5,
-        marginTop: 5,
-        color: 'white',
-        fontSize: 25,
+        fontSize: 16,
+        fontWeight: "500",
+        color: "white",
         textAlign: 'center',
-        flexBasis: 3
+        marginTop: 5
     }
 
 });
