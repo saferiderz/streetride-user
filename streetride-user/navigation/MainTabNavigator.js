@@ -6,6 +6,9 @@ import TabBarIcon from '../components/TabBarIcon';
 import LoginScreen from '../screens/LoginScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+// import ReportIssues from '../screens/ReportIssues';
+// import ViewIssues from '../screens/ViewIssues';
+
 
 const LoginStack = createStackNavigator(
   {Home: LoginScreen}, {headerMode: 'none'}
@@ -21,11 +24,11 @@ LoginStack.navigationOptions = {
   ),
 };
 
-const ViewIssueStack = createStackNavigator({
+const ViewIssuesStack = createStackNavigator({
   Links: LinksScreen,
 });
 
-ViewIssueStack.navigationOptions = {
+ViewIssuesStack.navigationOptions = {
   tabBarLabel: 'View Issues',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
@@ -35,11 +38,11 @@ ViewIssueStack.navigationOptions = {
   ),
 };
 
-const ReportIssueStack = createStackNavigator({
+const ReportIssuesStack = createStackNavigator({
   Settings: SettingsScreen,
 });
 
-ReportIssueStack.navigationOptions = {
+ReportIssuesStack.navigationOptions = {
   tabBarLabel: 'Report Issues',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
@@ -51,6 +54,6 @@ ReportIssueStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   LoginStack,
-  ViewIssueStack,
-  ReportIssueStack,
+  ViewIssuesStack,
+  ReportIssuesStack,
 });

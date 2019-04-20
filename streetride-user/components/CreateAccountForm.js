@@ -1,15 +1,40 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity
+} from 'react-native';
 import {KeyboardAvoidingView} from 'react-native';
 
  export default class CreateAccountForm extends React.Component {
   render() {
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
-        <TextInput style={styles.inputBox} underlineColorAndroid="rgba(0,0,0,0)" placeholder="First Name" placeholderTextColor="#000080"/>
-        <TextInput style={styles.inputBox} underlineColorAndroid="rgba(0,0,0,0)" placeholder="Last Name" placeholderTextColor="#000080"/>
-        <TextInput style={styles.inputBox} underlineColorAndroid="rgba(0,0,0,0)" placeholder="Username" placeholderTextColor="#000080"/>
-        <TextInput style={styles.inputBox} underlineColorAndroid="rgba(0,0,0,0)" placeholder="Password" secureTextEntry={true} placeholderTextColor="#000080"/>
+        <TextInput
+          style={styles.inputBox}
+          underlineColorAndroid="rgba(0,0,0,0)"
+          placeholder="First Name"
+          placeholderTextColor="#000080"
+        />
+        <TextInput
+          style={styles.inputBox}
+          underlineColorAndroid="rgba(0,0,0,0)"
+          placeholder="Last Name"
+          placeholderTextColor="#000080"
+        />
+        <TextInput
+          style={styles.inputBox}
+          underlineColorAndroid="rgba(0,0,0,0)"
+          placeholder="Username"
+          placeholderTextColor="#000080"
+        />
+        <TextInput
+          style={styles.inputBox}
+          underlineColorAndroid="rgba(0,0,0,0)"
+          placeholder="Password"
+        secureTextEntry={true} placeholderTextColor="#000080"
+        />
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Create Account</Text>
         </TouchableOpacity>
