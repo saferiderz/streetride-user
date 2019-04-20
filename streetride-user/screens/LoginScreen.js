@@ -90,7 +90,9 @@ class CreateAccount extends React.Component {
             placeholder="Password"
             secureTextEntry={true} placeholderTextColor="#000080"
           />
-          <TouchableOpacity style={styles.buttonNavy}>
+          <TouchableOpacity style={styles.buttonNavy} onPress={() => {
+                this.props.navigation.navigate("View")
+              }}>
             <Text style={styles.buttonTextSubmit}>Submit</Text>
           </TouchableOpacity>
           <TouchableOpacity 
