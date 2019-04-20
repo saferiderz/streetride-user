@@ -20,6 +20,6 @@ import { StyleSheet, Text, View, Image } from 'react-native';
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 5,
-    marginTop: 50
+    marginTop: 40
   },
 });

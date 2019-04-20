@@ -33,7 +33,7 @@ import {KeyboardAvoidingView} from 'react-native';
           style={styles.inputBox}
           underlineColorAndroid="rgba(0,0,0,0)"
           placeholder="Password"
-        secureTextEntry={true} placeholderTextColor="#000080"
+          secureTextEntry={true} placeholderTextColor="#000080"
         />
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Create Account</Text>

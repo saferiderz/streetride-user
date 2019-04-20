@@ -4,9 +4,9 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import LoginScreen from '../screens/LoginScreen';
-// import ViewIssues from '../screens/ViewIssues';
+import ViewIssues from '../screens/ViewIssues';
 import ReportIssues from '../screens/ReportIssues';
-import LinksScreen from '../screens/LinksScreen';
+// import LinksScreen from '../screens/LinksScreen';
 
 
 const LoginStack = createStackNavigator(
@@ -24,7 +24,7 @@ LoginStack.navigationOptions = {
 };
 
 const ViewIssuesStack = createStackNavigator({
-  View: LinksScreen,
+  View: ViewIssues,
 });
 
 ViewIssuesStack.navigationOptions = {

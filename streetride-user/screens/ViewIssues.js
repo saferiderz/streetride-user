@@ -9,13 +9,13 @@ import {
     View,
 } from 'react-native';
 import { createAppContainer, createStackNavigator, StackActions, NavigationActions } from 'react-navigation';
-import ViewIssues from '../screens/ViewIssues'
+import LinksScreen from '../screens/LinksScreen'
 
 
 import { Icons } from '../components/IconsObject'
 import IssueIcons from '../components/IssueIcons'
 
-class ReportIssues extends React.Component {
+class ViewIssues extends React.Component {
     static navigationOptions = {
         header: null,
     };
@@ -24,8 +24,8 @@ class ReportIssues extends React.Component {
         return (
             <View style={styles.container}>
                 <ScrollView>
-                    <Text style={styles.headerText}>Report an Issue</Text>
-                    <Text style={styles.subheaderText}>Issue Type</Text>
+                    <Text style={styles.headerText}>View Issues</Text>
+                    {/* <Text style={styles.subheaderText}>Issue Type</Text>
                     <View style={styles.contentContainer}>
                         <IssueIcons name={Icons.close.name} icon={Icons.close.uri} />
                         <IssueIcons name={Icons.debris.name} icon={Icons.debris.uri} />
@@ -43,7 +43,7 @@ class ReportIssues extends React.Component {
               }}>
                             <Text style={styles.buttonText}>Submit</Text>
                         </TouchableOpacity>
-                    </View>
+                    </View> */}
 
                 </ScrollView>
             </View>
@@ -54,13 +54,13 @@ class ReportIssues extends React.Component {
 
 const AppNavigator = createStackNavigator({
   Report: {
-    screen: ReportIssues,
+    screen: ViewIssues,
   },
   View: {
     screen: ViewIssues,
   }
 }, {
-  initialRouteName: "View",
+  initialRouteName: "Report",
 });
 
 export default createAppContainer(AppNavigator);
