@@ -34,9 +34,7 @@ import ViewIssues from '../screens/ViewIssues'
               secureTextEntry={true}
               placeholderTextColor="#000080"
             />
-            <TouchableOpacity style={styles.buttonNavy} onPress={() => {
-                this.props.navigation.navigate("View")
-              }}>
+            <TouchableOpacity style={styles.buttonNavy} >
               <Text style={styles.buttonTextSubmit}>Login</Text>
             </TouchableOpacity>
             <TouchableOpacity
