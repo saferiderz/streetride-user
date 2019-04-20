@@ -3,14 +3,25 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-nativ
 import {KeyboardAvoidingView} from 'react-native';
 import Logo from "./Logo";
 
-export default class LoginForm extends React.Component {
+ export default class LoginForm extends React.Component {
   render() {
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
         <Logo/>
         <View style={styles.inputContainer}>
-          <TextInput style={styles.inputBox} underlineColorAndroid="rgba(0,0,0,0)" placeholder="Username" placeholderTextColor="#000080"/>
-          <TextInput style={styles.inputBox} underlineColorAndroid="rgba(0,0,0,0)" placeholder="Password" secureTextEntry={true} placeholderTextColor="#000080"/>
+          <TextInput
+            style={styles.inputBox}
+            underlineColorAndroid="rgba(0,0,0,0)"
+            placeholder="Username"
+            placeholderTextColor="#000080"
+          />
+          <TextInput
+            style={styles.inputBox}
+            underlineColorAndroid="rgba(0,0,0,0)"
+            placeholder="Password"
+            secureTextEntry={true}
+            placeholderTextColor="#000080"
+          />
           <TouchableOpacity style={styles.buttonLogin}>
             <Text style={styles.buttonTextLogin}>Login</Text>
           </TouchableOpacity>
@@ -22,12 +33,12 @@ export default class LoginForm extends React.Component {
           </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>
-      
-    )
+
+     )
   }
 }
 
-const styles = StyleSheet.create({
+ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     backgroundColor: '#fff',

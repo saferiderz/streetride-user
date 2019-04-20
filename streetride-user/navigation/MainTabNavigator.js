@@ -16,20 +16,16 @@ LoginStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-funnel${focused ? '' : '-outline'}`
-          : 'md-funnel'
-      }
+      name={Platform.OS === 'ios' ? 'ios-funnel' : 'md-funnel'}
     />
   ),
 };
 
-const LinksStack = createStackNavigator({
+const ViewIssueStack = createStackNavigator({
   Links: LinksScreen,
 });
 
-LinksStack.navigationOptions = {
+ViewIssueStack.navigationOptions = {
   tabBarLabel: 'View Issues',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
@@ -39,11 +35,11 @@ LinksStack.navigationOptions = {
   ),
 };
 
-const SettingsStack = createStackNavigator({
+const ReportIssueStack = createStackNavigator({
   Settings: SettingsScreen,
 });
 
-SettingsStack.navigationOptions = {
+ReportIssueStack.navigationOptions = {
   tabBarLabel: 'Report Issues',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
@@ -55,6 +51,6 @@ SettingsStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   LoginStack,
-  LinksStack,
-  SettingsStack,
+  ViewIssueStack,
+  ReportIssueStack,
 });

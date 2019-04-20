@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import {KeyboardAvoidingView} from 'react-native';
 
-export default class CreateAccountForm extends React.Component {
+ export default class CreateAccountForm extends React.Component {
   render() {
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
@@ -18,7 +18,7 @@ export default class CreateAccountForm extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
+ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     backgroundColor: '#fff',

@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, StatusBar } from 'react-native';
 // import Logo from "../components/Logo";
 import LoginForm from "../components/LoginForm";
 
-export default class LoginScreen extends React.Component {
+ export default class LoginScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
@@ -14,7 +14,7 @@ export default class LoginScreen extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
+ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     backgroundColor: '#fff',
