@@ -50,7 +50,7 @@ export default class ReportIssues extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'rgb(242,247,255)'
+        backgroundColor: '#fff'
     },
     headerText: {
         marginBottom: 10,
