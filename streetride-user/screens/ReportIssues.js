@@ -1,13 +1,11 @@
 import React from 'react';
 import {
-    Image,
-    Platform,
     ScrollView,
     StyleSheet,
     Text,
     TouchableOpacity,
     View,
-    Alert, TextInput
+    Alert
 } from 'react-native';
 
 import { Icons } from '../components/IconsObject'
@@ -35,9 +33,27 @@ export default class ReportIssues extends React.Component {
     // also grab location when geolocator is ready to 
     handleSubmit = () => {
         if (this.state.issueType === '') {
-            alert('Please select an issue before submitting')
+            Alert.alert(
+                'Select Issue',
+                'Please select an issue before submitting',
+                [
+                    {
+                        text: 'OK',
+                        onPress: () => console.log('OK Pressed')
+                    },
+                    {
+                        text: 'Cancel',
+                        onPress: () => console.log('Cancel Pressed'),
+                        style: 'cancel',
+                    },
+
+                ],
+                { cancelable: false },
+            );
         } else {
-            alert(this.state.issueType)
+            Alert.alert(
+                'Issue selected',
+                this.state.issueType)
         }
     }
 
