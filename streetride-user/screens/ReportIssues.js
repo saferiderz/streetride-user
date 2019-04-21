@@ -23,13 +23,22 @@ export default class ReportIssues extends React.Component {
         location: ''
     }
 
-    handleIssue = text => {
-        this.setState({issueType: text})
+    // placeholder for now. Gives me some type of node module number when clicking on an issue
+    // will try to use this in place of hard coding in the future
+    handleAlert(anything) {
+        const iconValue = anything.target
+        alert('Hello ' + typeof (iconValue) + " " + iconValue)
     }
 
-    handleAlert = (a) => {
-        const poo = a.target
-        alert('Henlo ' + poo)
+    // TODO 
+    // currently a place holder that gives an alert with the issue type. Will adjust to 
+    // also grab location when geolocator is ready to 
+    handleSubmit = () => {
+        if (this.state.issueType === '') {
+            alert('Please select an issue before submitting')
+        } else {
+            alert(this.state.issueType)
+        }
     }
 
     render() {
@@ -39,21 +48,21 @@ export default class ReportIssues extends React.Component {
                     <Text style={styles.headerText} >Report an Issue</Text>
                     <Text style={styles.subheaderText}>Issue Type</Text>
                     <View style={styles.contentContainer}>
-                        <IssueIcons name={Icons.close.name} icon={Icons.close.uri} value='hhhh' onPress={()=> this.handleAlert(this)}/>
-                        <IssueIcons name={Icons.debris.name} icon={Icons.debris.uri} />
-                        <IssueIcons name={Icons.hazard.name} icon={Icons.hazard.uri} />
-                        <IssueIcons name={Icons.traffic.name} icon={Icons.traffic.uri} />
-                        <IssueIcons name={Icons.pothole.name} icon={Icons.pothole.uri} />
-                        <IssueIcons name={Icons.closed.name} icon={Icons.closed.uri} />
+                        <IssueIcons name={Icons.close.name} icon={Icons.close.uri} key={Icons.close.name} onPress={() => this.setState({ issueType: 'close call' })} />
+                        <IssueIcons name={Icons.debris.name} icon={Icons.debris.uri} key={Icons.debris.name} onPress={() => this.setState({ issueType: 'debris' })} />
+                        <IssueIcons name={Icons.hazard.name} icon={Icons.hazard.uri} key={Icons.hazard.name} onPress={() => this.setState({ issueType: 'hazard' })} />
+                    </View>
+                    <View style={styles.contentContainer}>
+                        <IssueIcons name={Icons.traffic.name} icon={Icons.traffic.uri} key={Icons.traffic.name} onPress={() => this.setState({ issueType: 'traffic' })} />
+                        <IssueIcons name={Icons.pothole.name} icon={Icons.pothole.uri} key={Icons.pothole.name} onPress={() => this.setState({ issueType: 'pothole' })} />
+                        <IssueIcons name={Icons.closed.name} icon={Icons.closed.uri} key={Icons.closed.name} onPress={() => this.setState({ issueType: 'path closed' })} />
                     </View>
                     <View style={{ marginTop: 20 }}></View>
                     <View style={styles.contentContainer}>
-                    <TextInput style={{borderColor: 'black',  width: 300, height: 50,}} name="whateverrrr" onChangeText={(text)=>this.setState({issueType: text})}></TextInput>
-                        <TouchableOpacity style={styles.button} onPress={()=>this.handleAlert()}>
+                        <TouchableOpacity style={styles.button} onPress={() => this.handleSubmit()}>
                             <Text style={styles.buttonText}>Submit</Text>
                         </TouchableOpacity>
                     </View>
-
                 </ScrollView>
             </View>
         );
