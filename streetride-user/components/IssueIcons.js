@@ -10,9 +10,9 @@ import {
 function IssueIcons(props) {
     return (
         <View>
-            <TouchableOpacity>
-                <View style={styles.iconTextContainer}>
-                    <Image style={{ width: 50, height: 50 }} source={props.icon} />
+            <TouchableOpacity onPress={props.onPress}>
+                <View style={styles.iconContainer}>
+                    <Image style={styles.iconImage} source={props.icon} />
                     <Text style={styles.iconText}>{props.name}</Text>
                 </View>
             </TouchableOpacity>
@@ -22,12 +22,17 @@ function IssueIcons(props) {
 export default IssueIcons;
 
 const styles = StyleSheet.create({
-    iconTextContainer: {
+    iconContainer: {
         width: 50,
         height: 'auto',
+        flexBasis: 20
     },
     iconText: {
         textAlign: 'center'
     },
+    iconImage: {
+        width: 50,
+        height: 50,
+    }
 
 });
