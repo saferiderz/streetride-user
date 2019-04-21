@@ -10,7 +10,7 @@ import {
 function IssueIcons(props) {
     return (
         <View>
-            <TouchableOpacity onPress={props.onPress}>
+            <TouchableOpacity name={props.name} value='pppppp' onPress={props.onPress}>
                 <View style={styles.iconContainer}>
                     <Image style={styles.iconImage} source={props.icon} />
                     <Text style={styles.iconText}>{props.name}</Text>

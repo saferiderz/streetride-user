@@ -7,6 +7,7 @@ import {
     Text,
     TouchableOpacity,
     View,
+    Alert, TextInput
 } from 'react-native';
 
 import { Icons } from '../components/IconsObject'
@@ -17,25 +18,38 @@ export default class ReportIssues extends React.Component {
         header: null,
     };
 
+    state = {
+        issueType: '',
+        location: ''
+    }
+
+    handleIssue = text => {
+        this.setState({issueType: text})
+    }
+
+    handleAlert = (a) => {
+        const poo = a.target
+        alert('Henlo ' + poo)
+    }
+
     render() {
         return (
             <View style={styles.container}>
                 <ScrollView>
-                    <Text style={styles.headerText}>Report an Issue</Text>
+                    <Text style={styles.headerText} >Report an Issue</Text>
                     <Text style={styles.subheaderText}>Issue Type</Text>
                     <View style={styles.contentContainer}>
-                        <IssueIcons name={Icons.close.name} icon={Icons.close.uri} />
+                        <IssueIcons name={Icons.close.name} icon={Icons.close.uri} value='hhhh' onPress={()=> this.handleAlert(this)}/>
                         <IssueIcons name={Icons.debris.name} icon={Icons.debris.uri} />
                         <IssueIcons name={Icons.hazard.name} icon={Icons.hazard.uri} />
-                    </View>
-                    <View style={styles.contentContainer}>
                         <IssueIcons name={Icons.traffic.name} icon={Icons.traffic.uri} />
                         <IssueIcons name={Icons.pothole.name} icon={Icons.pothole.uri} />
                         <IssueIcons name={Icons.closed.name} icon={Icons.closed.uri} />
                     </View>
                     <View style={{ marginTop: 20 }}></View>
                     <View style={styles.contentContainer}>
-                        <TouchableOpacity style={styles.button}>
+                    <TextInput style={{borderColor: 'black',  width: 300, height: 50,}} name="whateverrrr" onChangeText={(text)=>this.setState({issueType: text})}></TextInput>
+                        <TouchableOpacity style={styles.button} onPress={()=>this.handleAlert()}>
                             <Text style={styles.buttonText}>Submit</Text>
                         </TouchableOpacity>
                     </View>
