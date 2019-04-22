@@ -18,7 +18,23 @@ export default class ReportIssues extends React.Component {
 
     state = {
         issueType: '',
-        location: ''
+        latitude: null,
+        longitude: null,
+        error: null,
+    }
+
+    componentDidMount() {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                this.setState({
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude,
+                    error: null,
+                });
+            },
+            (error) => this.setState({ error: error.message }),
+            { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
+        );
     }
 
     // placeholder for now. Gives me some type of node module number when clicking on an issue
@@ -39,11 +55,9 @@ export default class ReportIssues extends React.Component {
                 [
                     {
                         text: 'OK',
-                        onPress: () => console.log('OK Pressed')
                     },
                     {
                         text: 'Cancel',
-                        onPress: () => console.log('Cancel Pressed'),
                         style: 'cancel',
                     },
 
@@ -53,9 +67,17 @@ export default class ReportIssues extends React.Component {
         } else {
             Alert.alert(
                 'Issue selected',
-                this.state.issueType)
+                'Issue: ' + this.state.issueType + '\nLatitude: ' + this.state.latitude + '\nLongitude: ' + this.state.longitude)
+        }
+        if (this.state.error) {
+            Alert.alert(
+                'Error:',
+                this.state.error
+            )
         }
     }
+
+
 
     render() {
         return (
