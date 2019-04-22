@@ -45,8 +45,7 @@ export default class ReportIssues extends React.Component {
     }
 
     // TODO 
-    // currently a place holder that gives an alert with the issue type. Will adjust to 
-    // also grab location when geolocator is ready to 
+    // currently a place holder that gives an alert with the issue type.
     handleSubmit = () => {
         if (this.state.issueType === '') {
             Alert.alert(
