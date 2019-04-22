@@ -5,7 +5,7 @@ import { StyleSheet, Text, View, Image } from 'react-native';
   render() {
     return (
       <View style={styles.container}>
-        <Image style={{width: 250, height: 250}}
+        <Image style={{width: 275, height: 275}}
           source={(require("../assets/images/streetride_logo.png"))}
         />
       </View>
@@ -20,6 +20,6 @@ import { StyleSheet, Text, View, Image } from 'react-native';
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 5,
-    marginTop: 40
+    marginTop: 50
   },
 });

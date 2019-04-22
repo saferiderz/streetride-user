@@ -1,5 +1,5 @@
     
-import React from 'react';
+import React, { Component } from 'react';
 import {
     ScrollView,
     StyleSheet,
@@ -12,7 +12,7 @@ import {
 import { Icons } from '../components/IconsObject'
 import IssueIcons from '../components/IssueIcons'
 
-export default class ReportIssues extends React.Component {
+export default class ReportIssues extends Component {
     static navigationOptions = {
         header: null,
     };
@@ -81,8 +81,8 @@ export default class ReportIssues extends React.Component {
         return (
             <View style={styles.container}>
                 <ScrollView>
-                    <Text style={styles.headerText} >Report an Issue</Text>
-                    <Text style={styles.subheaderText}>Issue Type</Text>
+                    {/* <Text style={styles.headerText} >Report an Issue</Text> */}
+                    <Text style={styles.subheaderText}>Select an Issue Type</Text>
                     <View style={styles.contentContainer}>
                         <IssueIcons name={Icons.close.name} icon={Icons.close.uri} key={Icons.close.name} onPress={() => this.setState({ issueType: 'close call' })} />
                         <IssueIcons name={Icons.debris.name} icon={Icons.debris.uri} key={Icons.debris.name} onPress={() => this.setState({ issueType: 'debris' })} />
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     },
     subheaderText: {
         marginBottom: 10,
-        marginTop: 10,
+        marginTop: 20,
         color: 'rgba(0,0,0,0.9)',
         fontSize: 25,
         textAlign: 'center',

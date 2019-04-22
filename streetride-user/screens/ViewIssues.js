@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
     Image,
     Platform,
@@ -6,16 +6,11 @@ import {
     StyleSheet,
     Text,
     TouchableOpacity,
-    View,
+    View
 } from 'react-native';
 import { createAppContainer, createStackNavigator, StackActions, NavigationActions } from 'react-navigation';
-import LinksScreen from '../screens/LinksScreen'
 
-
-import { Icons } from '../components/IconsObject'
-import IssueIcons from '../components/IssueIcons'
-
-class ViewIssues extends React.Component {
+export default class ViewIssuesScreen extends React.Component {
     static navigationOptions = {
         header: null,
     };
@@ -23,31 +18,29 @@ class ViewIssues extends React.Component {
     render() {
       return (
         <View style={styles.container}>
-          <ScrollView>
-              <Text style={styles.headerText}>View Issues</Text>
-          </ScrollView>
+            <Text>View Issues</Text>
         </View>
       );
     }
 }
 
-const AppNavigator = createStackNavigator({
-  Report: {
-    screen: ViewIssues,
-  },
-  View: {
-    screen: ViewIssues,
-  }
-}, {
-  initialRouteName: "Report",
-});
-
-export default createAppContainer(AppNavigator);
+// const AppNavigator = createStackNavigator({
+//   Report: {
+//     screen: ViewIssues,
+//   },
+//   View: {
+//     screen: ViewIssues,
+//   }
+// }, {
+//   initialRouteName: "Report",
+// });
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff'
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     headerText: {
         marginBottom: 10,
