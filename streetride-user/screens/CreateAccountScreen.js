@@ -7,7 +7,7 @@ export default class CreateAccountScreen extends Component {
     return (
       <ScrollView>
         <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
-          <Text style={styles.headerText}>Create an Account</Text>
+        <Text style={styles.subheaderText}>Create an Account</Text>
           <View style={styles.inputContainer}>
             <TextInput
               style={styles.inputBox}
@@ -104,5 +104,13 @@ const styles = StyleSheet.create({
     fontSize: 40,
     textAlign: 'center',
     fontWeight: 'bold'
-},
+  },
+  subheaderText: {
+    marginBottom: 10,
+    marginTop: 20,
+    paddingTop: 80,
+    color: 'rgba(0,0,0,0.9)',
+    fontSize: 25,
+    textAlign: 'center',
+  }
 });

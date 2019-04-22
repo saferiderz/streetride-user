@@ -21,8 +21,8 @@ export default App;
 
 
 const AppTabNavigator = createBottomTabNavigator({
-  View:{screen:ViewIssues,},
-  Report:{screen:ReportIssues}
+  View:{screen:ViewIssues, title:'View Issues'},
+  Report:{screen:ReportIssues, title:'Report Issues'}
 },{
   navigationOptions: ({ navigation }) => {
     const { routeName } = navigation.state.routes[navigation.state.index]
@@ -54,15 +54,16 @@ const AppStackNavigator = createStackNavigator(
 
 // swipe right from right edge of screen to expose drawer
 const AppDrawerNavigator = createDrawerNavigator({
-  View:{screen:AppStackNavigator},
-  Report:{screen:ReportIssues},
+  Menu:{screen:AppStackNavigator},
+  View:{screen:ViewIssues},
+  Report:{screen:ReportIssues}
 })
 
 const AppSwitchNavigator = createSwitchNavigator({
   Login:{screen:LoginScreen},
   CreateAccount:{screen:CreateAccountScreen},
   ViewIssues:{screen:AppDrawerNavigator},
-  ReportIssues:{screen:ReportIssues}
+  ReportIssues:{screen:AppDrawerNavigator}
 })
 
 const AppContainer = createAppContainer(AppSwitchNavigator);
