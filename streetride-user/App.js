@@ -55,14 +55,14 @@ const AppStackNavigator = createStackNavigator(
 // swipe right from right edge of screen to expose drawer
 const AppDrawerNavigator = createDrawerNavigator({
   View:{screen:AppStackNavigator},
-  Report:{screen:AppStackNavigator},
+  Report:{screen:ReportIssues},
 })
 
 const AppSwitchNavigator = createSwitchNavigator({
   Login:{screen:LoginScreen},
   CreateAccount:{screen:CreateAccountScreen},
   ViewIssues:{screen:AppDrawerNavigator},
-  ReportIssues:{screen:AppDrawerNavigator}
+  ReportIssues:{screen:ReportIssues}
 })
 
 const AppContainer = createAppContainer(AppSwitchNavigator);
