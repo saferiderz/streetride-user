@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     subheaderText: {
         marginBottom: 10,
         marginTop: 20,
-        color: 'rgba(0,0,0,0.9)',
+        color: '#000080',
         fontSize: 25,
         textAlign: 'center',
     },
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
         paddingTop: 20,
         flexDirection: 'row',
         flexWrap: 'wrap',
-        justifyContent: "space-around"
+        justifyContent: "space-around",
     },
     button: {
         backgroundColor: "#000080",

@@ -24,7 +24,7 @@ export default class CreateAccountScreen extends Component {
             <TextInput
               style={styles.inputBox}
               underlineColorAndroid="rgba(0,0,0,0)"
-              placeholder="Username"
+              placeholder="Email"
               placeholderTextColor="#000080"
             />
             <TextInput
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginTop: 20,
     paddingTop: 80,
-    color: 'rgba(0,0,0,0.9)',
+    color: '#000080',
     fontSize: 25,
     textAlign: 'center',
   }

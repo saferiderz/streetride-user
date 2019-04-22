@@ -15,7 +15,7 @@ export default class LoginScreen extends Component {
             <TextInput
               style={styles.inputBox}
               underlineColorAndroid="rgba(0,0,0,0)"
-              placeholder="Username"
+              placeholder="Email"
               placeholderTextColor="#000080"
             />
             <TextInput
