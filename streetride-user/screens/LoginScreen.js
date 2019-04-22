@@ -34,23 +34,14 @@ import ViewIssues from '../screens/ViewIssues'
               secureTextEntry={true}
               placeholderTextColor="#000080"
             />
-            <TouchableOpacity style={styles.buttonNavy} onPress={() => {
-                this.props.navigation.navigate("View")
-              }}>
+            <TouchableOpacity style={styles.buttonNavy}>
               <Text style={styles.buttonTextSubmit}>Login</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={styles.button}
-              // title="Create Account"
-              onPress={() => {
-                this.props.navigation.navigate("CreateAccount")
-              }}
-            >
+              style={styles.button}>
               <Text style={styles.buttonText}>Create Account</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => {
-                this.props.navigation.navigate("View")
-              }}>
+            <TouchableOpacity style={styles.button}>
               <Text style={styles.buttonText}>Guest</Text>
             </TouchableOpacity>
           </View>
@@ -60,56 +51,56 @@ import ViewIssues from '../screens/ViewIssues'
   }
 }
 
-class CreateAccount extends React.Component {
-  render() {
-    return (
-      <ScrollView>
-        <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
-          <Text style={styles.headerText}>Create an Account</Text>
-          <View style={styles.inputContainer}>
-            <TextInput
-              style={styles.inputBox}
-              underlineColorAndroid="rgba(0,0,0,0)"
-              placeholder="First Name"
-              placeholderTextColor="#000080"
-            />
-            <TextInput
-              style={styles.inputBox}
-              underlineColorAndroid="rgba(0,0,0,0)"
-              placeholder="Last Name"
-              placeholderTextColor="#000080"
-            />
-            <TextInput
-              style={styles.inputBox}
-              underlineColorAndroid="rgba(0,0,0,0)"
-              placeholder="Username"
-              placeholderTextColor="#000080"
-            />
-            <TextInput
-              style={styles.inputBox}
-              underlineColorAndroid="rgba(0,0,0,0)"
-              placeholder="Password"
-              secureTextEntry={true} placeholderTextColor="#000080"
-            />
-            <TouchableOpacity style={styles.buttonNavy} onPress={() => {
-                  this.props.navigation.navigate("View")
-                }}>
-              <Text style={styles.buttonTextSubmit}>Submit</Text>
-            </TouchableOpacity>
-            <TouchableOpacity 
-              style={styles.button}
-              onPress={() => {
-                this.props.navigation.navigate("Login")
-              }}
-            >
-              <Text style={styles.buttonText}>Go Back to Login Screen</Text>
-            </TouchableOpacity>
-          </View>
-        </KeyboardAvoidingView>
-      </ScrollView>
-    )
-  }
-}
+// class CreateAccount extends React.Component {
+//   render() {
+//     return (
+//       <ScrollView>
+//         <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
+//           <Text style={styles.headerText}>Create an Account</Text>
+//           <View style={styles.inputContainer}>
+//             <TextInput
+//               style={styles.inputBox}
+//               underlineColorAndroid="rgba(0,0,0,0)"
+//               placeholder="First Name"
+//               placeholderTextColor="#000080"
+//             />
+//             <TextInput
+//               style={styles.inputBox}
+//               underlineColorAndroid="rgba(0,0,0,0)"
+//               placeholder="Last Name"
+//               placeholderTextColor="#000080"
+//             />
+//             <TextInput
+//               style={styles.inputBox}
+//               underlineColorAndroid="rgba(0,0,0,0)"
+//               placeholder="Username"
+//               placeholderTextColor="#000080"
+//             />
+//             <TextInput
+//               style={styles.inputBox}
+//               underlineColorAndroid="rgba(0,0,0,0)"
+//               placeholder="Password"
+//               secureTextEntry={true} placeholderTextColor="#000080"
+//             />
+//             <TouchableOpacity style={styles.buttonNavy} onPress={() => {
+//                   this.props.navigation.navigate("View")
+//                 }}>
+//               <Text style={styles.buttonTextSubmit}>Submit</Text>
+//             </TouchableOpacity>
+//             <TouchableOpacity 
+//               style={styles.button}
+//               onPress={() => {
+//                 this.props.navigation.navigate("Login")
+//               }}
+//             >
+//               <Text style={styles.buttonText}>Go Back to Login Screen</Text>
+//             </TouchableOpacity>
+//           </View>
+//         </KeyboardAvoidingView>
+//       </ScrollView>
+//     )
+//   }
+// }
 
 const AppNavigator = createStackNavigator({
   Login: {

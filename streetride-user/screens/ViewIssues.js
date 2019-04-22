@@ -21,35 +21,14 @@ class ViewIssues extends React.Component {
     };
 
     render() {
-        return (
-            <View style={styles.container}>
-                <ScrollView>
-                    <Text style={styles.headerText}>View Issues</Text>
-                    {/* <Text style={styles.subheaderText}>Issue Type</Text>
-                    <View style={styles.contentContainer}>
-                        <IssueIcons name={Icons.close.name} icon={Icons.close.uri} />
-                        <IssueIcons name={Icons.debris.name} icon={Icons.debris.uri} />
-                        <IssueIcons name={Icons.hazard.name} icon={Icons.hazard.uri} />
-                    </View>
-                    <View style={styles.contentContainer}>
-                        <IssueIcons name={Icons.traffic.name} icon={Icons.traffic.uri} />
-                        <IssueIcons name={Icons.pothole.name} icon={Icons.pothole.uri} />
-                        <IssueIcons name={Icons.closed.name} icon={Icons.closed.uri} />
-                    </View>
-                    <View style={{ marginTop: 20 }}></View>
-                    <View style={styles.contentContainer}>
-                        <TouchableOpacity style={styles.button} onPress={() => {
-                this.props.navigation.navigate("View")
-              }}>
-                            <Text style={styles.buttonText}>Submit</Text>
-                        </TouchableOpacity>
-                    </View> */}
-
-                </ScrollView>
-            </View>
-        );
+      return (
+        <View style={styles.container}>
+          <ScrollView>
+              <Text style={styles.headerText}>View Issues</Text>
+          </ScrollView>
+        </View>
+      );
     }
-
 }
 
 const AppNavigator = createStackNavigator({
