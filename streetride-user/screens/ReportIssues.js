@@ -76,8 +76,6 @@ export default class ReportIssues extends React.Component {
         }
     }
 
-
-
     render() {
         return (
             <View style={styles.container}>
