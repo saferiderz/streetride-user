@@ -1,14 +1,25 @@
-import React, { Component } from 'react';
-import { StyleSheet, View, TextInput, Text, ScrollView, TouchableOpacity} from 'react-native';
-import {KeyboardAvoidingView} from 'react-native';
+import React, { Component } from "react";
+import {
+  StyleSheet,
+  View,
+  TextInput,
+  Text,
+  ScrollView,
+  TouchableOpacity
+} from "react-native";
+import { KeyboardAvoidingView } from "react-native";
 import Logo from "../components/Logo";
 
 export default class LoginScreen extends Component {
   render() {
     return (
       <ScrollView>
-        <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
-          <Logo/>
+        <KeyboardAvoidingView
+          style={styles.container}
+          behavior="padding"
+          enabled
+        >
+          <Logo />
           <View style={styles.inputContainer}>
             <TextInput
               style={styles.inputBox}
@@ -23,52 +34,45 @@ export default class LoginScreen extends Component {
               secureTextEntry={true}
               placeholderTextColor="#000080"
             />
-            <TouchableOpacity style={styles.buttonNavy} onPress={() => this.props.navigation.navigate('ViewIssues')}>
+            <TouchableOpacity
+              style={styles.buttonNavy}
+              onPress={() => this.props.navigation.navigate("ViewIssues")}
+            >
               <Text style={styles.buttonTextSubmit}>Login</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('CreateAccount')}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => this.props.navigation.navigate("CreateAccount")}
+            >
               <Text style={styles.buttonText}>Create Account</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('ViewIssues')}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => this.props.navigation.navigate("ViewIssues")}
+            >
               <Text style={styles.buttonText}>Guest</Text>
             </TouchableOpacity>
           </View>
         </KeyboardAvoidingView>
-      </ScrollView>    
-    )
+      </ScrollView>
+    );
   }
 }
-
-// const AppNavigator = createStackNavigator({
-//   Login: {
-//     screen: LoginScreen,
-//   },
-//   CreateAccount: {
-//     screen: CreateAccount,
-//   },
-//   View: {
-//     screen: ViewIssues,
-//   }
-// }, {
-//   initialRouteName: "Login",
-// });
-
-// export default createAppContainer(AppNavigator);
 
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center"
     // marginBottom: 25
   },
   inputContainer: {
     marginBottom: 10,
     marginTop: 60,
-    textAlign: 'center',
-    alignItems: 'center',
-    justifyContent: 'center'
+    textAlign: "center",
+    alignItems: "center",
+    justifyContent: "center"
   },
   inputBox: {
     width: 300,
@@ -77,7 +81,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#dcdcdc",
     borderRadius: 25,
     paddingHorizontal: 16,
-    textAlign: 'center',
+    textAlign: "center"
     // fontWeight: "500"
   },
   button: {
@@ -101,16 +105,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "500",
     color: "white",
-    textAlign: 'center',
-    justifyContent: 'center',
+    textAlign: "center",
+    justifyContent: "center",
     marginTop: 5
   },
   headerText: {
     marginBottom: 50,
     marginTop: 10,
-    color: 'rgba(0,0,0,0.9)',
+    color: "rgba(0,0,0,0.9)",
     fontSize: 40,
-    textAlign: 'center',
-    fontWeight: 'bold'
-},
+    textAlign: "center",
+    fontWeight: "bold"
+  }
 });
