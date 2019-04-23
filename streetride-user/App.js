@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 import { Platform, StatusBar, StyleSheet, View, Text } from "react-native";
-import { AppLoading, Asset, Font } from 'expo';
+import { AppLoading, Asset, Font } from "expo";
 
 import {
   createSwitchNavigator,
@@ -42,8 +42,8 @@ export default class App extends React.Component {
   _loadResourcesAsync = async () => {
     return Promise.all([
       Asset.loadAsync([
-        require('./assets/images/robot-dev.png'),
-        require('./assets/images/robot-prod.png'),
+        require("./assets/images/robot-dev.png"),
+        require("./assets/images/robot-prod.png")
       ]),
       Font.loadAsync({
         // This is the font that we are using for our tab bar
@@ -51,7 +51,7 @@ export default class App extends React.Component {
         // We include SpaceMono because we use it in HomeScreen.js. Feel free
         // to remove this if you are not using it in your app
         // 'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
-      }),
+      })
     ]);
   };
 
@@ -65,8 +65,6 @@ export default class App extends React.Component {
     this.setState({ isLoadingComplete: true });
   };
 }
-
-// export default App;
 
 const AppTabNavigator = createBottomTabNavigator(
   {
@@ -151,7 +149,7 @@ const AppSwitchNavigator = createSwitchNavigator({
   Login: { screen: LoginScreen },
   CreateAccount: { screen: CreateAccountScreen },
   ViewIssues: { screen: AppDrawerNavigator },
-  ReportIssues: { screen: AppDrawerNavigator },
+  ReportIssues: { screen: AppDrawerNavigator }
 });
 
 const AppContainer = createAppContainer(AppSwitchNavigator);
