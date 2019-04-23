@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { createAppContainer, createStackNavigator, StackActions, NavigationActions } from 'react-navigation';
 
-export default class ViewIssuesScreen extends React.Component {
+export default class ViewIssues extends React.Component {
     static navigationOptions = {
         header: null,
     };
