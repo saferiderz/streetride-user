@@ -13,7 +13,6 @@ import LoginScreen from "./screens/LoginScreen";
 import CreateAccountScreen from "./screens/CreateAccountScreen";
 import ViewIssues from "./screens/ViewIssues";
 import ReportIssues from "./screens/ReportIssues";
-// import { Image } from './components/Logo';
 
 class App extends Component {
   render() {
