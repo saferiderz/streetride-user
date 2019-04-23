@@ -52,9 +52,9 @@ const AppStackNavigator = createStackNavigator(
   }
 );
 
-// swipe right from right edge of screen to expose drawer
+// swipe right from left edge of screen to expose drawer
 const AppDrawerNavigator = createDrawerNavigator({
-  Menu:{screen:AppStackNavigator},
+  Street_Ride:{screen:AppStackNavigator},
   View:{screen:ViewIssues},
   Report:{screen:ReportIssues}
 })
