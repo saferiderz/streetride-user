@@ -7,6 +7,7 @@ import LoginScreen from '../screens/LoginScreen';
 // import ViewIssues from '../screens/ViewIssues';
 import ReportIssues from '../screens/ReportIssues';
 import LinksScreen from '../screens/LinksScreen';
+import ReportOrViewScreen from '../screens/ReportOrViewScreen'
 
 
 const LoginStack = createStackNavigator(
@@ -24,11 +25,11 @@ LoginStack.navigationOptions = {
 };
 
 const ViewIssuesStack = createStackNavigator({
-  View: LinksScreen,
+  View: ReportOrViewScreen,
 });
 
 ViewIssuesStack.navigationOptions = {
-  tabBarLabel: 'View Issues',
+  tabBarLabel: 'Report or View',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
