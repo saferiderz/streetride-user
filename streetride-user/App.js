@@ -20,8 +20,20 @@ class App extends Component {
 export default App;
 
 const AppTabNavigator = createBottomTabNavigator({
-  View:{screen:ViewIssues, title:'View Issues'},
-  Report:{screen:ReportIssues, title:'Report Issues'}
+  View:
+    {
+      screen:ViewIssues,
+        navigationOptions: () => ({
+          title: 'View Issues'
+        })
+    },
+  Report:
+    {
+      screen:ReportIssues,
+        navigationOptions: () => ({
+          title: 'Report Issues'
+        })
+    }
 },{
   navigationOptions: ({ navigation }) => {
     const { routeName } = navigation.state.routes[navigation.state.index]
