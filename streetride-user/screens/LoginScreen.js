@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, TextInput, Text, ScrollView, TouchableOpacity} from 'react-native';
 import {KeyboardAvoidingView} from 'react-native';
-import { createAppContainer, createStackNavigator, StackActions, NavigationActions } from 'react-navigation';
-// import CreateAccountScreen from './CreateAccountScreen';
 import Logo from "../components/Logo";
 
 export default class LoginScreen extends Component {

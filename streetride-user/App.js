@@ -19,7 +19,6 @@ class App extends Component {
 
 export default App;
 
-
 const AppTabNavigator = createBottomTabNavigator({
   View:{screen:ViewIssues, title:'View Issues'},
   Report:{screen:ReportIssues, title:'Report Issues'}
@@ -34,8 +33,8 @@ const AppTabNavigator = createBottomTabNavigator({
 });
 
 const AppStackNavigator = createStackNavigator(
-  {AppTabNavigator:AppTabNavigator},
-  // {headerLayoutPreset:'center'}, 
+  { AppTabNavigator: AppTabNavigator },
+  // {headerLayoutPreset:'center'},
   {
     defaultNavigationOptions: ({ navigation }) => {
       return {
@@ -46,7 +45,7 @@ const AppStackNavigator = createStackNavigator(
             name="md-menu"
             size={30}
           />
-        )
+        ),
       };
     }
   }
@@ -54,9 +53,27 @@ const AppStackNavigator = createStackNavigator(
 
 // swipe right from left edge of screen to expose drawer
 const AppDrawerNavigator = createDrawerNavigator({
-  Street_Ride:{screen:AppStackNavigator},
-  View:{screen:ViewIssues},
-  Report:{screen:ReportIssues}
+  Menu:
+    {
+      screen:AppStackNavigator,
+        navigationOptions: () => ({
+          title: ''
+        })
+    },
+  View:
+    {
+      screen:ViewIssues,
+        navigationOptions: () => ({
+          title: 'View Issues'
+        })
+    },
+  Report:
+    {
+      screen:ReportIssues,
+        navigationOptions: () => ({
+          title: 'Report Issues'
+        })
+    }
 })
 
 const AppSwitchNavigator = createSwitchNavigator({
