@@ -20,7 +20,8 @@ export default class ReportIssues extends Component {
     issueType: "",
     latitude: null,
     longitude: null,
-    error: null
+    error: null,
+    color: 'red'
   };
 
   componentDidMount() {
