@@ -25,7 +25,8 @@ const styles = StyleSheet.create({
     iconContainer: {
         width: 50,
         height: 'auto',
-        flexBasis: 20
+        flexDirection: 'column',
+        justifyContent: 'center',
     },
     iconText: {
         textAlign: 'center'

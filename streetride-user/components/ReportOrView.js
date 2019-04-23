@@ -3,62 +3,40 @@ import {
     StyleSheet,
     Text,
     View,
-    TextInput,
+    Image,
     TouchableOpacity,
-    Button,
-    Alert
 } from 'react-native';
 
-function ReportOrView(props){
+function ReportOrView (props) {
+   
         return (
-            <Button
-            style={styles.buttonLogin}
-                onPress={props.onPress}
-                title={"Click me"}
-                color={"red"}
-            />
+            <View>
+                <TouchableOpacity name={props.name} onPress={props.onPress}>
+                    <View style={styles.iconContainer} >
+                        <Image style={styles.iconImage} source={props.source} />
+                        <Text style={styles.iconText}>{props.name}</Text>
+                    </View>
+                </TouchableOpacity>
+            </View>
         )
+    }
 
-}
 
 export default ReportOrView
 
 const styles = StyleSheet.create({
-    container: {
-        flexGrow: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center'
-        // marginBottom: 25
-    },
-    inputContainer: {
-        marginBottom: 10,
-        textAlign: 'center',
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    inputBox: {
-        width: 300,
+    iconContainer: {
+        width: 50,
         height: 50,
-        marginBottom: 10,
-        backgroundColor: "#dcdcdc",
-        borderRadius: 25,
-        paddingHorizontal: 16,
-        textAlign: 'center',
-        // fontWeight: "500"
+        flexDirection: 'column',
+        justifyContent: 'center',
     },
-    buttonLogin: {
-        backgroundColor: "#000080",
-        borderRadius: 25,
-        width: 200,
-        height: 35,
-        color: "#ffffff"
-        // marginBottom: 10,
+    iconText: {
+        textAlign: 'center'
     },
-    buttonText: {
-        fontSize: 16,
-        fontWeight: "500",
-        color: "black"
+    iconImage: {
+        width: 50,
+        height: 50,
     },
     buttonTextLogin: {
         fontSize: 16,
@@ -67,5 +45,14 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         justifyContent: 'center',
         marginTop: 5
-    }
+      },
+      buttonLogin: {
+        backgroundColor: "#000080",
+        borderRadius: 25,
+        width: 200,
+        height: 35,
+        color: "#ffffff"
+        // marginBottom: 10,
+      },
+
 });
