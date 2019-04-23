@@ -26,17 +26,19 @@ export default ReportOrView
 
 const styles = StyleSheet.create({
     iconContainer: {
-        width: 50,
-        height: 50,
+        width: 200,
+        height: 100,
         flexDirection: 'column',
         justifyContent: 'center',
+        alignItems: 'center'
     },
     iconText: {
-        textAlign: 'center'
+        textAlign: 'center',
+        fontSize: 20
     },
     iconImage: {
-        width: 50,
-        height: 50,
+        width: 100,
+        height: 100,
     },
     buttonTextLogin: {
         fontSize: 16,

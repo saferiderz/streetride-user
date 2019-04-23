@@ -15,10 +15,8 @@ handleButton = () => {
   render() {
     return (
       <View style={styles.container}>
-      <View style={styles.contentContainer}>
         <ReportOrView onPress={this.handleButton} source={require("../assets/images/map.png")} name="View Issues"/> 
         <ReportOrView onPress={this.handleButton} source={require("../assets/images/submit.png")} name="Submit Issues"/> 
-      </View>
       </View>
     )
   }
@@ -28,10 +26,13 @@ handleButton = () => {
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
+    flexDirection: 'column',
+    alignItems:'center'
+
   },
   contentContainer: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     flexWrap: 'wrap',
     justifyContent: "space-around"
 },
