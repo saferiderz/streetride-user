@@ -9,17 +9,19 @@ import {
     Alert
 } from 'react-native';
 
-export default class ReportOrView extends React.Component {
-    render() {
+function ReportOrView(props){
         return (
             <Button
+            style={styles.buttonLogin}
                 onPress={props.onPress}
-                title="Learn More"
-                color="#841584"
+                title={"Click me"}
+                color={"red"}
             />
         )
-    }
+
 }
+
+export default ReportOrView
 
 const styles = StyleSheet.create({
     container: {
