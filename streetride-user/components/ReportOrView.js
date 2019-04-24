@@ -39,22 +39,5 @@ const styles = StyleSheet.create({
     iconImage: {
         width: 100,
         height: 100,
-    },
-    buttonTextLogin: {
-        fontSize: 16,
-        fontWeight: "500",
-        color: "white",
-        textAlign: 'center',
-        justifyContent: 'center',
-        marginTop: 5
-      },
-      buttonLogin: {
-        backgroundColor: "#000080",
-        borderRadius: 25,
-        width: 200,
-        height: 35,
-        color: "#ffffff"
-        // marginBottom: 10,
-      },
-
+    }
 });
