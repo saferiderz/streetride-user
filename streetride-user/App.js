@@ -72,6 +72,7 @@ const AppTabNavigator = createBottomTabNavigator(
       screen: ViewIssues,
       navigationOptions: () => ({
         tabBarLabel: "View Issues",
+        tabBarOptions: {activeTintColor: '#000080'},
         tabBarIcon: ({ focused }) => (
           <TabBarIcon
             focused={focused}
@@ -84,6 +85,7 @@ const AppTabNavigator = createBottomTabNavigator(
       screen: ReportIssues,
       navigationOptions: () => ({
         tabBarLabel: "Report Issues",
+        tabBarOptions: {activeTintColor: '#000080'},
         tabBarIcon: ({ focused }) => (
           <TabBarIcon
             focused={focused}
