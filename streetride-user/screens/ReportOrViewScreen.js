@@ -5,7 +5,6 @@ import {
 } from 'react-native';
 import ReportOrView from "../components/ReportOrView";
 
-
  export default class ReportOrViewScreen extends React.Component {
 
 handleButton = () => {
