@@ -1,5 +1,12 @@
 import React from "react";
-import { Platform, StatusBar, StyleSheet, View, Text, Image } from "react-native";
+import {
+  Platform,
+  StatusBar,
+  StyleSheet,
+  View,
+  Text,
+  Image
+} from "react-native";
 import { AppLoading, Asset, Font } from "expo";
 
 import {
@@ -15,6 +22,7 @@ import LoginScreen from "./screens/LoginScreen";
 import CreateAccountScreen from "./screens/CreateAccountScreen";
 import ViewIssues from "./screens/ViewIssues";
 import ReportIssues from "./screens/ReportIssues";
+import ReportOrView from "./screens/ReportOrView";
 
 export default class App extends React.Component {
   state = {
@@ -66,6 +74,33 @@ export default class App extends React.Component {
   };
 }
 
+// stacknavigator for report issues screen that is a parent to the ReportOrView screen
+const ReportStack = createStackNavigator({
+  Report: {
+    screen: ReportIssues,
+    navigationOptions: ({ navigation }) => {
+      return {
+        headerLeft: (
+          <Icon
+            style={{ paddingLeft: 10, marginRight: 50 }}
+            onPress={() => navigation.openDrawer()}
+            name="md-menu"
+            size={30}
+          />
+        )
+      };
+    }
+  },
+  ReportOrView: {
+    screen: ReportOrView,
+    navigationOptions: ({}) => {
+      return {
+        header: null,
+      };
+    }
+  }
+});
+
 const AppTabNavigator = createBottomTabNavigator(
   {
     View: {
@@ -83,7 +118,7 @@ const AppTabNavigator = createBottomTabNavigator(
       })
     },
     Report: {
-      screen: ReportIssues,
+      screen: ReportStack,
       navigationOptions: () => ({
         tabBarLabel: "Report Issues",
         tabBarOptions: { activeTintColor: "#000080" },
@@ -101,6 +136,7 @@ const AppTabNavigator = createBottomTabNavigator(
     navigationOptions: ({ navigation }) => {
       const { routeName } = navigation.state.routes[navigation.state.index];
       return {
+        // header: null,
         headerTitle: routeName + " Issues",
         headerLayoutPreset: "center"
       };
@@ -142,7 +178,7 @@ const AppDrawerNavigator = createDrawerNavigator({
     })
   },
   Report: {
-    screen: ReportIssues,
+    screen: ReportOrView,
     navigationOptions: () => ({
       title: "Report Issues"
     })

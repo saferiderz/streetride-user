@@ -129,7 +129,10 @@ export default class ReportIssues extends Component {
           <View style={styles.contentContainer}>
             <TouchableOpacity
               style={styles.button}
-              onPress={() => this.handleSubmit()}
+              onPress={() => {
+                this.handleSubmit()
+                this.props.navigation.navigate("ReportOrView")
+              }}
             >
               <Text style={styles.buttonText}>Submit</Text>
             </TouchableOpacity>
