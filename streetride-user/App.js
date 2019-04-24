@@ -1,5 +1,5 @@
 import React from "react";
-import { Platform, StatusBar, StyleSheet, View, Text } from "react-native";
+import { Platform, StatusBar, StyleSheet, View, Text, Image } from "react-native";
 import { AppLoading, Asset, Font } from "expo";
 
 import {
@@ -10,7 +10,7 @@ import {
   createStackNavigator
 } from "react-navigation";
 import Icon from "@expo/vector-icons/Ionicons";
-import TabBarIcon from "./components/TabBarIcon";
+// import TabBarIcon from "./components/TabBarIcon";
 import LoginScreen from "./screens/LoginScreen";
 import CreateAccountScreen from "./screens/CreateAccountScreen";
 import ViewIssues from "./screens/ViewIssues";
@@ -72,11 +72,12 @@ const AppTabNavigator = createBottomTabNavigator(
       screen: ViewIssues,
       navigationOptions: () => ({
         tabBarLabel: "View Issues",
-        tabBarOptions: {activeTintColor: '#000080'},
+        tabBarOptions: { activeTintColor: "#000080" },
         tabBarIcon: ({ focused }) => (
-          <TabBarIcon
+          <Image
+            source={require("./assets/images/eye.png")}
+            style={{ width: 25, height: 25 }}
             focused={focused}
-            name={Platform.OS === "ios" ? "ios-warning" : "md-warning"}
           />
         )
       })
@@ -85,11 +86,12 @@ const AppTabNavigator = createBottomTabNavigator(
       screen: ReportIssues,
       navigationOptions: () => ({
         tabBarLabel: "Report Issues",
-        tabBarOptions: {activeTintColor: '#000080'},
+        tabBarOptions: { activeTintColor: "#000080" },
         tabBarIcon: ({ focused }) => (
-          <TabBarIcon
+          <Image
+            source={require("./assets/images/submit.png")}
+            style={{ width: 20, height: 20 }}
             focused={focused}
-            name={Platform.OS === "ios" ? "ios-add-circle" : "md-add-circle"}
           />
         )
       })
