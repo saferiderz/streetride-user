@@ -13,7 +13,7 @@ import IssueIcons from "../components/IssueIcons";
 
 export default class ReportIssues extends Component {
   static navigationOptions = {
-    // header: null
+    header: null
   };
 
   state = {
@@ -21,7 +21,7 @@ export default class ReportIssues extends Component {
     latitude: null,
     longitude: null,
     error: null,
-    color: 'red'
+    color: "red"
   };
 
   componentDidMount() {
@@ -87,17 +87,18 @@ export default class ReportIssues extends Component {
           <Text style={styles.subheaderText}>Select an Issue Type</Text>
           <View style={styles.contentContainer}>
             <IssueIcons
-              name={Icons.close.name}
-              icon={Icons.close.uri}
-              key={Icons.close.name}
-              onPress={() => this.setState({ issueType: "close call" })}
-            />
-            <IssueIcons
               name={Icons.debris.name}
               icon={Icons.debris.uri}
               key={Icons.debris.name}
               onPress={() => this.setState({ issueType: "debris" })}
             />
+            <IssueIcons
+              name={Icons.close.name}
+              icon={Icons.close.uri}
+              key={Icons.close.name}
+              onPress={() => this.setState({ issueType: "close call" })}
+            />
+
             <IssueIcons
               name={Icons.hazard.name}
               icon={Icons.hazard.uri}
@@ -113,16 +114,16 @@ export default class ReportIssues extends Component {
               onPress={() => this.setState({ issueType: "traffic" })}
             />
             <IssueIcons
-              name={Icons.pothole.name}
-              icon={Icons.pothole.uri}
-              key={Icons.pothole.name}
-              onPress={() => this.setState({ issueType: "pothole" })}
-            />
-            <IssueIcons
               name={Icons.closed.name}
               icon={Icons.closed.uri}
               key={Icons.closed.name}
               onPress={() => this.setState({ issueType: "path closed" })}
+            />
+            <IssueIcons
+              name={Icons.pothole.name}
+              icon={Icons.pothole.uri}
+              key={Icons.pothole.name}
+              onPress={() => this.setState({ issueType: "pothole" })}
             />
           </View>
           <View style={{ marginTop: 20 }} />
@@ -130,8 +131,8 @@ export default class ReportIssues extends Component {
             <TouchableOpacity
               style={styles.button}
               onPress={() => {
-                this.handleSubmit()
-                this.props.navigation.navigate("ReportOrView")
+                this.handleSubmit();
+                this.props.navigation.navigate("ReportOrView");
               }}
             >
               <Text style={styles.buttonText}>Submit</Text>

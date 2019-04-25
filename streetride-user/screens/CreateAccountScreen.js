@@ -6,7 +6,6 @@ import {
   ScrollView,
   TextInput,
   TouchableOpacity,
-  StatusBar
 } from "react-native";
 import { KeyboardAvoidingView } from "react-native";
 

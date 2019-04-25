@@ -2,38 +2,35 @@ import React, { Component } from "react";
 import {
   StyleSheet,
   View,
-  TextInput,
   Text,
   ScrollView,
   TouchableOpacity
 } from "react-native";
-import { KeyboardAvoidingView } from "react-native";
-// import Logo from "../components/Logo";
 
 export default class LoginScreen extends Component {
+  static navigationOptions = {
+    header: null
+  };
+
   render() {
     return (
       <ScrollView>
-        <KeyboardAvoidingView
-          style={styles.container}
-          behavior="padding"
-          enabled
-        >
+          <Text style={styles.subheaderText}>What would you like to do next?</Text>
           <View style={styles.inputContainer}>
           <TouchableOpacity
               style={styles.buttonNavy}
-              onPress={() => this.props.navigation.navigate("ReportStack")}
+              onPress={() => this.props.navigation.navigate("Report")}
             >
-              <Text style={styles.buttonTextSubmit}>Report Another Issue</Text>
+              <Text style={styles.buttonTextReport}>Report Another Issue</Text>
             </TouchableOpacity>
+            <Text style={styles.orText}>or</Text>
             <TouchableOpacity
-              style={styles.buttonNavy}
-              onPress={() => this.props.navigation.navigate("ViewIssues")}
+              style={styles.buttonGray}
+              onPress={() => this.props.navigation.navigate("View")}
             >
-              <Text style={styles.buttonTextSubmit}>View Issues</Text>
+              <Text style={styles.buttonTextView}>View Issues</Text>
             </TouchableOpacity>
           </View>
-        </KeyboardAvoidingView>
       </ScrollView>
     );
   }
@@ -70,21 +67,46 @@ const styles = StyleSheet.create({
   },
   buttonNavy: {
     backgroundColor: "#000080",
-    borderRadius: 25,
-    width: 200,
-    height: 35,
+    borderRadius: 75,
+    borderWidth: 1,
+    width: 150,
+    height: 150,
     color: "#ffffff",
-    marginBottom: 10
+    // marginBottom: 10,
+    // marginTop: 10,
+    alignItems:'center',
+    justifyContent:'center'
+  },
+  buttonGray: {
+    backgroundColor: "#dcdcdc",
+    borderRadius: 75,
+    borderWidth: 1,
+    borderColor: "#000080",
+    width: 150,
+    height: 150,
+    color: "#ffffff",
+    // marginBottom: 10,
+    marginTop: 3,
+    alignItems:'center',
+    justifyContent:'center'
   },
   buttonText: {
     fontSize: 16,
     fontWeight: "500",
     color: "black"
   },
-  buttonTextSubmit: {
+  buttonTextReport: {
     fontSize: 16,
     fontWeight: "500",
     color: "white",
+    textAlign: "center",
+    justifyContent: "center",
+    marginTop: 5
+  },
+  buttonTextView: {
+    fontSize: 16,
+    fontWeight: "500",
+    color: "#000080",
     textAlign: "center",
     justifyContent: "center",
     marginTop: 5
@@ -96,5 +118,21 @@ const styles = StyleSheet.create({
     fontSize: 40,
     textAlign: "center",
     fontWeight: "bold"
-  }
+  },
+  subheaderText: {
+    // marginBottom: 5,
+    marginTop: 20,
+    paddingTop: 30,
+    color: "#000080",
+    fontSize: 25,
+    textAlign: "center"
+  },
+  orText: {
+    // marginBottom: 5,
+    // marginTop: 20,
+    // paddingTop: 30,
+    color: "#000080",
+    fontSize: 25,
+    textAlign: "center"
+  },
 });

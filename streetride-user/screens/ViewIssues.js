@@ -11,7 +11,7 @@ import {
 
 export default class ViewIssues extends React.Component {
     static navigationOptions = {
-        // header: null,
+        header: null,
     };
 
     render() {

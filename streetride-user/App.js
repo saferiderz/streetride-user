@@ -101,6 +101,7 @@ const ReportStack = createStackNavigator({
   }
 });
 
+// this creates the 2 bottom tabs to access the View and Report screens
 const AppTabNavigator = createBottomTabNavigator(
   {
     View: {
@@ -118,7 +119,7 @@ const AppTabNavigator = createBottomTabNavigator(
       })
     },
     Report: {
-      screen: ReportIssues,
+      screen: ReportStack,
       navigationOptions: () => ({
         tabBarLabel: "Report Issues",
         tabBarOptions: { activeTintColor: "#000080" },
@@ -134,6 +135,7 @@ const AppTabNavigator = createBottomTabNavigator(
   },
   {
     navigationOptions: ({ navigation }) => {
+      // gets the index of the active tab and prints the routeName + " Issues" on the header
       const { routeName } = navigation.state.routes[navigation.state.index];
       return {
         // header: null,
@@ -187,9 +189,11 @@ const AppDrawerNavigator = createDrawerNavigator({
   }
 });
 
+// switch navigator for stand-alone screens that live outside the stack navigator
 const AppSwitchNavigator = createSwitchNavigator({
   Login: { screen: LoginScreen },
   CreateAccount: { screen: CreateAccountScreen },
+  ReportOrView: { screen: ReportOrView },
   Dashboard: { screen: AppDrawerNavigator }
 });
 
