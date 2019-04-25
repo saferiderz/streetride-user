@@ -17,7 +17,6 @@ import {
   createStackNavigator
 } from "react-navigation";
 import Icon from "@expo/vector-icons/Ionicons";
-// import TabBarIcon from "./components/TabBarIcon";
 import LoginScreen from "./screens/LoginScreen";
 import CreateAccountScreen from "./screens/CreateAccountScreen";
 import ViewIssues from "./screens/ViewIssues";
@@ -98,7 +97,9 @@ const ReportStack = createStackNavigator({
         header: null
       };
     }
-  }
+  },
+}, {
+  initialRouteName: "Report"
 });
 
 // this creates the 2 bottom tabs to access the View and Report screens
