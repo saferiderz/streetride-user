@@ -178,19 +178,30 @@ const AppDrawerNavigator = createDrawerNavigator({
   Dashboard: {
     screen: AppStackNavigator,
     navigationOptions: () => ({
-      drawerIcon: <HeaderImage />,
+      drawerIcon: <Image
+      source={require("./assets/images/left.png")}
+      style={{ width: 20, height: 20 }}
+    />,
       title: ""
     })
   },
   View: {
     screen: ViewIssues,
     navigationOptions: () => ({
+      drawerIcon: <Image
+      source={require("./assets/images/eye.png")}
+      style={{ width: 25, height: 25 }}
+    />,
       title: "View Issues"
     })
   },
   Report: {
     screen: ReportIssues,
     navigationOptions: () => ({
+      drawerIcon: <Image
+      source={require("./assets/images/submit.png")}
+      style={{ width: 20, height: 20 }}
+    />,
       title: "Report Issues"
     })
   }
