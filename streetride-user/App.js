@@ -22,6 +22,8 @@ import CreateAccountScreen from "./screens/CreateAccountScreen";
 import ViewIssues from "./screens/ViewIssues";
 import ReportIssues from "./screens/ReportIssues";
 import ReportOrView from "./screens/ReportOrView";
+import HeaderImage from "./components/HeaderImage";
+
 
 export default class App extends React.Component {
   state = {
@@ -161,6 +163,9 @@ const AppStackNavigator = createStackNavigator(
             name="md-menu"
             size={30}
           />
+        ),
+        headerRight: (
+          <HeaderImage />
         )
       };
     }
