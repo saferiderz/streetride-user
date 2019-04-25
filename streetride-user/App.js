@@ -178,6 +178,7 @@ const AppDrawerNavigator = createDrawerNavigator({
   Dashboard: {
     screen: AppStackNavigator,
     navigationOptions: () => ({
+      drawerIcon: <HeaderImage />,
       title: ""
     })
   },
