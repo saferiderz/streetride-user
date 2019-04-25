@@ -1,11 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 
- export default class Logo extends React.Component {
+ export default class HeaderImage extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image style={{width: 250, height: 250}}
+        <Image style={{width: 45, height: 45}}
           source={(require("../assets/images/streetride_logo.png"))}
         />
       </View>
@@ -19,7 +19,6 @@ import { StyleSheet, Text, View, Image } from 'react-native';
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 5,
-    marginTop: 80
+    paddingRight: 10
   },
 });
