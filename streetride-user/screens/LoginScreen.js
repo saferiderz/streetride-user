@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center"
-    // marginBottom: 25
   },
   inputContainer: {
     marginBottom: 10,
@@ -82,7 +81,6 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     paddingHorizontal: 16,
     textAlign: "center"
-    // fontWeight: "500"
   },
   button: {
     color: "#ffffff",
@@ -94,7 +92,6 @@ const styles = StyleSheet.create({
     width: 200,
     height: 35,
     color: "#ffffff"
-    // marginBottom: 10,
   },
   buttonText: {
     fontSize: 16,

@@ -15,22 +15,24 @@ export default class LoginScreen extends Component {
   render() {
     return (
       <ScrollView>
-          <Text style={styles.subheaderText}>What would you like to do next?</Text>
-          <View style={styles.inputContainer}>
+        <Text style={styles.subheaderText}>
+          What would you like to do next?
+        </Text>
+        <View style={styles.inputContainer}>
           <TouchableOpacity
-              style={styles.buttonNavy}
-              onPress={() => this.props.navigation.navigate("Report")}
-            >
-              <Text style={styles.buttonTextReport}>Report Another Issue</Text>
-            </TouchableOpacity>
-            <Text style={styles.orText}>or</Text>
-            <TouchableOpacity
-              style={styles.buttonGray}
-              onPress={() => this.props.navigation.navigate("View")}
-            >
-              <Text style={styles.buttonTextView}>View Issues</Text>
-            </TouchableOpacity>
-          </View>
+            style={styles.buttonNavy}
+            onPress={() => this.props.navigation.navigate("Report")}
+          >
+            <Text style={styles.buttonTextReport}>Report Another Issue</Text>
+          </TouchableOpacity>
+          <Text style={styles.orText}>or</Text>
+          <TouchableOpacity
+            style={styles.buttonGray}
+            onPress={() => this.props.navigation.navigate("View")}
+          >
+            <Text style={styles.buttonTextView}>View Issues</Text>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
     );
   }
@@ -42,7 +44,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center"
-    // marginBottom: 25
   },
   inputContainer: {
     marginBottom: 10,
@@ -59,7 +60,6 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     paddingHorizontal: 16,
     textAlign: "center"
-    // fontWeight: "500"
   },
   button: {
     color: "#ffffff",
@@ -72,10 +72,8 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
     color: "#ffffff",
-    // marginBottom: 10,
-    // marginTop: 10,
-    alignItems:'center',
-    justifyContent:'center'
+    alignItems: "center",
+    justifyContent: "center"
   },
   buttonGray: {
     backgroundColor: "#dcdcdc",
@@ -85,10 +83,9 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
     color: "#ffffff",
-    // marginBottom: 10,
     marginTop: 3,
-    alignItems:'center',
-    justifyContent:'center'
+    alignItems: "center",
+    justifyContent: "center"
   },
   buttonText: {
     fontSize: 16,
@@ -120,7 +117,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   subheaderText: {
-    // marginBottom: 5,
     marginTop: 20,
     paddingTop: 30,
     color: "#000080",
@@ -128,11 +124,8 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   orText: {
-    // marginBottom: 5,
-    // marginTop: 20,
-    // paddingTop: 30,
     color: "#000080",
     fontSize: 25,
     textAlign: "center"
-  },
+  }
 });

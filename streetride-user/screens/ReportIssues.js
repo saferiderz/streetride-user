@@ -83,7 +83,6 @@ export default class ReportIssues extends Component {
     return (
       <View style={styles.container}>
         <ScrollView>
-          {/* <Text style={styles.headerText} >Report an Issue</Text> */}
           <Text style={styles.subheaderText}>Select an Issue Type</Text>
           <View style={styles.contentContainer}>
             <IssueIcons
