@@ -74,7 +74,7 @@ export default class App extends React.Component {
   };
 }
 
-// stacknavigator for report issues screen that is a parent to the ReportOrView screen
+// stack navigator for Report Issues screen that is a parent to the ReportOrView screen
 const ReportStack = createStackNavigator({
   Report: {
     screen: ReportIssues,
