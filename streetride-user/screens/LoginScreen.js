@@ -36,7 +36,7 @@ export default class LoginScreen extends Component {
             />
             <TouchableOpacity
               style={styles.buttonNavy}
-              onPress={() => this.props.navigation.navigate("ViewIssues")}
+              onPress={() => this.props.navigation.navigate("Dashboard")}
             >
               <Text style={styles.buttonTextSubmit}>Login</Text>
             </TouchableOpacity>
@@ -48,7 +48,7 @@ export default class LoginScreen extends Component {
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.button}
-              onPress={() => this.props.navigation.navigate("ViewIssues")}
+              onPress={() => this.props.navigation.navigate("Dashboard")}
             >
               <Text style={styles.buttonText}>Guest</Text>
             </TouchableOpacity>

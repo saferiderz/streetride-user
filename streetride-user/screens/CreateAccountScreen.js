@@ -48,7 +48,7 @@ export default class CreateAccountScreen extends Component {
             />
             <TouchableOpacity
               style={styles.buttonNavy}
-              onPress={() => this.props.navigation.navigate("ViewIssues")}
+              onPress={() => this.props.navigation.navigate("Dashboard")}
             >
               <Text style={styles.buttonTextSubmit}>Submit</Text>
             </TouchableOpacity>

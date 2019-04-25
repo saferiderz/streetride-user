@@ -22,7 +22,7 @@ export default class LoginScreen extends Component {
           <View style={styles.inputContainer}>
           <TouchableOpacity
               style={styles.buttonNavy}
-              onPress={() => this.props.navigation.navigate("ReportIssues")}
+              onPress={() => this.props.navigation.navigate("ReportStack")}
             >
               <Text style={styles.buttonTextSubmit}>Report Another Issue</Text>
             </TouchableOpacity>

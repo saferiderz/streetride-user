@@ -13,7 +13,7 @@ import IssueIcons from "../components/IssueIcons";
 
 export default class ReportIssues extends Component {
   static navigationOptions = {
-    header: null
+    // header: null
   };
 
   state = {

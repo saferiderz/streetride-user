@@ -74,6 +74,33 @@ export default class App extends React.Component {
   };
 }
 
+// stacknavigator for report issues screen that is a parent to the ReportOrView screen
+const ReportStack = createStackNavigator({
+  Report: {
+    screen: ReportIssues,
+    navigationOptions: ({ navigation }) => {
+      return {
+        headerLeft: (
+          <Icon
+            style={{ paddingLeft: 10, marginRight: 50 }}
+            onPress={() => navigation.openDrawer()}
+            name="md-menu"
+            size={30}
+          />
+        )
+      };
+    }
+  },
+  ReportOrView: {
+    screen: ReportOrView,
+    navigationOptions: ({}) => {
+      return {
+        header: null
+      };
+    }
+  }
+});
+
 const AppTabNavigator = createBottomTabNavigator(
   {
     View: {
@@ -91,7 +118,7 @@ const AppTabNavigator = createBottomTabNavigator(
       })
     },
     Report: {
-      screen: ReportStack,
+      screen: ReportIssues,
       navigationOptions: () => ({
         tabBarLabel: "Report Issues",
         tabBarOptions: { activeTintColor: "#000080" },
@@ -137,36 +164,10 @@ const AppStackNavigator = createStackNavigator(
   }
 );
 
-// stacknavigator for report issues screen that is a parent to the ReportOrView screen
-const ReportStack = createStackNavigator({
-  Report: {
-    screen: ReportIssues,
-    navigationOptions: ({ navigation }) => {
-      return {
-        headerLeft: (
-          <Icon
-            style={{ paddingLeft: 10, marginRight: 50 }}
-            onPress={() => navigation.openDrawer()}
-            name="md-menu"
-            size={30}
-          />
-        )
-      };
-    }
-  },
-  ReportOrView: {
-    screen: ReportOrView,
-    navigationOptions: ({}) => {
-      return {
-        header: null
-      };
-    }
-  }
-});
-
 // swipe right from left edge of screen to expose drawer
 const AppDrawerNavigator = createDrawerNavigator({
-  Menu: {
+  // Dashboard houses the View and Report screens
+  Dashboard: {
     screen: AppStackNavigator,
     navigationOptions: () => ({
       title: ""
@@ -179,7 +180,7 @@ const AppDrawerNavigator = createDrawerNavigator({
     })
   },
   Report: {
-    screen: ReportOrView,
+    screen: ReportIssues,
     navigationOptions: () => ({
       title: "Report Issues"
     })
@@ -189,8 +190,7 @@ const AppDrawerNavigator = createDrawerNavigator({
 const AppSwitchNavigator = createSwitchNavigator({
   Login: { screen: LoginScreen },
   CreateAccount: { screen: CreateAccountScreen },
-  ViewIssues: { screen: AppDrawerNavigator },
-  ReportIssues: { screen: AppDrawerNavigator }
+  Dashboard: { screen: AppDrawerNavigator }
 });
 
 const AppContainer = createAppContainer(AppSwitchNavigator);
@@ -199,7 +199,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff"
-    // alignItems: "center",
-    // justifyContent: "center"
   }
 });

@@ -11,7 +11,7 @@ import {
 
 export default class ViewIssues extends React.Component {
     static navigationOptions = {
-        header: null,
+        // header: null,
     };
 
     render() {
@@ -22,17 +22,6 @@ export default class ViewIssues extends React.Component {
       );
     }
 }
-
-// const AppNavigator = createStackNavigator({
-//   Report: {
-//     screen: ViewIssues,
-//   },
-//   View: {
-//     screen: ViewIssues,
-//   }
-// }, {
-//   initialRouteName: "Report",
-// });
 
 const styles = StyleSheet.create({
     container: {
