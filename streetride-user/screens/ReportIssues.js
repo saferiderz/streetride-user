@@ -34,7 +34,7 @@ export default class ReportIssues extends Component {
         });
       },
       error => this.setState({ error: error.message }),
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+      { enableHighAccuracy: false, timeout: 20000, maximumAge: 1000 }
     );
   }
 
@@ -73,6 +73,7 @@ export default class ReportIssues extends Component {
           "\nLongitude: " +
           this.state.longitude
       );
+      this.props.navigation.navigate("ReportOrView");
     }
     if (this.state.error) {
       Alert.alert("Error:", this.state.error);
@@ -131,7 +132,6 @@ export default class ReportIssues extends Component {
               style={styles.button}
               onPress={() => {
                 this.handleSubmit();
-                this.props.navigation.navigate("ReportOrView");
               }}
             >
               <Text style={styles.buttonText}>Submit</Text>
