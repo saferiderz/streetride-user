@@ -8,7 +8,6 @@ import {
     TouchableOpacity,
     View
 } from 'react-native';
-import { createAppContainer, createStackNavigator, StackActions, NavigationActions } from 'react-navigation';
 
 export default class ViewIssues extends React.Component {
     static navigationOptions = {

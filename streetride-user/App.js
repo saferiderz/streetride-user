@@ -74,33 +74,6 @@ export default class App extends React.Component {
   };
 }
 
-// stacknavigator for report issues screen that is a parent to the ReportOrView screen
-const ReportStack = createStackNavigator({
-  Report: {
-    screen: ReportIssues,
-    navigationOptions: ({ navigation }) => {
-      return {
-        headerLeft: (
-          <Icon
-            style={{ paddingLeft: 10, marginRight: 50 }}
-            onPress={() => navigation.openDrawer()}
-            name="md-menu"
-            size={30}
-          />
-        )
-      };
-    }
-  },
-  ReportOrView: {
-    screen: ReportOrView,
-    navigationOptions: ({}) => {
-      return {
-        header: null,
-      };
-    }
-  }
-});
-
 const AppTabNavigator = createBottomTabNavigator(
   {
     View: {
@@ -145,8 +118,9 @@ const AppTabNavigator = createBottomTabNavigator(
 );
 
 const AppStackNavigator = createStackNavigator(
-  { AppTabNavigator: AppTabNavigator },
-  // {headerLayoutPreset:'center'},
+  {
+    AppTabNavigator: AppTabNavigator
+  },
   {
     defaultNavigationOptions: ({ navigation }) => {
       return {
@@ -162,6 +136,33 @@ const AppStackNavigator = createStackNavigator(
     }
   }
 );
+
+// stacknavigator for report issues screen that is a parent to the ReportOrView screen
+const ReportStack = createStackNavigator({
+  Report: {
+    screen: ReportIssues,
+    navigationOptions: ({ navigation }) => {
+      return {
+        headerLeft: (
+          <Icon
+            style={{ paddingLeft: 10, marginRight: 50 }}
+            onPress={() => navigation.openDrawer()}
+            name="md-menu"
+            size={30}
+          />
+        )
+      };
+    }
+  },
+  ReportOrView: {
+    screen: ReportOrView,
+    navigationOptions: ({}) => {
+      return {
+        header: null
+      };
+    }
+  }
+});
 
 // swipe right from left edge of screen to expose drawer
 const AppDrawerNavigator = createDrawerNavigator({
