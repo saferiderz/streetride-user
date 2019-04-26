@@ -102,7 +102,7 @@ const ReportStack = createStackNavigator(
     }
   },
   {
-    // initialRouteName: "Report"
+    initialRouteName: "Report"
   }
 );
 
@@ -141,8 +141,9 @@ const AppBottomTabNavigator = createBottomTabNavigator(
     }
   },
   {
+    // Resets the state of any nested navigators when switching away from a screen
     resetOnBlur: true
-  },
+  }
   // {
   //   navigationOptions: ({ navigation }) => {
   //     // gets the index of the active tab and prints the routeName + " Issues" on the header
