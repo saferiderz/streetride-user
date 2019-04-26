@@ -145,16 +145,16 @@ const AppBottomTabNavigator = createBottomTabNavigator(
       })
     }
   },
-  {
-    navigationOptions: ({ navigation }) => {
-      // gets the index of the active tab and prints the routeName + " Issues" on the header
-      const { routeName } = navigation.state.routes[navigation.state.index];
-      return {
-        headerTitle: routeName + " Issues",
-        headerLayoutPreset: "center"
-      };
-    }
-  }
+  // {
+  //   navigationOptions: ({ navigation }) => {
+  //     // gets the index of the active tab and prints the routeName + " Issues" on the header
+  //     const { routeName } = navigation.state.routes[navigation.state.index];
+  //     return {
+  //       headerTitle: routeName + " Issues",
+  //       headerLayoutPreset: "center"
+  //     };
+  //   }
+  // }
 );
 
 const AppStackNavigator = createStackNavigator(
