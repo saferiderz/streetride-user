@@ -14,9 +14,7 @@ import {
   createAppContainer,
   createDrawerNavigator,
   createBottomTabNavigator,
-  createStackNavigator,
-  NavigationActions,
-  StackActions
+  createStackNavigator
 } from "react-navigation";
 import Icon from "@expo/vector-icons/Ionicons";
 import LoginScreen from "./screens/LoginScreen";
@@ -76,11 +74,6 @@ export default class App extends React.Component {
   };
 }
 
-const resetAction = StackActions.reset({
-  index: 0,
-  actions: [NavigationActions.navigate({ routeName: "Report" })]
-});
-
 // stack navigator for Report Issues screen that is a parent to the ReportOrView screen
 const ReportStack = createStackNavigator(
   {
@@ -109,7 +102,7 @@ const ReportStack = createStackNavigator(
     }
   },
   {
-    initialRouteName: "Report"
+    // initialRouteName: "Report"
   }
 );
 
@@ -119,6 +112,7 @@ const AppBottomTabNavigator = createBottomTabNavigator(
     View: {
       screen: ViewIssues,
       navigationOptions: () => ({
+        headerTitle: "View Issues",
         tabBarLabel: "View Issues",
         tabBarOptions: { activeTintColor: "#000080" },
         tabBarIcon: ({ focused }) => (
@@ -133,6 +127,7 @@ const AppBottomTabNavigator = createBottomTabNavigator(
     Report: {
       screen: ReportStack,
       navigationOptions: () => ({
+        headerTitle: "Report Issues",
         tabBarLabel: "Report Issues",
         tabBarOptions: { activeTintColor: "#000080" },
         tabBarIcon: ({ focused }) => (
@@ -144,6 +139,9 @@ const AppBottomTabNavigator = createBottomTabNavigator(
         )
       })
     }
+  },
+  {
+    resetOnBlur: true
   },
   // {
   //   navigationOptions: ({ navigation }) => {
@@ -163,7 +161,9 @@ const AppStackNavigator = createStackNavigator(
   },
   {
     defaultNavigationOptions: ({ navigation }) => {
+      const { routeName } = navigation.state.routes[navigation.state.index];
       return {
+        headerTitle: routeName + " Issues",
         headerLeft: (
           <Icon
             style={{ paddingLeft: 10, marginRight: 50 }}
