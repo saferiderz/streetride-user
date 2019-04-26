@@ -40,9 +40,9 @@ export default class LoginScreen extends Component {
       },
       body: JSON.stringify(data),
     })
-    .then((response) => response.json())
-    .then((responseJson) => {
-      return responseJson.result;
+    .then((response) => response)
+    .then((response) => {
+      // return responseJson.result;
     })
     .catch((error) => {
       console.error(error);
@@ -76,7 +76,9 @@ export default class LoginScreen extends Component {
             />
             <TouchableOpacity
               style={styles.buttonNavy }
-              onPress={() => this.handleSubmit()} //this.props.navigation.navigate("Dashboard")}
+              onPress={() => {this.handleSubmit(); 
+              this.props.navigation.navigate("Dashboard"); 
+            }}
             >
               <Text style={styles.buttonTextSubmit}>Login</Text>
             </TouchableOpacity>
