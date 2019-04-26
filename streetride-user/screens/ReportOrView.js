@@ -6,7 +6,6 @@ import {
   ScrollView,
   TouchableOpacity
 } from "react-native";
-import { NavigationActions } from 'react-navigation'
 
 export default class LoginScreen extends Component {
   static navigationOptions = {
@@ -22,11 +21,7 @@ export default class LoginScreen extends Component {
         <View style={styles.inputContainer}>
           <TouchableOpacity
             style={styles.buttonNavy}
-            onPress={() => this.props.navigation.dispatch(NavigationActions.reset({
-              index: 0,
-              key: null,
-              actions: [NavigationActions.navigate({ routeName: 'Report' })]
-            }))}
+            onPress={() => this.props.navigation.push("Report")}
           >
             <Text style={styles.buttonTextReport}>Report Another Issue</Text>
           </TouchableOpacity>
