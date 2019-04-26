@@ -6,6 +6,7 @@ import {
   ScrollView,
   TouchableOpacity
 } from "react-native";
+import { NavigationActions } from 'react-navigation'
 
 export default class LoginScreen extends Component {
   static navigationOptions = {
@@ -21,7 +22,11 @@ export default class LoginScreen extends Component {
         <View style={styles.inputContainer}>
           <TouchableOpacity
             style={styles.buttonNavy}
-            onPress={() => this.props.navigation.navigate("Report")}
+            onPress={() => this.props.navigation.dispatch(NavigationActions.reset({
+              index: 0,
+              key: null,
+              actions: [NavigationActions.navigate({ routeName: 'Report' })]
+            }))}
           >
             <Text style={styles.buttonTextReport}>Report Another Issue</Text>
           </TouchableOpacity>
@@ -68,10 +73,12 @@ const styles = StyleSheet.create({
   buttonNavy: {
     backgroundColor: "#000080",
     borderRadius: 75,
-    borderWidth: 1,
+    borderWidth: 3,
+    borderColor: "#dcdcdc",
     width: 150,
     height: 150,
     color: "#ffffff",
+    marginBottom: 0,
     alignItems: "center",
     justifyContent: "center"
   },
@@ -84,6 +91,7 @@ const styles = StyleSheet.create({
     height: 150,
     color: "#ffffff",
     marginTop: 3,
+    marginBottom: 0,
     alignItems: "center",
     justifyContent: "center"
   },
@@ -126,6 +134,7 @@ const styles = StyleSheet.create({
   orText: {
     color: "#000080",
     fontSize: 25,
-    textAlign: "center"
+    textAlign: "center",
+    marginBottom: 0
   }
 });

@@ -14,7 +14,8 @@ import {
   createAppContainer,
   createDrawerNavigator,
   createBottomTabNavigator,
-  createStackNavigator
+  createStackNavigator,
+  // NavigationActions
 } from "react-navigation";
 import Icon from "@expo/vector-icons/Ionicons";
 import LoginScreen from "./screens/LoginScreen";
@@ -75,6 +76,12 @@ export default class App extends React.Component {
   };
 }
 
+// const navigateAction = NavigateActions.navigate({
+//   routeName: 'Report',
+//   params: {},
+//   action: NavigationActions.navigate({ routerName: 'ReportOrView'})
+// })
+
 // stack navigator for Report Issues screen that is a parent to the ReportOrView screen
 const ReportStack = createStackNavigator({
   Report: {
@@ -84,9 +91,9 @@ const ReportStack = createStackNavigator({
         headerLeft: (
           <Icon
             style={{ paddingLeft: 10, marginRight: 50 }}
-            onPress={() => navigation.openDrawer()}
             name="md-menu"
             size={30}
+            onPress={() => navigation.openDrawer()}
           />
         )
       };
@@ -105,7 +112,7 @@ const ReportStack = createStackNavigator({
 });
 
 // this creates the 2 bottom tabs to access the View and Report screens
-const AppTabNavigator = createBottomTabNavigator(
+const AppBottomTabNavigator = createBottomTabNavigator(
   {
     View: {
       screen: ViewIssues,
@@ -151,7 +158,7 @@ const AppTabNavigator = createBottomTabNavigator(
 
 const AppStackNavigator = createStackNavigator(
   {
-    AppTabNavigator: AppTabNavigator
+    AppBottomTabNavigator: AppBottomTabNavigator
   },
   {
     defaultNavigationOptions: ({ navigation }) => {
