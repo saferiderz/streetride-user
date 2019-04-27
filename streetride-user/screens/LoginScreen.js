@@ -10,7 +10,10 @@ import {
 import { KeyboardAvoidingView } from "react-native";
 import Logo from "../components/Logo";
 
+
+
 export default class LoginScreen extends Component {
+  
   state = {
     username: "",
     password: ""
