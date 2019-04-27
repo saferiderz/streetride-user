@@ -51,7 +51,6 @@ defaultRegion = {
 // }
 
 export default class ViewIssues extends React.Component {
-  feat/ReactNativeMaps
     constructor(props) {
         super(props);
         this.state = {
