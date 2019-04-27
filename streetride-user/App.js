@@ -24,7 +24,6 @@ import ReportIssues from "./screens/ReportIssues";
 import ReportOrView from "./screens/ReportOrView";
 import HeaderImage from "./components/HeaderImage";
 
-
 export default class App extends React.Component {
   state = {
     isLoadingComplete: false
@@ -76,40 +75,44 @@ export default class App extends React.Component {
 }
 
 // stack navigator for Report Issues screen that is a parent to the ReportOrView screen
-const ReportStack = createStackNavigator({
-  Report: {
-    screen: ReportIssues,
-    navigationOptions: ({ navigation }) => {
-      return {
-        headerLeft: (
-          <Icon
-            style={{ paddingLeft: 10, marginRight: 50 }}
-            onPress={() => navigation.openDrawer()}
-            name="md-menu"
-            size={30}
-          />
-        )
-      };
+const ReportStack = createStackNavigator(
+  {
+    Report: {
+      screen: ReportIssues,
+      navigationOptions: ({ navigation }) => {
+        return {
+          headerLeft: (
+            <Icon
+              style={{ paddingLeft: 10, marginRight: 50 }}
+              name="md-menu"
+              size={30}
+              onPress={() => navigation.openDrawer()}
+            />
+          )
+        };
+      }
+    },
+    ReportOrView: {
+      screen: ReportOrView,
+      navigationOptions: ({}) => {
+        return {
+          header: null
+        };
+      }
     }
   },
-  ReportOrView: {
-    screen: ReportOrView,
-    navigationOptions: ({}) => {
-      return {
-        header: null
-      };
-    }
-  },
-}, {
-  initialRouteName: "Report"
-});
+  {
+    initialRouteName: "Report"
+  }
+);
 
 // this creates the 2 bottom tabs to access the View and Report screens
-const AppTabNavigator = createBottomTabNavigator(
+const AppBottomTabNavigator = createBottomTabNavigator(
   {
     View: {
       screen: ViewIssues,
       navigationOptions: () => ({
+        headerTitle: "View Issues",
         tabBarLabel: "View Issues",
         tabBarOptions: { activeTintColor: "#000080" },
         tabBarIcon: ({ focused }) => (
@@ -124,6 +127,7 @@ const AppTabNavigator = createBottomTabNavigator(
     Report: {
       screen: ReportStack,
       navigationOptions: () => ({
+        headerTitle: "Report Issues",
         tabBarLabel: "Report Issues",
         tabBarOptions: { activeTintColor: "#000080" },
         tabBarIcon: ({ focused }) => (
@@ -137,25 +141,30 @@ const AppTabNavigator = createBottomTabNavigator(
     }
   },
   {
-    navigationOptions: ({ navigation }) => {
-      // gets the index of the active tab and prints the routeName + " Issues" on the header
-      const { routeName } = navigation.state.routes[navigation.state.index];
-      return {
-        // header: null,
-        headerTitle: routeName + " Issues",
-        headerLayoutPreset: "center"
-      };
-    }
+    // Resets the state of any nested navigators when switching away from a screen
+    resetOnBlur: true
   }
+  // {
+  //   navigationOptions: ({ navigation }) => {
+  //     // gets the index of the active tab and prints the routeName + " Issues" on the header
+  //     const { routeName } = navigation.state.routes[navigation.state.index];
+  //     return {
+  //       headerTitle: routeName + " Issues",
+  //       headerLayoutPreset: "center"
+  //     };
+  //   }
+  // }
 );
 
 const AppStackNavigator = createStackNavigator(
   {
-    AppTabNavigator: AppTabNavigator
+    AppBottomTabNavigator: AppBottomTabNavigator
   },
   {
     defaultNavigationOptions: ({ navigation }) => {
+      const { routeName } = navigation.state.routes[navigation.state.index];
       return {
+        headerTitle: routeName + " Issues",
         headerLeft: (
           <Icon
             style={{ paddingLeft: 10, marginRight: 50 }}
@@ -164,9 +173,7 @@ const AppStackNavigator = createStackNavigator(
             size={30}
           />
         ),
-        headerRight: (
-          <HeaderImage />
-        )
+        headerRight: <HeaderImage />
       };
     }
   }
@@ -178,30 +185,36 @@ const AppDrawerNavigator = createDrawerNavigator({
   Dashboard: {
     screen: AppStackNavigator,
     navigationOptions: () => ({
-      drawerIcon: <Image
-      source={require("./assets/images/left.png")}
-      style={{ width: 20, height: 20 }}
-    />,
+      drawerIcon: (
+        <Image
+          source={require("./assets/images/left.png")}
+          style={{ width: 20, height: 20 }}
+        />
+      ),
       title: ""
     })
   },
   View: {
     screen: ViewIssues,
     navigationOptions: () => ({
-      drawerIcon: <Image
-      source={require("./assets/images/eye.png")}
-      style={{ width: 25, height: 25 }}
-    />,
+      drawerIcon: (
+        <Image
+          source={require("./assets/images/eye.png")}
+          style={{ width: 25, height: 25 }}
+        />
+      ),
       title: "View Issues"
     })
   },
   Report: {
     screen: ReportIssues,
     navigationOptions: () => ({
-      drawerIcon: <Image
-      source={require("./assets/images/submit.png")}
-      style={{ width: 20, height: 20 }}
-    />,
+      drawerIcon: (
+        <Image
+          source={require("./assets/images/submit.png")}
+          style={{ width: 20, height: 20 }}
+        />
+      ),
       title: "Report Issues"
     })
   }
@@ -211,7 +224,6 @@ const AppDrawerNavigator = createDrawerNavigator({
 const AppSwitchNavigator = createSwitchNavigator({
   Login: { screen: LoginScreen },
   CreateAccount: { screen: CreateAccountScreen },
-  ReportOrView: { screen: ReportOrView },
   Dashboard: { screen: AppDrawerNavigator }
 });
 

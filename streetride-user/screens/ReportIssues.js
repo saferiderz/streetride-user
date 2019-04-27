@@ -20,8 +20,7 @@ export default class ReportIssues extends Component {
     issueType: "",
     latitude: null,
     longitude: null,
-    error: null,
-    color: "red"
+    error: null
   };
 
   componentDidMount() {
@@ -174,7 +173,9 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     width: 200,
     height: 35,
-    color: "#ffffff"
+    color: "#ffffff",
+    borderWidth: 3,
+    borderColor: "#dcdcdc"
   },
   buttonText: {
     fontSize: 16,
