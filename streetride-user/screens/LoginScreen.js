@@ -11,7 +11,10 @@ import { KeyboardAvoidingView } from "react-native";
 import ValidationComponent from 'react-native-form-validator';
 import Logo from "../components/Logo";
 
+
+
 export default class LoginScreen extends Component {
+  
   state = {
     username: "",
     password: ""
