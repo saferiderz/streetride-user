@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import {
   Image,
@@ -9,7 +10,7 @@ import {
   View
 } from "react-native";
 
-export default class ViewIssues extends React.Component {
+export default class ViewIssues extends Component {
   static navigationOptions = {
     header: null
   };
