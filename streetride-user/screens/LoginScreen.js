@@ -8,10 +8,7 @@ import {
   TouchableOpacity
 } from "react-native";
 import { KeyboardAvoidingView } from "react-native";
-import ValidationComponent from 'react-native-form-validator';
 import Logo from "../components/Logo";
-
-
 
 export default class LoginScreen extends Component {
   
@@ -49,6 +46,12 @@ export default class LoginScreen extends Component {
         console.error(error);
       });
   };
+
+  // user input validation
+  constructor(props) {
+    super(props);
+    this.state = {username : "username", password: "password"};
+  }
 
   render() {
     return (

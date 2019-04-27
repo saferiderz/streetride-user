@@ -35,7 +35,7 @@ export default class CreateAccountScreen extends Component {
             <TextInput
               style={styles.inputBox}
               underlineColorAndroid="rgba(0,0,0,0)"
-              placeholder="Email"
+              placeholder="Username"
               placeholderTextColor="#000080"
             />
             <TextInput
