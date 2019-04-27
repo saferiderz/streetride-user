@@ -224,7 +224,6 @@ const AppDrawerNavigator = createDrawerNavigator({
 const AppSwitchNavigator = createSwitchNavigator({
   Login: { screen: LoginScreen },
   CreateAccount: { screen: CreateAccountScreen },
-  ReportOrView: { screen: ReportOrView },
   Dashboard: { screen: AppDrawerNavigator }
 });
 

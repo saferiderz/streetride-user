@@ -29,7 +29,7 @@ export default class LoginScreen extends Component {
     // as will the data object, but after this is tested and running, we should
     // be able to roll pretty quickly.
 
-    fetch("http://10.136.25.243:9000/users", {
+    fetch("http://192.168.1.254:9000/users", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -74,7 +74,7 @@ export default class LoginScreen extends Component {
             <TouchableOpacity
               style={styles.buttonNavy}
               onPress={() => {
-                this.handleSubmit();
+                // this.handleSubmit();
                 this.props.navigation.navigate("Dashboard");
               }}
             >
