@@ -13,41 +13,41 @@ import Logo from "../components/Logo";
 
 
 export default class LoginScreen extends Component {
-
+  
   state = {
-    username: '',
-    password: ''
-  }
+    username: "",
+    password: ""
+  };
 
   handleSubmit = () => {
     // Post route to the backend
     const data = {
       username: this.state.username,
       password: this.state.password
-    }
-  
+    };
+
     // Following is commented out for now, waiting on backend
     // Note to the team - the code below is generally how we'll have the
     // front end pass information to the backend, the route/endpoints will change
     // as will the data object, but after this is tested and running, we should
-    // be able to roll pretty quickly. 
-    
-    fetch('http://10.136.25.243:9000/users', {
-      method: 'POST',
+    // be able to roll pretty quickly.
+
+    fetch("http://192.168.1.254:9000/users", {
+      method: "POST",
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json', 
+        Accept: "application/json",
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(data)
     })
-    .then((response) => response)
-    .then((response) => {
-      // return responseJson.result;
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-  }
+      .then(response => response)
+      .then(response => {
+        // return responseJson.result;
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
 
   render() {
     return (
@@ -64,7 +64,7 @@ export default class LoginScreen extends Component {
               underlineColorAndroid="rgba(0,0,0,0)"
               placeholder="Email"
               placeholderTextColor="#000080"
-              onChangeText ={(username) => this.setState({username})}
+              onChangeText={username => this.setState({ username })}
             />
             <TextInput
               style={styles.inputBox}
@@ -72,13 +72,14 @@ export default class LoginScreen extends Component {
               placeholder="Password"
               secureTextEntry={true}
               placeholderTextColor="#000080"
-              onChangeText = {(password) => this.setState({password})}
+              onChangeText={password => this.setState({ password })}
             />
             <TouchableOpacity
-              style={styles.buttonNavy }
-              onPress={() => {this.handleSubmit(); 
-              this.props.navigation.navigate("Dashboard"); 
-            }}
+              style={styles.buttonNavy}
+              onPress={() => {
+                // this.handleSubmit();
+                this.props.navigation.navigate("Dashboard");
+              }}
             >
               <Text style={styles.buttonTextSubmit}>Login</Text>
             </TouchableOpacity>
@@ -133,12 +134,14 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     width: 200,
     height: 35,
-    color: "#ffffff"
+    color: "#ffffff",
+    borderWidth: 3,
+    borderColor: "#dcdcdc"
   },
   buttonText: {
     fontSize: 16,
     fontWeight: "500",
-    color: "black"
+    color: "#000080"
   },
   buttonTextSubmit: {
     fontSize: 16,
