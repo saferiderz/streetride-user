@@ -12,15 +12,18 @@ import { KeyboardAvoidingView } from "react-native";
 
 export default class CreateAccountScreen extends Component {
   state = {
-    
-    
     username: "",
     password: ""
   };
 
   // user input validation for creating account
   handleCreateAccount = () => {
-    if (this.state.firstname === "" || this.state.lastname === "" || this.state.username === "" || this.state.password === "") {
+    if (
+      this.state.firstname === "" ||
+      this.state.lastname === "" ||
+      this.state.username === "" ||
+      this.state.password === ""
+    ) {
       Alert.alert("Please Complete Each Field");
     } else {
       this.props.navigation.navigate("Dashboard");
