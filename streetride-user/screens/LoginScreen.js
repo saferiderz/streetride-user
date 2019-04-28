@@ -5,16 +5,25 @@ import {
   TextInput,
   Text,
   ScrollView,
+  Alert,
   TouchableOpacity
 } from "react-native";
 import { KeyboardAvoidingView } from "react-native";
 import Logo from "../components/Logo";
 
 export default class LoginScreen extends Component {
-  
   state = {
     username: "",
     password: ""
+  };
+
+  // user input validation for login
+  handleLogin = () => {
+    if (this.state.username === "" || this.state.password === "") {
+      Alert.alert("Enter Username & Password");
+    } else {
+      this.props.navigation.navigate("Dashboard");
+    }
   };
 
   handleSubmit = () => {
@@ -47,12 +56,6 @@ export default class LoginScreen extends Component {
       });
   };
 
-  // user input validation
-  constructor(props) {
-    super(props);
-    this.state = {username : "username", password: "password"};
-  }
-
   render() {
     return (
       <ScrollView>
@@ -66,7 +69,7 @@ export default class LoginScreen extends Component {
             <TextInput
               style={styles.inputBox}
               underlineColorAndroid="rgba(0,0,0,0)"
-              placeholder="Email"
+              placeholder="Username"
               placeholderTextColor="#000080"
               onChangeText={username => this.setState({ username })}
             />
@@ -81,8 +84,9 @@ export default class LoginScreen extends Component {
             <TouchableOpacity
               style={styles.buttonNavy}
               onPress={() => {
+                this.handleLogin();
                 // this.handleSubmit();
-                this.props.navigation.navigate("Dashboard");
+                // this.props.navigation.navigate("Dashboard");
               }}
             >
               <Text style={styles.buttonTextSubmit}>Login</Text>

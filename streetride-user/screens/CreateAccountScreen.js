@@ -5,11 +5,28 @@ import {
   View,
   ScrollView,
   TextInput,
+  Alert,
   TouchableOpacity
 } from "react-native";
 import { KeyboardAvoidingView } from "react-native";
 
 export default class CreateAccountScreen extends Component {
+  state = {
+    
+    
+    username: "",
+    password: ""
+  };
+
+  // user input validation for creating account
+  handleCreateAccount = () => {
+    if (this.state.firstname === "" || this.state.lastname === "" || this.state.username === "" || this.state.password === "") {
+      Alert.alert("Please Complete Each Field");
+    } else {
+      this.props.navigation.navigate("Dashboard");
+    }
+  };
+
   render() {
     return (
       <ScrollView>
@@ -25,18 +42,21 @@ export default class CreateAccountScreen extends Component {
               underlineColorAndroid="rgba(0,0,0,0)"
               placeholder="First Name"
               placeholderTextColor="#000080"
+              onChangeText={firstname => this.setState({ firstname })}
             />
             <TextInput
               style={styles.inputBox}
               underlineColorAndroid="rgba(0,0,0,0)"
               placeholder="Last Name"
               placeholderTextColor="#000080"
+              onChangeText={lastname => this.setState({ lastname })}
             />
             <TextInput
               style={styles.inputBox}
               underlineColorAndroid="rgba(0,0,0,0)"
               placeholder="Username"
               placeholderTextColor="#000080"
+              onChangeText={username => this.setState({ username })}
             />
             <TextInput
               style={styles.inputBox}
@@ -44,10 +64,14 @@ export default class CreateAccountScreen extends Component {
               placeholder="Password"
               secureTextEntry={true}
               placeholderTextColor="#000080"
+              onChangeText={password => this.setState({ password })}
             />
             <TouchableOpacity
               style={styles.buttonNavy}
-              onPress={() => this.props.navigation.navigate("Dashboard")}
+              onPress={() => {
+                this.handleCreateAccount();
+                // this.props.navigation.navigate("Dashboard");
+              }}
             >
               <Text style={styles.buttonTextSubmit}>Submit</Text>
             </TouchableOpacity>

@@ -136,6 +136,7 @@ export default class ReportIssues extends Component {
               <Text style={styles.buttonText}>Submit</Text>
             </TouchableOpacity>
           </View>
+          <Text style={styles.flaticon}>Icons by flaticon.com</Text>
         </ScrollView>
       </View>
     );
@@ -183,5 +184,11 @@ const styles = StyleSheet.create({
     color: "white",
     textAlign: "center",
     marginTop: 5
+  },
+  flaticon: {
+    flex: 1,
+    textAlign: "center",
+    marginTop: 143,
+    justifyContent: "flex-end"
   }
 });

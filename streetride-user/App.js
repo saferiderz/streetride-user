@@ -207,7 +207,7 @@ const AppDrawerNavigator = createDrawerNavigator({
     })
   },
   Report: {
-    screen: ReportIssues,
+    screen: ReportStack,
     navigationOptions: () => ({
       drawerIcon: (
         <Image
