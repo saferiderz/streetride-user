@@ -165,6 +165,7 @@ const AppStackNavigator = createStackNavigator(
       const { routeName } = navigation.state.routes[navigation.state.index];
       return {
         headerTitle: routeName + " Issues",
+        headerTintColor: "#0b409c",
         headerLeft: (
           <Icon
             style={{ paddingLeft: 10, marginRight: 50 }}
