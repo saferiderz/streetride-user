@@ -70,7 +70,7 @@ export default class LoginScreen extends Component {
               style={styles.inputBox}
               underlineColorAndroid="rgba(0,0,0,0)"
               placeholder="Username"
-              placeholderTextColor="#000080"
+              placeholderTextColor="#0b409c"
               onChangeText={username => this.setState({ username })}
             />
             <TextInput
@@ -78,7 +78,7 @@ export default class LoginScreen extends Component {
               underlineColorAndroid="rgba(0,0,0,0)"
               placeholder="Password"
               secureTextEntry={true}
-              placeholderTextColor="#000080"
+              placeholderTextColor="#0b409c"
               onChangeText={password => this.setState({ password })}
             />
             <TouchableOpacity
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     marginTop: 5
   },
   buttonNavy: {
-    backgroundColor: "#000080",
+    backgroundColor: "#0b409c",
     borderRadius: 25,
     width: 200,
     height: 35,
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 16,
     fontWeight: "500",
-    color: "#000080"
+    color: "#0b409c"
   },
   buttonTextSubmit: {
     fontSize: 16,

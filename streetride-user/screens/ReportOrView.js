@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     marginTop: 5
   },
   buttonNavy: {
-    backgroundColor: "#000080",
+    backgroundColor: "#0b409c",
     borderRadius: 75,
     borderWidth: 3,
     borderColor: "#dcdcdc",
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#dcdcdc",
     borderRadius: 75,
     borderWidth: 1,
-    borderColor: "#000080",
+    borderColor: "#0b409c",
     width: 150,
     height: 150,
     color: "#ffffff",
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
   buttonTextView: {
     fontSize: 16,
     fontWeight: "500",
-    color: "#000080",
+    color: "#0b409c",
     textAlign: "center",
     justifyContent: "center",
     marginTop: 5
@@ -122,12 +122,12 @@ const styles = StyleSheet.create({
   subheaderText: {
     marginTop: 20,
     paddingTop: 30,
-    color: "#000080",
+    color: "#0b409c",
     fontSize: 25,
     textAlign: "center"
   },
   orText: {
-    color: "#000080",
+    color: "#0b409c",
     fontSize: 25,
     textAlign: "center",
     marginBottom: 0
