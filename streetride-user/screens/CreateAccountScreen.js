@@ -12,8 +12,8 @@ import { KeyboardAvoidingView } from "react-native";
 
 export default class CreateAccountScreen extends Component {
   state = {
-    firstname = "",
-    lastname = "",
+    firstname: "",
+    lastname: "",
     username: "",
     password: ""
   };
