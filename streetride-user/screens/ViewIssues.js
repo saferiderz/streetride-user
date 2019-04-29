@@ -9,7 +9,7 @@ import {
   View
 } from "react-native";
 
-import { MapView } from "expo";
+import { MapView } from 'expo';
 
 // export const getCurrentLocation = () => {
 //     return new Promise((resolve, reject) => {
@@ -18,13 +18,14 @@ import { MapView } from "expo";
 // };
 
 defaultRegion = {
-  latitude: 42.1255,
-  longitude: -79.3227,
-  latitudeDelta: 0.0922,
-  longitudeDelta: 0.0421,
-  userLoc: false
-  // latitude: 33.7526, // Atlanta...
-  // longitude: -84.400,
+    latitude: 42.1255,
+    longitude: -79.3227,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,
+    userLoc: false,
+    // latitude: 33.7526, // Atlanta...
+    // longitude: -84.400,
+
 };
 
 // region = {};
@@ -41,87 +42,93 @@ defaultRegion = {
 //         }
 //     });
 
+
 // region = {
 //     latitude: position.coords.latitude,
 //     longitude: position.coords.longitude,
 //     latitudeDelta: 0.003,
-//     longitudeDelta: 0.003,
+//     longitudeDelta: 0.003, 
 // }
 
 export default class ViewIssues extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      region: defaultRegion
+    constructor(props) {
+        super(props);
+        this.state = {
+            region: defaultRegion,
+        };
+    }
+
+    static navigationOptions = {
+        header: null,
     };
-  }
 
-  static navigationOptions = {
-    header: null
-  };
+    
+    
+    // componentDidMount() {
+    //     return getCurrentLocation()
+    //     .then(position => {
+    //         if(position) {
+    //             this.setState({
+    //                 region: {
+    //                     latitute: position.coords.latitude,
+    //                     longitude: position.coords.longitude,
+    //                     latitudeDelta: 0.0922,
+    //                     longitudeDelta: 0.0421,
+    //                 },
+    //                 positionLoaded: true,
+    //             });
+    //         }
+    //     });
+    // }
+        componentDidMount() {
+            navigator.geolocation.getCurrentPosition(
+                position => {
+                let userRegion = {
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude,
+                    latitudeDelta: 0.0922,
+                    longitudeDelta: 0.0421,
+                    userLoc: true,
+                    error: null
+                }
+                this.setState({region: userRegion});
+            });       
+        }
+    // componentDidMount() {
+    //     navigator.geolocation.getCurrentPosition(
+    //       position => {
+    //         this.setState({
+    //           latitude: position.coords.latitude,
+    //           longitude: position.coords.longitude,
+    //           error: null
+    //         });
+    //       },
+    //       error => this.setState({ error: error.message }),
+    //       { enableHighAccuracy: false, timeout: 20000, maximumAge: 1000 }
+    //     );
+    //   }
 
-  // componentDidMount() {
-  //     return getCurrentLocation()
-  //     .then(position => {
-  //         if(position) {
-  //             this.setState({
-  //                 region: {
-  //                     latitute: position.coords.latitude,
-  //                     longitude: position.coords.longitude,
-  //                     latitudeDelta: 0.0922,
-  //                     longitudeDelta: 0.0421,
-  //                 },
-  //                 positionLoaded: true,
-  //             });
-  //         }
-  //     });
-  // }
-  componentDidMount() {
-    navigator.geolocation.getCurrentPosition(position => {
-      let userRegion = {
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
-        userLoc: true,
-        error: null
-      };
-      this.setState({ region: userRegion });
-    });
-  }
-  // componentDidMount() {
-  //     navigator.geolocation.getCurrentPosition(
-  //       position => {
-  //         this.setState({
-  //           latitude: position.coords.latitude,
-  //           longitude: position.coords.longitude,
-  //           error: null
-  //         });
-  //       },
-  //       error => this.setState({ error: error.message }),
-  //       { enableHighAccuracy: false, timeout: 20000, maximumAge: 1000 }
-  //     );
-  //   }
-
-  render() {
-    return (
-      <>
-        {this.state.region.userLoc && (
-          <MapView
-            style={{ flex: 1 }}
-            showsUserLocation={true}
-            initialRegion={this.state.region}
-          />
-        )}
+    render() {
+      return (
+          <>
+         { this.state.region.userLoc && 
+        <MapView
+            style = {{ flex: 1 }}
+            showsUserLocation = { true }
+            initialRegion= {
+                this.state.region
+            }
+        />
+         }
         {/* <View style={styles.container}>
             <Text>View Issues</Text>
             <Text>{ this.state.region.latitude }</Text>
             <Text>{ this.state.latitude }</Text>
             <Text>{ this.state.region.longitude }</Text>
         </View> */}
-      </>
-    );
-  }
+        </>
+      );
+    }
 }
 
 const styles = StyleSheet.create({
@@ -153,7 +160,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-around"
   },
   button: {
-    backgroundColor: "#0b409c",
+    backgroundColor: "#000080",
     borderRadius: 25,
     width: 200,
     height: 35,
