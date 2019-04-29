@@ -50,8 +50,8 @@ export default class App extends React.Component {
   _loadResourcesAsync = async () => {
     return Promise.all([
       Asset.loadAsync([
-        require("./assets/images/robot-dev.png"),
-        require("./assets/images/robot-prod.png")
+        require("./assets/images/streetride_logo.png"),
+        require("./assets/images/streetride_logo.png")
       ]),
       Font.loadAsync({
         // This is the font that we are using for our tab bar
@@ -114,7 +114,7 @@ const AppBottomTabNavigator = createBottomTabNavigator(
       navigationOptions: () => ({
         headerTitle: "View Issues",
         tabBarLabel: "View Issues",
-        tabBarOptions: { activeTintColor: "#000080" },
+        tabBarOptions: { activeTintColor: "#0b409c" },
         tabBarIcon: ({ focused }) => (
           <Image
             source={require("./assets/images/eye.png")}
@@ -129,7 +129,7 @@ const AppBottomTabNavigator = createBottomTabNavigator(
       navigationOptions: () => ({
         headerTitle: "Report Issues",
         tabBarLabel: "Report Issues",
-        tabBarOptions: { activeTintColor: "#000080" },
+        tabBarOptions: { activeTintColor: "#0b409c" },
         tabBarIcon: ({ focused }) => (
           <Image
             source={require("./assets/images/submit.png")}
@@ -165,6 +165,7 @@ const AppStackNavigator = createStackNavigator(
       const { routeName } = navigation.state.routes[navigation.state.index];
       return {
         headerTitle: routeName + " Issues",
+        headerTintColor: "#0b409c",
         headerLeft: (
           <Icon
             style={{ paddingLeft: 10, marginRight: 50 }}
@@ -207,7 +208,7 @@ const AppDrawerNavigator = createDrawerNavigator({
     })
   },
   Report: {
-    screen: ReportIssues,
+    screen: ReportStack,
     navigationOptions: () => ({
       drawerIcon: (
         <Image

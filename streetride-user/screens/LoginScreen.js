@@ -5,18 +5,25 @@ import {
   TextInput,
   Text,
   ScrollView,
+  Alert,
   TouchableOpacity
 } from "react-native";
 import { KeyboardAvoidingView } from "react-native";
 import Logo from "../components/Logo";
 
-
-
 export default class LoginScreen extends Component {
-  
   state = {
     username: "",
     password: ""
+  };
+
+  // user input validation for login
+  handleLogin = () => {
+    if (this.state.username === "" || this.state.password === "") {
+      Alert.alert("Enter Username & Password");
+    } else {
+      this.props.navigation.navigate("Dashboard");
+    }
   };
 
   handleSubmit = () => {
@@ -62,8 +69,8 @@ export default class LoginScreen extends Component {
             <TextInput
               style={styles.inputBox}
               underlineColorAndroid="rgba(0,0,0,0)"
-              placeholder="Email"
-              placeholderTextColor="#000080"
+              placeholder="Username"
+              placeholderTextColor="#0b409c"
               onChangeText={username => this.setState({ username })}
             />
             <TextInput
@@ -71,14 +78,15 @@ export default class LoginScreen extends Component {
               underlineColorAndroid="rgba(0,0,0,0)"
               placeholder="Password"
               secureTextEntry={true}
-              placeholderTextColor="#000080"
+              placeholderTextColor="#0b409c"
               onChangeText={password => this.setState({ password })}
             />
             <TouchableOpacity
               style={styles.buttonNavy}
               onPress={() => {
+                this.handleLogin();
                 // this.handleSubmit();
-                this.props.navigation.navigate("Dashboard");
+                // this.props.navigation.navigate("Dashboard");
               }}
             >
               <Text style={styles.buttonTextSubmit}>Login</Text>
@@ -130,7 +138,7 @@ const styles = StyleSheet.create({
     marginTop: 5
   },
   buttonNavy: {
-    backgroundColor: "#000080",
+    backgroundColor: "#0b409c",
     borderRadius: 25,
     width: 200,
     height: 35,
@@ -141,7 +149,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 16,
     fontWeight: "500",
-    color: "#000080"
+    color: "#0b409c"
   },
   buttonTextSubmit: {
     fontSize: 16,
