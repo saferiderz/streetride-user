@@ -6,6 +6,7 @@ import {
   Text,
   ScrollView,
   Alert,
+  Linking,
   TouchableOpacity
 } from "react-native";
 import { KeyboardAvoidingView } from "react-native";
@@ -105,6 +106,12 @@ export default class LoginScreen extends Component {
             </TouchableOpacity>
           </View>
         </KeyboardAvoidingView>
+        <Text
+          style={styles.TextStyle}
+          onPress={() => Linking.openURL("https://google.com")}
+        >
+          Privacy Policy
+        </Text>
       </ScrollView>
     );
   }
@@ -166,5 +173,12 @@ const styles = StyleSheet.create({
     fontSize: 40,
     textAlign: "center",
     fontWeight: "bold"
+  },
+  TextStyle: {
+    color: "black",
+    textDecorationLine: "underline",
+    textAlign: "center",
+    justifyContent: "center",
+    // marginTop: 8
   }
 });
