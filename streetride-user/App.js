@@ -19,6 +19,7 @@ import {
 import Icon from "@expo/vector-icons/Ionicons";
 import LoginScreen from "./screens/LoginScreen";
 import CreateAccountScreen from "./screens/CreateAccountScreen";
+import PrivacyPolicyScreen from "./screens/PrivacyPolicyScreen";
 import ViewIssues from "./screens/ViewIssues";
 import ReportIssues from "./screens/ReportIssues";
 import ReportOrView from "./screens/ReportOrView";
@@ -50,8 +51,8 @@ export default class App extends React.Component {
   _loadResourcesAsync = async () => {
     return Promise.all([
       Asset.loadAsync([
-        require("./assets/images/streetride_logo.png"),
-        require("./assets/images/streetride_logo.png")
+        require("./assets/images/streetride_logo_1.5.png"),
+        require("./assets/images/streetride_logo_1.5.png")
       ]),
       Font.loadAsync({
         // This is the font that we are using for our tab bar
@@ -225,6 +226,7 @@ const AppDrawerNavigator = createDrawerNavigator({
 const AppSwitchNavigator = createSwitchNavigator({
   Login: { screen: LoginScreen },
   CreateAccount: { screen: CreateAccountScreen },
+  PrivacyPolicy: { screen: PrivacyPolicyScreen },
   Dashboard: { screen: AppDrawerNavigator }
 });
 

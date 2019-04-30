@@ -106,12 +106,12 @@ export default class LoginScreen extends Component {
             </TouchableOpacity>
           </View>
         </KeyboardAvoidingView>
-        <Text
+        <TouchableOpacity
           style={styles.privacyPolicy}
-          onPress={() => Linking.openURL("./PrivacyPolicy.html")}
+          onPress={() => this.props.navigation.navigate("PrivacyPolicy")}
         >
-          Privacy Policy
-        </Text>
+          <Text style={styles.privacyText}>Privacy Policy</Text>
+        </TouchableOpacity>
       </ScrollView>
     );
   }
@@ -175,10 +175,17 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   privacyPolicy: {
-    color: "black",
-    textDecorationLine: "underline",
-    textAlign: "center",
+    flexGrow: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
     justifyContent: "center",
-    marginTop: 17
+    marginTop: 10,
+    color: "black",
+    
+  },
+  privacyText: {
+    fontSize: 14,
+    color: "black",
+    textDecorationLine: 'underline'
   }
 });
