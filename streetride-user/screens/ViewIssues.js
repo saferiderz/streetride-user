@@ -27,6 +27,8 @@ export default class ViewIssues extends React.Component {
         super(props);
         this.state = {
             region: defaultRegion,
+            isLoading: true,
+            markers: [],
         };
     }
 
@@ -34,6 +36,22 @@ export default class ViewIssues extends React.Component {
         header: null,
     };
 
+    fetchMarkerData() {
+      fetch('https://feeds.citibikenyc.com/stations/stations.json')
+        .then((response) => response.json())
+        .then((responseJson) => {
+          this.setState({ 
+            isLoading: false,
+            markers: responseJson.stationBeanList, 
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    componentWillMount() {
+      this.fetchMarkerData();   
+    }
     componentDidMount() {
         navigator.geolocation.getCurrentPosition(
             position => {
@@ -46,30 +64,108 @@ export default class ViewIssues extends React.Component {
                 error: null
             }
             this.setState({region: userRegion});
-        });       
+        });
+            
     }
 
+// render() {
+//   <MapView
+//     style={{ flex: 1 }}
+//     region={{
+//       latitude: 40.76727216,
+//       longitude: -73.99392888,
+//       latitudeDelta: 0.0922,
+//       longitudeDelta: 0.0421,
+//     }}
+// >
+    //     {this.state.isLoading ? null : this.state.markers.map((marker, index) => {
+    //  const coords = {
+    //      latitude: marker.latitude,
+    //      longitude: marker.longitude,
+    //  };
+
+//      const metadata = `Status: ${marker.statusValue}`;
+
+//      return (
+//          <MapView.Marker
+            // key={index}
+            // coordinate={coords}
+            // title={marker.stationName}
+            // description={metadata}
+//          />
+//      );
+//   })}
+// </MapView>
+// }
     render() {
-      return (
-          <>
-         { this.state.region.userLoc && 
-        <MapView
-            style = {{ flex: 1 }}
-            provider="google"
-            showsUserLocation = { true }
-            initialRegion= {
-                this.state.region
-            }
-        />
-         }
-        {/* <View style={styles.container}>
-            <Text>View Issues</Text>
-            <Text>{ this.state.region.latitude }</Text>
-            <Text>{ this.state.latitude }</Text>
-            <Text>{ this.state.region.longitude }</Text>
-        </View> */}
-        </>
-      );
+  
+    if (this.state.isLoading) {
+      return(<Text>Loading...</Text>)
+    }
+
+    
+
+    return(
+      <>
+      <MapView
+        style = {{ flex: 1 }}
+        provider="google"
+        showsUserLocation = { true }
+        initialRegion= {
+          this.state.region
+        }
+      >
+
+      <MapView.Marker
+        // const pinColor = "#ff0000"
+        key={1}
+        coordinate={{latitude: 33.7756222,
+            longitude: -84.3984737}}
+            title={"Georgia Tech"}
+            description={"The best university in Georgia"}
+            pinColor={"#0000ff"}
+        // coordinate = {coords}
+        // title = {this.state.markers.marker.stationName}
+        // key={index}
+        // coordinate={coords}
+        // title={marker.stationName}
+      />
+      </MapView>
+      <>
+      <Text>{this.state.markers[0].latitude}</Text>
+      </>
+      </>
+    );
+    
+
+         
+
+    //          {this.state.isLoading ? null : this.state.markers.map((marker, index) => {
+    //  const coords = {
+    //      latitude: marker.latitude,
+    //      longitude: marker.longitude,
+    //  };
+    //  return (
+    //     <MapView.Marker
+        // const pinColor = "#ff0000"
+        // key={1}
+        // coordinate={{latitude: 33.7756222,
+        //     longitude: -84.3984737}}
+        //     title={"Georgia Tech"}
+        //     description={"The best university in Georgia"}
+        //     pinColor={"#0000ff"}
+        // key={index}
+        // coordinate={coords}
+        // title={marker.stationName}
+        //description={metadata}
+        //  />
+    //  );
+        //      })}
+        // </MapView>
+        
+   
+    
+    
     }
 }
 
