@@ -5,7 +5,7 @@ import { StyleSheet, Text, View, Image } from 'react-native';
   render() {
     return (
       <View style={styles.container}>
-        <Image style={{width: 200, height: 200}}
+        <Image style={{width: 215, height: 215}}
           source={(require("../assets/images/streetride_logo.png"))}
         />
       </View>
