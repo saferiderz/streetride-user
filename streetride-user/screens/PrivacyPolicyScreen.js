@@ -18,9 +18,9 @@ export default class PrivacyPolicyScreen extends Component {
         <View style={styles.container}>
           <Text style={styles.subheaderText}>Privacy Policy </Text>
           <Text style={styles.policyText}>
-            Your privacy is important to us. It is Safe Street Riderz' policy
-            to respect your privacy regarding any information we may collect
-            from you through our app "Street Ride".
+            Your privacy is important to us. It is Safe Street Riderz' policy to
+            respect your privacy regarding any information we may collect from
+            you through our app "Street Ride".
           </Text>
           <Text style={styles.policyText}>
             We only ask for personal information when we truly need it to
