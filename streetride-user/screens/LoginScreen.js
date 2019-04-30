@@ -107,7 +107,7 @@ export default class LoginScreen extends Component {
           </View>
         </KeyboardAvoidingView>
         <Text
-          style={styles.TextStyle}
+          style={styles.privacyPolicy}
           onPress={() => Linking.openURL("https://google.com")}
         >
           Privacy Policy
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     marginBottom: 10,
-    marginTop: 60,
+    marginTop: 80,
     textAlign: "center",
     alignItems: "center",
     justifyContent: "center"
@@ -174,11 +174,11 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "bold"
   },
-  TextStyle: {
+  privacyPolicy: {
     color: "black",
     textDecorationLine: "underline",
     textAlign: "center",
     justifyContent: "center",
-    // marginTop: 8
+    marginTop: 17
   }
 });
