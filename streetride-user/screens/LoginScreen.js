@@ -6,6 +6,7 @@ import {
   Text,
   ScrollView,
   Alert,
+  Linking,
   TouchableOpacity
 } from "react-native";
 import { KeyboardAvoidingView } from "react-native";
@@ -105,6 +106,12 @@ export default class LoginScreen extends Component {
             </TouchableOpacity>
           </View>
         </KeyboardAvoidingView>
+        <TouchableOpacity
+          style={styles.privacyPolicy}
+          onPress={() => this.props.navigation.navigate("PrivacyPolicy")}
+        >
+          <Text style={styles.privacyText}>Privacy Policy</Text>
+        </TouchableOpacity>
       </ScrollView>
     );
   }
@@ -119,7 +126,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     marginBottom: 10,
-    marginTop: 60,
+    marginTop: 80,
     textAlign: "center",
     alignItems: "center",
     justifyContent: "center"
@@ -129,7 +136,7 @@ const styles = StyleSheet.create({
     height: 50,
     marginBottom: 10,
     backgroundColor: "#dcdcdc",
-    borderRadius: 25,
+    borderRadius: 15,
     paddingHorizontal: 16,
     textAlign: "center"
   },
@@ -139,7 +146,7 @@ const styles = StyleSheet.create({
   },
   buttonNavy: {
     backgroundColor: "#0b409c",
-    borderRadius: 25,
+    borderRadius: 15,
     width: 200,
     height: 35,
     color: "#ffffff",
@@ -166,5 +173,19 @@ const styles = StyleSheet.create({
     fontSize: 40,
     textAlign: "center",
     fontWeight: "bold"
+  },
+  privacyPolicy: {
+    flexGrow: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 10,
+    color: "black",
+    
+  },
+  privacyText: {
+    fontSize: 14,
+    color: "black",
+    textDecorationLine: 'underline'
   }
 });
