@@ -115,14 +115,14 @@ export default class ViewIssues extends React.Component {
           this.state.region
         }
       >
-
+{this.state.markers.map(newMarkers => (
       <MapView.Marker
         // const pinColor = "#ff0000"
-        key={1}
-        coordinate={{latitude: 33.7756222,
-            longitude: -84.3984737}}
-            title={"Georgia Tech"}
-            description={"The best university in Georgia"}
+        key={newMarkers.id}
+        coordinate={{latitude: newMarkers.latitude,
+            longitude: newMarkers.longitude}}
+            title={newMarkers.stationName}
+            description={newMarkers.stationName}
             pinColor={"#0000ff"}
         // coordinate = {coords}
         // title = {this.state.markers.marker.stationName}
@@ -130,7 +130,9 @@ export default class ViewIssues extends React.Component {
         // coordinate={coords}
         // title={marker.stationName}
       />
+      ))}
       </MapView>
+      
       <>
       <Text>{this.state.markers[0].latitude}</Text>
       </>
