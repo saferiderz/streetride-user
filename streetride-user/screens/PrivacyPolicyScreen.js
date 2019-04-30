@@ -20,7 +20,7 @@ export default class PrivacyPolicyScreen extends Component {
           <Text style={styles.policyText}>
             Your privacy is important to us. It is Safe Street Riderz's policy
             to respect your privacy regarding any information we may collect
-            from you through our app, Street Ride.
+            from you through our app "Street Ride".
           </Text>
           <Text style={styles.policyText}>
             We only ask for personal information when we truly need it to
@@ -84,14 +84,19 @@ const styles = StyleSheet.create({
     paddingTop: 30,
     color: "#0b409c",
     fontSize: 25,
-    textAlign: "center"
+    textAlign: "center",
+    textDecorationLine: 'underline'
   },
   policyText: {
-    marginTop: 5
+    padding: 6,
+    justifyContent: "center",
+    // textAlign: "center"
   },
   button: {
     color: "#ffffff",
-    marginTop: 20,
+    padding: 10
+    // paddingLeft: 20,
+    // paddingRight: 20
   },
   buttonText: {
     fontSize: 16,
