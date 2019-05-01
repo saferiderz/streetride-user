@@ -1,12 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import {
-  Image,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View
+  Text
 } from "react-native";
 
 import { MapView } from 'expo';
@@ -17,9 +11,6 @@ defaultRegion = {
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
     userLoc: false,
-    // latitude: 33.7526, // Atlanta...
-    // longitude: -84.400,
-
 };
 
 export default class ViewIssues extends React.Component {
@@ -105,47 +96,3 @@ export default class ViewIssues extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  headerText: {
-    marginBottom: 10,
-    marginTop: 30,
-    color: "rgba(0,0,0,0.9)",
-    fontSize: 40,
-    textAlign: "center",
-    fontWeight: "bold"
-  },
-  subheaderText: {
-    marginBottom: 10,
-    marginTop: 10,
-    color: "rgba(0,0,0,0.9)",
-    fontSize: 25,
-    textAlign: "center"
-  },
-  contentContainer: {
-    paddingTop: 20,
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-around"
-  },
-  button: {
-    backgroundColor: "#000080",
-    borderRadius: 25,
-    width: 200,
-    height: 35,
-    color: "#ffffff"
-  },
-  buttonText: {
-    fontSize: 16,
-    fontWeight: "500",
-    color: "white",
-    textAlign: "center",
-    marginTop: 5
-  }
-});
