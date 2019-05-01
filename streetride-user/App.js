@@ -4,7 +4,6 @@ import {
   StatusBar,
   StyleSheet,
   View,
-  Text,
   Image
 } from "react-native";
 import { AppLoading, Asset, Font } from "expo";
