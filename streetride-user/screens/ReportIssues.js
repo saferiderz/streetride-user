@@ -54,20 +54,19 @@ export default class ReportIssues extends Component {
         { cancelable: false }
       );
     } else {
-
-      // TODO: 
+      // TODO:
       // Add code to send data to database here
 
       Alert.alert(
         "Issue Selected",
-        "You have successfully submitted a new issue: " +
-        this.state.issueType,
+        "You have successfully submitted a new issue: " + this.state.issueType,
         [
           {
-            onPress: () => this.props.navigation.navigate("ReportOrView"),
-            onDismiss: () => this.props.navigation.navigate("ReportOrView")
+            text: "OK",
+            onPress: () => this.props.navigation.navigate("ReportOrView")
           }
-        ]
+        ],
+        { cancelable: false }
       );
     }
     if (this.state.error) {
@@ -81,7 +80,7 @@ export default class ReportIssues extends Component {
         <ScrollView>
           <Text style={styles.subheaderText}>Select an Issue Type</Text>
           <View style={styles.contentContainer}>
-            <IssueIcons 
+            <IssueIcons
               name={Icons.debris.name}
               icon={Icons.debris.uri}
               key={Icons.debris.name}
@@ -175,8 +174,8 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     width: 50,
-    height: 'auto',
+    height: "auto",
     flexBasis: 20,
-    backgroundColor: 'grey'
+    backgroundColor: "grey"
   }
 });
