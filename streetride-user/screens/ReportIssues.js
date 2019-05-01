@@ -37,12 +37,6 @@ export default class ReportIssues extends Component {
     );
   }
 
-  // placeholder for now. Gives me some type of node module number when clicking on an issue
-  // will try to use this in place of hard coding in the future
-  handleAlert(anything) {
-    const iconValue = anything.target;
-    alert("Hello " + typeof iconValue + " " + iconValue);
-  }
 
   // TODO
   // currently a place holder that gives an alert with the issue type.
@@ -64,13 +58,9 @@ export default class ReportIssues extends Component {
       );
     } else {
       Alert.alert(
-        "Issue selected",
-        "Issue: " +
-          this.state.issueType +
-          "\nLatitude: " +
-          this.state.latitude +
-          "\nLongitude: " +
-          this.state.longitude
+        "Issue Selected",
+        "You have successfully submitted a new issue: " +
+          this.state.issueType 
       );
       this.props.navigation.navigate("ReportOrView");
     }
