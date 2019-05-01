@@ -37,9 +37,6 @@ export default class ReportIssues extends Component {
     );
   }
 
-
-  // TODO
-  // currently a place holder that gives an alert with the issue type.
   handleSubmit = () => {
     if (this.state.issueType === "") {
       Alert.alert(
@@ -60,9 +57,14 @@ export default class ReportIssues extends Component {
       Alert.alert(
         "Issue Selected",
         "You have successfully submitted a new issue: " +
-          this.state.issueType 
+        this.state.issueType,
+        [
+          {
+            onPress: () => this.props.navigation.navigate("ReportOrView"),
+            onDismiss: () => this.props.navigation.navigate("ReportOrView")
+          }
+        ]
       );
-      this.props.navigation.navigate("ReportOrView");
     }
     if (this.state.error) {
       Alert.alert("Error:", this.state.error);
