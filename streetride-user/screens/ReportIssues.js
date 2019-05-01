@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
   subheaderText: {
     marginBottom: 10,
     marginTop: 20,
-    color: "#000080",
+    color: "#0b409c",
     fontSize: 25,
     textAlign: "center"
   },
@@ -169,8 +169,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-around"
   },
   button: {
-    backgroundColor: "#000080",
-    borderRadius: 25,
+    backgroundColor: "#0b409c",
+    borderRadius: 15,
     width: 200,
     height: 35,
     color: "#ffffff",

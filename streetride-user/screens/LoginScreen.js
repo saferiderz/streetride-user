@@ -5,18 +5,26 @@ import {
   TextInput,
   Text,
   ScrollView,
+  Alert,
+  Linking,
   TouchableOpacity
 } from "react-native";
 import { KeyboardAvoidingView } from "react-native";
 import Logo from "../components/Logo";
 
-
-
 export default class LoginScreen extends Component {
-  
   state = {
     username: "",
     password: ""
+  };
+
+  // user input validation for login
+  handleLogin = () => {
+    if (this.state.username === "" || this.state.password === "") {
+      Alert.alert("Enter Username & Password");
+    } else {
+      this.props.navigation.navigate("Dashboard");
+    }
   };
 
   handleSubmit = () => {
@@ -62,8 +70,8 @@ export default class LoginScreen extends Component {
             <TextInput
               style={styles.inputBox}
               underlineColorAndroid="rgba(0,0,0,0)"
-              placeholder="Email"
-              placeholderTextColor="#000080"
+              placeholder="Username"
+              placeholderTextColor="#0b409c"
               onChangeText={username => this.setState({ username })}
             />
             <TextInput
@@ -71,14 +79,15 @@ export default class LoginScreen extends Component {
               underlineColorAndroid="rgba(0,0,0,0)"
               placeholder="Password"
               secureTextEntry={true}
-              placeholderTextColor="#000080"
+              placeholderTextColor="#0b409c"
               onChangeText={password => this.setState({ password })}
             />
             <TouchableOpacity
               style={styles.buttonNavy}
               onPress={() => {
+                this.handleLogin();
                 // this.handleSubmit();
-                this.props.navigation.navigate("Dashboard");
+                // this.props.navigation.navigate("Dashboard");
               }}
             >
               <Text style={styles.buttonTextSubmit}>Login</Text>
@@ -97,6 +106,12 @@ export default class LoginScreen extends Component {
             </TouchableOpacity>
           </View>
         </KeyboardAvoidingView>
+        <TouchableOpacity
+          style={styles.privacyPolicy}
+          onPress={() => this.props.navigation.navigate("PrivacyPolicy")}
+        >
+          <Text style={styles.privacyText}>Privacy Policy</Text>
+        </TouchableOpacity>
       </ScrollView>
     );
   }
@@ -111,7 +126,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     marginBottom: 10,
-    marginTop: 60,
+    marginTop: 80,
     textAlign: "center",
     alignItems: "center",
     justifyContent: "center"
@@ -121,7 +136,7 @@ const styles = StyleSheet.create({
     height: 50,
     marginBottom: 10,
     backgroundColor: "#dcdcdc",
-    borderRadius: 25,
+    borderRadius: 15,
     paddingHorizontal: 16,
     textAlign: "center"
   },
@@ -130,8 +145,8 @@ const styles = StyleSheet.create({
     marginTop: 5
   },
   buttonNavy: {
-    backgroundColor: "#000080",
-    borderRadius: 25,
+    backgroundColor: "#0b409c",
+    borderRadius: 15,
     width: 200,
     height: 35,
     color: "#ffffff",
@@ -141,7 +156,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 16,
     fontWeight: "500",
-    color: "#000080"
+    color: "#0b409c"
   },
   buttonTextSubmit: {
     fontSize: 16,
@@ -158,5 +173,19 @@ const styles = StyleSheet.create({
     fontSize: 40,
     textAlign: "center",
     fontWeight: "bold"
+  },
+  privacyPolicy: {
+    flexGrow: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 10,
+    color: "black",
+    
+  },
+  privacyText: {
+    fontSize: 14,
+    color: "black",
+    textDecorationLine: 'underline'
   }
 });

@@ -19,6 +19,7 @@ import {
 import Icon from "@expo/vector-icons/Ionicons";
 import LoginScreen from "./screens/LoginScreen";
 import CreateAccountScreen from "./screens/CreateAccountScreen";
+import PrivacyPolicyScreen from "./screens/PrivacyPolicyScreen";
 import ViewIssues from "./screens/ViewIssues";
 import ReportIssues from "./screens/ReportIssues";
 import ReportOrView from "./screens/ReportOrView";
@@ -50,8 +51,8 @@ export default class App extends React.Component {
   _loadResourcesAsync = async () => {
     return Promise.all([
       Asset.loadAsync([
-        require("./assets/images/robot-dev.png"),
-        require("./assets/images/robot-prod.png")
+        require("./assets/images/streetride_logo_splash.png"),
+        require("./assets/images/streetride_logo_splash.png")
       ]),
       Font.loadAsync({
         // This is the font that we are using for our tab bar
@@ -114,7 +115,7 @@ const AppBottomTabNavigator = createBottomTabNavigator(
       navigationOptions: () => ({
         headerTitle: "View Issues",
         tabBarLabel: "View Issues",
-        tabBarOptions: { activeTintColor: "#000080" },
+        tabBarOptions: { activeTintColor: "#0b409c" },
         tabBarIcon: ({ focused }) => (
           <Image
             source={require("./assets/images/eye.png")}
@@ -129,7 +130,7 @@ const AppBottomTabNavigator = createBottomTabNavigator(
       navigationOptions: () => ({
         headerTitle: "Report Issues",
         tabBarLabel: "Report Issues",
-        tabBarOptions: { activeTintColor: "#000080" },
+        tabBarOptions: { activeTintColor: "#0b409c" },
         tabBarIcon: ({ focused }) => (
           <Image
             source={require("./assets/images/submit.png")}
@@ -165,6 +166,7 @@ const AppStackNavigator = createStackNavigator(
       const { routeName } = navigation.state.routes[navigation.state.index];
       return {
         headerTitle: routeName + " Issues",
+        headerTintColor: "#0b409c",
         headerLeft: (
           <Icon
             style={{ paddingLeft: 10, marginRight: 50 }}
@@ -207,7 +209,7 @@ const AppDrawerNavigator = createDrawerNavigator({
     })
   },
   Report: {
-    screen: ReportIssues,
+    screen: ReportStack,
     navigationOptions: () => ({
       drawerIcon: (
         <Image
@@ -224,6 +226,7 @@ const AppDrawerNavigator = createDrawerNavigator({
 const AppSwitchNavigator = createSwitchNavigator({
   Login: { screen: LoginScreen },
   CreateAccount: { screen: CreateAccountScreen },
+  PrivacyPolicy: { screen: PrivacyPolicyScreen },
   Dashboard: { screen: AppDrawerNavigator }
 });
 
