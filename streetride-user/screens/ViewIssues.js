@@ -23,90 +23,61 @@ defaultRegion = {
 };
 
 export default class ViewIssues extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            region: defaultRegion,
-            isLoading: true,
-            markers: [],
-        };
-    }
+  constructor(props) {
+      super(props);
+      this.state = {
+          region: defaultRegion,
+          isLoading: true,
+          markers: [],
+      };
+  }
 
-    static navigationOptions = {
-        header: null,
-    };
+  static navigationOptions = {
+      header: null,
+  };
 
-    fetchMarkerData() {
-      fetch('https://feeds.citibikenyc.com/stations/stations.json')
-        .then((response) => response.json())
-        .then((responseJson) => {
-          this.setState({ 
-            isLoading: false,
-            markers: responseJson.stationBeanList, 
-          });
-        })
-        .catch((error) => {
-          console.log(error);
+  // Fetch the issues data from the backend API
+  fetchMarkerData() {
+    fetch('https://feeds.citibikenyc.com/stations/stations.json')
+      .then((response) => response.json())
+      .then((responseJson) => {
+        this.setState({ 
+          isLoading: false,
+          markers: responseJson.stationBeanList, 
         });
-    }
-    componentWillMount() {
-      this.fetchMarkerData();   
-    }
-    componentDidMount() {
-        navigator.geolocation.getCurrentPosition(
-            position => {
-            let userRegion = {
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
-                userLoc: true,
-                error: null
-            }
-            this.setState({region: userRegion});
-        });
-            
-    }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
-// render() {
-//   <MapView
-//     style={{ flex: 1 }}
-//     region={{
-//       latitude: 40.76727216,
-//       longitude: -73.99392888,
-//       latitudeDelta: 0.0922,
-//       longitudeDelta: 0.0421,
-//     }}
-// >
-    //     {this.state.isLoading ? null : this.state.markers.map((marker, index) => {
-    //  const coords = {
-    //      latitude: marker.latitude,
-    //      longitude: marker.longitude,
-    //  };
+  // Start fetching marker data prior to the component mounting to speed up load time
+  componentWillMount() {
+    this.fetchMarkerData();   
+  }
 
-//      const metadata = `Status: ${marker.statusValue}`;
+  // After the component mounts, set the initial map screen to center on the user's current location
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(
+      position => {
+      let userRegion = {
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+        userLoc: true,
+        error: null
+      }
+      this.setState({region: userRegion});
+    });
+  }
 
-//      return (
-//          <MapView.Marker
-            // key={index}
-            // coordinate={coords}
-            // title={marker.stationName}
-            // description={metadata}
-//          />
-//      );
-//   })}
-// </MapView>
-// }
-    render() {
-  
+  render() {
     if (this.state.isLoading) {
       return(<Text>Loading...</Text>)
     }
 
-    
-
     return(
-      <>
       <MapView
         style = {{ flex: 1 }}
         provider="google"
@@ -115,60 +86,24 @@ export default class ViewIssues extends React.Component {
           this.state.region
         }
       >
-{this.state.markers.map(newMarkers => (
-      <MapView.Marker
-        // const pinColor = "#ff0000"
-        key={newMarkers.id}
-        coordinate={{latitude: newMarkers.latitude,
-            longitude: newMarkers.longitude}}
+
+        {this.state.markers.map(newMarkers => (
+          <MapView.Marker
+            key={newMarkers.id}
+            coordinate={{
+              latitude: newMarkers.latitude,
+              longitude: newMarkers.longitude 
+            }}
             title={newMarkers.stationName}
-            description={newMarkers.stationName}
-            pinColor={"#0000ff"}
-        // coordinate = {coords}
-        // title = {this.state.markers.marker.stationName}
-        // key={index}
-        // coordinate={coords}
-        // title={marker.stationName}
-      />
-      ))}
+            description={newMarkers.statusValue}
+            pinColor={(
+              newMarkers.statusKey === 1 ? "#00ff00" : "#ff0000"
+            )}
+          />
+        ))}
       </MapView>
-      
-      <>
-      <Text>{this.state.markers[0].latitude}</Text>
-      </>
-      </>
     );
-    
-
-         
-
-    //          {this.state.isLoading ? null : this.state.markers.map((marker, index) => {
-    //  const coords = {
-    //      latitude: marker.latitude,
-    //      longitude: marker.longitude,
-    //  };
-    //  return (
-    //     <MapView.Marker
-        // const pinColor = "#ff0000"
-        // key={1}
-        // coordinate={{latitude: 33.7756222,
-        //     longitude: -84.3984737}}
-        //     title={"Georgia Tech"}
-        //     description={"The best university in Georgia"}
-        //     pinColor={"#0000ff"}
-        // key={index}
-        // coordinate={coords}
-        // title={marker.stationName}
-        //description={metadata}
-        //  />
-    //  );
-        //      })}
-        // </MapView>
-        
-   
-    
-    
-    }
+  }
 }
 
 const styles = StyleSheet.create({
