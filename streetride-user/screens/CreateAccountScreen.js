@@ -75,7 +75,6 @@ export default class CreateAccountScreen extends Component {
               style={styles.buttonNavy}
               onPress={() => {
                 this.handleCreateAccount();
-                // this.props.navigation.navigate("Dashboard");
               }}
             >
               <Text style={styles.buttonTextSubmit}>Submit</Text>

@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Platform,
-  StatusBar,
-  StyleSheet,
-  View,
-  Image
-} from "react-native";
+import { Platform, StatusBar, StyleSheet, View, Image } from "react-native";
 import { AppLoading, Asset, Font } from "expo";
 
 import {

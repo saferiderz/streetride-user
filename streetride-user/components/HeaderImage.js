@@ -1,24 +1,25 @@
-import React from 'react';
-import { StyleSheet, View, Image } from 'react-native';
+import React from "react";
+import { StyleSheet, View, Image } from "react-native";
 
- export default class HeaderImage extends React.Component {
+export default class HeaderImage extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image style={{width: 40, height: 40}}
-          source={(require("../assets/images/streetride_logo.png"))}
+        <Image
+          style={{ width: 40, height: 40 }}
+          source={require("../assets/images/streetride_logo.png")}
         />
       </View>
-    )
+    );
   }
 }
 
- const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
     paddingRight: 10
-  },
+  }
 });
