@@ -54,6 +54,10 @@ export default class ReportIssues extends Component {
         { cancelable: false }
       );
     } else {
+
+      // TODO: 
+      // Add code to send data to database here
+      
       Alert.alert(
         "Issue Selected",
         "You have successfully submitted a new issue: " +
