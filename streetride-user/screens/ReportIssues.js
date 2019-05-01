@@ -139,14 +139,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff"
   },
-  headerText: {
-    marginBottom: 10,
-    marginTop: 30,
-    color: "rgba(0,0,0,0.9)",
-    fontSize: 40,
-    textAlign: "center",
-    fontWeight: "bold"
-  },
   subheaderText: {
     marginBottom: 10,
     marginTop: 20,
