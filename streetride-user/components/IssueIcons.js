@@ -11,7 +11,7 @@ function IssueIcons(props) {
     return (
         <View>
             <TouchableOpacity name={props.name} onPress={props.onPress}>
-                <View style={styles.iconContainer} >
+                <View style={props.iconContainer} >
                     <Image style={styles.iconImage} source={props.icon} />
                     <Text style={styles.iconText}>{props.name}</Text>
                 </View>
@@ -22,11 +22,6 @@ function IssueIcons(props) {
 export default IssueIcons;
 
 const styles = StyleSheet.create({
-    iconContainer: {
-        width: 50,
-        height: 'auto',
-        flexBasis: 20
-    },
     iconText: {
         textAlign: 'center'
     },

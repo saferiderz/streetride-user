@@ -57,7 +57,7 @@ export default class ReportIssues extends Component {
 
       // TODO: 
       // Add code to send data to database here
-      
+
       Alert.alert(
         "Issue Selected",
         "You have successfully submitted a new issue: " +
@@ -81,10 +81,11 @@ export default class ReportIssues extends Component {
         <ScrollView>
           <Text style={styles.subheaderText}>Select an Issue Type</Text>
           <View style={styles.contentContainer}>
-            <IssueIcons
+            <IssueIcons 
               name={Icons.debris.name}
               icon={Icons.debris.uri}
               key={Icons.debris.name}
+              iconContainer={styles.iconContainer}
               onPress={() => this.setState({ issueType: "debris" })}
             />
             <IssueIcons
@@ -171,5 +172,11 @@ const styles = StyleSheet.create({
     color: "white",
     textAlign: "center",
     marginTop: 5
+  },
+  iconContainer: {
+    width: 50,
+    height: 'auto',
+    flexBasis: 20,
+    backgroundColor: 'grey'
   }
 });
