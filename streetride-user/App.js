@@ -108,7 +108,12 @@ const AppBottomTabNavigator = createBottomTabNavigator(
       navigationOptions: () => ({
         headerTitle: "View Issues",
         tabBarLabel: "View Issues",
-        tabBarOptions: { activeTintColor: "#0b409c" },
+        tabBarOptions: {
+          activeTintColor: "#0b409c",
+          labelStyle: {
+            fontWeight: "bold"
+          }
+        },
         tabBarIcon: ({ focused }) => (
           <Image
             source={require("./assets/images/eye.png")}
@@ -123,7 +128,12 @@ const AppBottomTabNavigator = createBottomTabNavigator(
       navigationOptions: () => ({
         headerTitle: "Report Issues",
         tabBarLabel: "Report Issues",
-        tabBarOptions: { activeTintColor: "#0b409c" },
+        tabBarOptions: {
+          activeTintColor: "#0b409c",
+          labelStyle: {
+            fontWeight: "bold"
+          }
+        },
         tabBarIcon: ({ focused }) => (
           <Image
             source={require("./assets/images/submit.png")}
