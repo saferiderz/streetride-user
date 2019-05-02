@@ -85,7 +85,6 @@ export default class ReportIssues extends Component {
               name={Icons.debris.name}
               icon={Icons.debris.uri}
               key={Icons.debris.name}
-              iconContainer={styles.iconContainer}
               onPress={() => this.setState({ issueType: "debris" })}
             />
             <IssueIcons
@@ -172,11 +171,5 @@ const styles = StyleSheet.create({
     color: "white",
     textAlign: "center",
     marginTop: 5
-  },
-  iconContainer: {
-    width: 50,
-    height: 'auto',
-    flexBasis: 20,
-    backgroundColor: 'grey'
   }
 });
