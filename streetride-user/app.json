@@ -10,7 +10,7 @@
     ],
     "version": "1.0.1",
     "orientation": "portrait",
-    "icon": "./assets/images/streetride_logo_apple.png",
+    "icon": "./assets/images/streetride_logo_icon.png",
     "splash": {
       "image": "./assets/images/streetride_logo_splash.png",
       "resizeMode": "contain",
