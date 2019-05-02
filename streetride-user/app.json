@@ -23,10 +23,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": false
+      "supportsTablet": false,
+      "bundleIdentifier": "com.saferiderz.streetride"
     },
     "android" : {
-      "bundleIdentifier": "com.saferiderz.streetride"
+      "package": "com.saferiderz.streetride"
     }
   }
 }
