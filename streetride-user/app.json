@@ -26,7 +26,7 @@
       "supportsTablet": false
     },
     "android" : {
-      "bundleIdentifier": "a"
+      "bundleIdentifier": "com.saferiderz.streetride"
     }
   }
 }
