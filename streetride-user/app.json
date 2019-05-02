@@ -24,6 +24,9 @@
     ],
     "ios": {
       "supportsTablet": false
+    },
+    "android" : {
+      "bundleIdentifier": "a"
     }
   }
 }
