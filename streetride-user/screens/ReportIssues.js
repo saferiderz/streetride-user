@@ -63,7 +63,7 @@ export default class ReportIssues extends Component {
         [
           {
             text: "OK",
-            onPress: () => this.props.navigation.navigate("ReportOrView")
+            onPress: () => {{this.props.navigation.navigate("ReportOrView")}; this.setState({issueType: ""})}
           }
         ],
         { cancelable: false }
