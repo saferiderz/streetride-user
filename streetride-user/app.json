@@ -27,7 +27,7 @@
       "bundleIdentifier": "com.saferiderz.streetride"
     },
     "android" : {
-      "versionCode": "2",
+      "versionCode": 2,
       "package": "com.saferiderz.streetride"
     }
   }
