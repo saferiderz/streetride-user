@@ -25,13 +25,18 @@
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.saferiderz.streetride",
-      "config" : {
+      "config": {
         "googleMapsApiKey": "AIzaSyAdul1sVW5ALJwRyY0OC911AHvANXOLbac"
       }
     },
-    "android" : {
+    "android": {
       "versionCode": 2,
-      "package": "com.saferiderz.streetride"
+      "package": "com.saferiderz.streetride",
+      "config": {
+        "googleMapsApiKey": {
+          "apiKey": "AIzaSyAdul1sVW5ALJwRyY0OC911AHvANXOLbac"
+        }
+      }
     }
   }
 }
