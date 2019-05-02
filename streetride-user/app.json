@@ -30,7 +30,7 @@
       }
     },
     "android": {
-      "versionCode": 2,
+      "versionCode": 3,
       "package": "com.saferiderz.streetride",
       "config": {
         "googleMaps": {
