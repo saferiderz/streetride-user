@@ -33,7 +33,7 @@
       "versionCode": 2,
       "package": "com.saferiderz.streetride",
       "config": {
-        "googleMapsApiKey": {
+        "googleMaps": {
           "apiKey": "AIzaSyAdul1sVW5ALJwRyY0OC911AHvANXOLbac"
         }
       }
