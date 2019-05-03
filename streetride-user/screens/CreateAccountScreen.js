@@ -29,6 +29,14 @@ export default class CreateAccountScreen extends Component {
       this.state.password === ""
     ) {
       Alert.alert("Please Complete Each Field");
+    } else if (
+      this.state.email !== "/\S+@\S+/"
+    ) {
+      Alert.alert("Please Enter a Valid Email Address");
+    } else if (this.state.username.length < 5) {
+      Alert.alert("Username Must Be 5 or More Characters");
+    } else if (this.state.password.length < 8) {
+      Alert.alert("Password Must Be 8 or More Characters");
     } else {
       this.props.navigation.navigate("Dashboard");
     }
@@ -63,6 +71,8 @@ export default class CreateAccountScreen extends Component {
               underlineColorAndroid="rgba(0,0,0,0)"
               placeholder="Email"
               placeholderTextColor="#0b409c"
+              textContentType="emailAddress"
+              value={this.state.email}
               onChangeText={email => this.setState({ email })}
             />
             <TextInput
@@ -70,6 +80,7 @@ export default class CreateAccountScreen extends Component {
               underlineColorAndroid="rgba(0,0,0,0)"
               placeholder="Username"
               placeholderTextColor="#0b409c"
+              textContentType="username"
               onChangeText={username => this.setState({ username })}
             />
             <TextInput
@@ -78,6 +89,7 @@ export default class CreateAccountScreen extends Component {
               placeholder="Password"
               secureTextEntry={true}
               placeholderTextColor="#0b409c"
+              textContentType="password"
               onChangeText={password => this.setState({ password })}
             />
             <TouchableOpacity
