@@ -14,6 +14,7 @@ export default class CreateAccountScreen extends Component {
   state = {
     firstname: "",
     lastname: "",
+    email: "",
     username: "",
     password: ""
   };
@@ -23,6 +24,7 @@ export default class CreateAccountScreen extends Component {
     if (
       this.state.firstname === "" ||
       this.state.lastname === "" ||
+      this.state.email === "" ||
       this.state.username === "" ||
       this.state.password === ""
     ) {
@@ -55,6 +57,13 @@ export default class CreateAccountScreen extends Component {
               placeholder="Last Name"
               placeholderTextColor="#0b409c"
               onChangeText={lastname => this.setState({ lastname })}
+            />
+            <TextInput
+              style={styles.inputBox}
+              underlineColorAndroid="rgba(0,0,0,0)"
+              placeholder="Email"
+              placeholderTextColor="#0b409c"
+              onChangeText={email => this.setState({ email })}
             />
             <TextInput
               style={styles.inputBox}
@@ -101,7 +110,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     marginBottom: 10,
-    marginTop: 100,
+    marginTop: 60,
     textAlign: "center",
     alignItems: "center",
     justifyContent: "center"

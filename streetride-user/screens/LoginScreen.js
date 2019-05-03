@@ -182,12 +182,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 10,
-    color: "black",
-    
+    color: "black"
   },
   privacyText: {
     fontSize: 14,
     color: "black",
-    textDecorationLine: 'underline'
+    textDecorationLine: "underline"
   }
 });
