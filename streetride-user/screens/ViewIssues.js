@@ -54,7 +54,10 @@ export default class ViewIssues extends React.Component {
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
         userLoc: true,
-        error: null
+        error: null,
+        enableHighAccuracy: false, 
+        timeout: 20000, 
+        maximumAge: 1000,
       };
       this.setState({ region: userRegion });
     });
