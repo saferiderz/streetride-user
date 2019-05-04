@@ -26,6 +26,9 @@ export default class CreateAccountScreen extends Component {
 
   // user input validation for creating account
   handleCreateAccount = () => {
+    
+    let handle
+
     if (
       this.state.firstname === "" ||
       this.state.lastname === "" ||

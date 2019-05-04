@@ -22,6 +22,10 @@ export default class LoginScreen extends Component {
   handleLogin = () => {
     if (this.state.username === "" || this.state.password === "") {
       Alert.alert("Enter Username & Password");
+    } else if (this.state.username.length < 5) {
+      Alert.alert("Username Must Be 5 or More Characters");
+    } else if (this.state.password.length < 8) {
+      Alert.alert("Password Must Be 8 or More Characters")
     } else {
       this.props.navigation.navigate("Dashboard");
     }
@@ -138,9 +142,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#dcdcdc",
     borderRadius: 15,
     paddingHorizontal: 16,
-    textAlign: "center",
-    borderWidth: 1,
-    borderColor: "#0b409c"
+    textAlign: "center"
   },
   button: {
     color: "#ffffff",
