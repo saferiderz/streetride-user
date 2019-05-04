@@ -16,7 +16,7 @@ const Icons = {
     },
     DocklessVehicleBlockingPath: {
         name: 'Dockless Vehicle Blocking Path',
-        uri: require("../assets/images/debris.png"),
+        uri: require("../assets/images/scooter.png"),
         description:'Scooter/rideshare bike in path right of way \n\nScooter/rideshare bike blocking sidewalk'
     },
     Hazard: {
@@ -26,7 +26,7 @@ const Icons = {
     },
     MalfunctioningSignal: {
         name: 'Malfunctioning Signal',
-        uri: require("../assets/images/eye.png"),
+        uri: require("../assets/images/walk.png"),
         description: 'Crosswalk or traffic signal out \n\nMiscellaneous signal malfunction'
     },
     Pothole: {
@@ -36,7 +36,7 @@ const Icons = {
     },
     GeneralSafetyConcern: {
         name: 'General Safety Concern',
-        uri: require("../assets/images/left.png"),
+        uri: require("../assets/images/helmet.png"),
         description: 'Any concern not listed'
     }
 }
