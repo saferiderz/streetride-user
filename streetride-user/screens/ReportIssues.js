@@ -45,9 +45,7 @@ export default class ReportIssues extends Component {
       [
         {
           text: "Submit",
-          onPress: () => { { this.props.navigation.navigate("ReportOrView") }; this.setState({ issueType: "" }) }
-               // TODO:
-      // Add code to send data to database here
+          onPress: () => { { this.props.navigation.navigate("ReportOrView") }; this.fetchData(); this.setState({ issueType: "" }) },
         },
         {
           text: "Cancel",
@@ -58,6 +56,30 @@ export default class ReportIssues extends Component {
       { cancelable: false }
     )
   }
+
+fetchData = () => {
+  const data = {
+    issueType: this.state.issueType,
+    lat: this.state.latitude,
+    lon: this.state.longitude
+  };
+console.log(data);
+  fetch("http://128.61.98.113:8000/api/issues/create", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+    .then(response => response)
+    .then(response => {
+      // return responseJson.result;
+    })
+    .catch(error => {
+      console.error(error);
+    });
+}
 
   handleSubmit = () => {
     if (this.state.issueType === "") {
@@ -76,8 +98,8 @@ export default class ReportIssues extends Component {
         { cancelable: false }
       );
     } else {
-      // TODO:
-      // Add code to send data to database here
+   
+      this.fetchData()
 
       Alert.alert(
         "Issue Selected",
