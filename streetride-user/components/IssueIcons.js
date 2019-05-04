@@ -26,13 +26,14 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     iconImage: {
-        width: 50,
-        height: 50,
-    },
+        width: 75,
+        height: 75,
+        },
     iconContainer: {
-      width: 50,
+      width: 125,
       height: 'auto',
-      flexBasis: 20,
+      flex: 1,
+      alignItems: 'center'
     }
 
 });
