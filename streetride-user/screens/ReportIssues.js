@@ -64,7 +64,7 @@ fetchData = () => {
     lon: this.state.longitude
   };
 console.log(data);
-  fetch("http://128.61.98.113:8000/api/issues/create", {
+  fetch("http://streetride.herokuapp.com/api/issues/create", {
     method: "POST",
     headers: {
       Accept: "application/json",
