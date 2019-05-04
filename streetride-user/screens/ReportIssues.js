@@ -123,7 +123,7 @@ export default class ReportIssues extends Component {
       <View style={styles.container}>
         <ScrollView>
           <Text style={styles.subheaderText}>Select an Issue Type</Text>
-          <Text style={{ textAlign: 'center' }}>Hold you finger down on an issue for more information</Text>
+          <Text style={{ textAlign: 'center' }}>Hold your finger down on an issue for more information</Text>
           <View style={styles.contentContainer}>
             <IssueIcons
               name={Icons.CarInBikeLane.name}
