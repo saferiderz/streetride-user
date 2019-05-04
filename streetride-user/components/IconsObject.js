@@ -1,41 +1,42 @@
 const Icons = {
-    close: {
+    CarInBikeLane: {
+        name: 'Car In Bike Lane',
+        uri: require("../assets/images/traffic.png")
+    },
+    CloseCall: {
         name: 'Close Call',
         uri: require("../assets/images/close.png"),
         description:
-        `A vehicle passing within 3 feet of a bicycle or scooter on the road
+            `A vehicle passing within 3 feet of a bicycle or scooter on the road
 
         A vehicle nearly hitting a pedestrian in a crosswalk`
     },
-    hazard: {
+    ClosedPath: {
+        name: 'Closed Path',
+        uri: require("../assets/images/blocked.png")
+    },
+    DocklessVehicleBlockingPath: {
+        name: 'Dockless Vehicle Blocking Path',
+        uri: require("../assets/images/debris.png"),
+        description:
+            'Things in the road \nRoad Kill \nWhatever'
+    },
+    Hazard: {
         name: 'Hazard',
         uri: require("../assets/images/caution.png")
     },
-    pothole: {
+    MalfunctioningSignal: {
+        name: 'Malfunctioning Signal',
+        uri: require("../assets/images/eye.png")
+    },
+    PoorLighting: {
+        name: 'Poor Lighting',
+        uri: require("../assets/images/left.png")
+    },
+    Pothole: {
         name: 'Pothole',
         uri: require("../assets/images/cone.png")
     },
-    current: {
-        name: 'current',
-        uri: require("../assets/images/current.png")
-    },
-    debris: {
-        name: 'Debris',
-        uri: require("../assets/images/debris.png"),
-        description: 
-        'Things in the road \nRoad Kill \nWhatever'
-    },
-    pin: {
-        name: 'pin',
-        uri: require("../assets/images/pin.png")
-    },
-    traffic: {
-        name: 'Traffic',
-        uri: require("../assets/images/traffic.png")
-    },
-    closed: {
-        name: 'Path Closed',
-        uri: require("../assets/images/blocked.png")
-    }
+
 }
 export { Icons }
