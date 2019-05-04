@@ -1,7 +1,11 @@
 const Icons = {
     close: {
         name: 'Close Call',
-        uri: require("../assets/images/close.png")
+        uri: require("../assets/images/close.png"),
+        description:
+        `A vehicle passing within 3 feet of a bicycle or scooter on the road
+        A vehicle nearly hitting a pedestrian in a crosswalk
+        `
     },
     hazard: {
         name: 'Hazard',
@@ -17,7 +21,9 @@ const Icons = {
     },
     debris: {
         name: 'Debris',
-        uri: require("../assets/images/debris.png")
+        uri: require("../assets/images/debris.png"),
+        description: 
+        'Things in the road \nRoad Kill \nWhatever'
     },
     pin: {
         name: 'pin',

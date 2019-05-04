@@ -20,7 +20,8 @@ export default class ReportIssues extends Component {
     issueType: "",
     latitude: null,
     longitude: null,
-    error: null
+    error: null,
+    longPress: ''
   };
 
   componentDidMount() {
@@ -37,6 +38,27 @@ export default class ReportIssues extends Component {
     );
   }
 
+  explainIssue = () => {
+    Alert.alert(
+      "Explanation",
+      Icons[this.state.longPress].description ,
+      [
+        {
+          text: "Submit",
+          onPress: () => { { this.props.navigation.navigate("ReportOrView") }; this.setState({ issueType: "" }) }
+               // TODO:
+      // Add code to send data to database here
+        },
+        {
+          text: "Cancel",
+          style: "cancel",
+          onPress: () => {this.setState({issueType: ""})}
+        }
+      ],
+      { cancelable: false }
+    )
+  }
+
   handleSubmit = () => {
     if (this.state.issueType === "") {
       Alert.alert(
@@ -44,7 +66,7 @@ export default class ReportIssues extends Component {
         "Please select an issue before submitting",
         [
           {
-            text: "OK"
+            text: "OK",
           },
           {
             text: "Cancel",
@@ -63,7 +85,7 @@ export default class ReportIssues extends Component {
         [
           {
             text: "OK",
-            onPress: () => {{this.props.navigation.navigate("ReportOrView")}; this.setState({issueType: ""})}
+            onPress: () => { { this.props.navigation.navigate("ReportOrView") }; this.setState({ issueType: "" }) }
           }
         ],
         { cancelable: false }
@@ -84,7 +106,9 @@ export default class ReportIssues extends Component {
               name={Icons.debris.name}
               icon={Icons.debris.uri}
               key={Icons.debris.name}
-              onPress={() => this.setState({ issueType: "debris" })}
+              description={Icons.debris.description}
+              onPress={() => this.setState({ issueType: 'debris' })}
+              onLongPress={() => {this.setState({ longPress: 'debris', issueType: 'debris'}), this.explainIssue() }}
             />
             <IssueIcons
               name={Icons.close.name}
