@@ -41,7 +41,7 @@ export default class ReportIssues extends Component {
   explainIssue = () => {
     Alert.alert(
       "Explanation",
-      Icons[this.state.longPress].description ,
+      Icons[this.state.longPress].description,
       [
         {
           text: "Submit",
@@ -50,36 +50,36 @@ export default class ReportIssues extends Component {
         {
           text: "Cancel",
           style: "cancel",
-          onPress: () => {this.setState({issueType: ""})}
+          onPress: () => { this.setState({ issueType: "" }) }
         }
       ],
       { cancelable: false }
     )
   }
 
-fetchData = () => {
-  const data = {
-    issueType: this.state.issueType,
-    lat: this.state.latitude,
-    lon: this.state.longitude
-  };
-console.log(data);
-  fetch("http://streetride.herokuapp.com/api/issues/create", {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
-  })
-    .then(response => response)
-    .then(response => {
-      // return responseJson.result;
+  fetchData = () => {
+    const data = {
+      issueType: this.state.issueType,
+      lat: this.state.latitude,
+      lon: this.state.longitude
+    };
+    console.log(data);
+    fetch("http://streetride.herokuapp.com/api/issues/create", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
     })
-    .catch(error => {
-      console.error(error);
-    });
-}
+      .then(response => response)
+      .then(response => {
+        // return responseJson.result;
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
 
   handleSubmit = () => {
     if (this.state.issueType === "") {
@@ -98,7 +98,7 @@ console.log(data);
         { cancelable: false }
       );
     } else {
-   
+
       this.fetchData()
 
       Alert.alert(
@@ -123,48 +123,66 @@ console.log(data);
       <View style={styles.container}>
         <ScrollView>
           <Text style={styles.subheaderText}>Select an Issue Type</Text>
+          <Text style={{ textAlign: 'center' }}>Hold you finger down on an issue for more information</Text>
           <View style={styles.contentContainer}>
             <IssueIcons
-              name={Icons.debris.name}
-              icon={Icons.debris.uri}
-              key={Icons.debris.name}
-              description={Icons.debris.description}
-              onPress={() => this.setState({ issueType: 'debris' })}
-              onLongPress={() => {this.setState({ longPress: 'debris', issueType: 'debris'}), this.explainIssue() }}
+              name={Icons.CarInBikeLane.name}
+              icon={Icons.CarInBikeLane.uri}
+              key={Icons.CarInBikeLane.name}
+              description={Icons.CarInBikeLane.description}
+              onPress={() => this.setState({ issueType: 'Car In Bike Lane' })}
+              onLongPress={() => { this.setState({ longPress: 'CarInBikeLane', issueType: 'CarInBikeLane' }), this.explainIssue() }}
             />
             <IssueIcons
-              name={Icons.close.name}
-              icon={Icons.close.uri}
-              key={Icons.close.name}
-              onPress={() => this.setState({ issueType: 'close' })}
-              onLongPress={() => {this.setState({ longPress: 'close', issueType: 'close'}), this.explainIssue() }}            />
+              name={Icons.CloseCall.name}
+              icon={Icons.CloseCall.uri}
+              key={Icons.CloseCall.name}
+              onPress={() => this.setState({ issueType: 'Close Call' })}
+              onLongPress={() => { this.setState({ longPress: 'CloseCall', issueType: 'CloseCall' }), this.explainIssue() }} />
+          </View>
+          <View style={styles.contentContainer}>
 
             <IssueIcons
-              name={Icons.hazard.name}
-              icon={Icons.hazard.uri}
-              key={Icons.hazard.name}
-              onPress={() => this.setState({ issueType: 'hazard' })}
-              onLongPress={() => {this.setState({ longPress: 'hazard', issueType: 'hazard'}), this.explainIssue() }}            />
+              name={Icons.ClosedPath.name}
+              icon={Icons.ClosedPath.uri}
+              key={Icons.ClosedPath.name}
+              onPress={() => this.setState({ issueType: 'Closed Path' })}
+              onLongPress={() => { this.setState({ longPress: 'ClosedPath', issueType: 'ClosedPath' }), this.explainIssue() }} />
+            <IssueIcons
+              name={Icons.DocklessVehicleBlockingPath.name}
+              icon={Icons.DocklessVehicleBlockingPath.uri}
+              key={Icons.DocklessVehicleBlockingPath.name}
+              onPress={() => this.setState({ issueType: 'Dockless Vehicle Blocking Path' })}
+              onLongPress={() => { this.setState({ longPress: 'DocklessVehicleBlockingPath', issueType: 'DocklessVehicleBlockingPath' }), this.explainIssue() }} />
+          </View>
+          <View style={styles.contentContainer}>
+
+            <IssueIcons
+              name={Icons.Hazard.name}
+              icon={Icons.Hazard.uri}
+              key={Icons.Hazard.name}
+              onPress={() => this.setState({ issueType: 'Hazard' })}
+              onLongPress={() => { this.setState({ longPress: 'Hazard', issueType: 'Hazard' }), this.explainIssue() }} />
+            <IssueIcons
+              name={Icons.MalfunctioningSignal.name}
+              icon={Icons.MalfunctioningSignal.uri}
+              key={Icons.MalfunctioningSignal.name}
+              onPress={() => this.setState({ issueType: 'Malfunctioning Signal' })}
+              onLongPress={() => { this.setState({ longPress: 'MalfunctioningSignal', issueType: 'MalfunctioningSignal' }), this.explainIssue() }} />
           </View>
           <View style={styles.contentContainer}>
             <IssueIcons
-              name={Icons.traffic.name}
-              icon={Icons.traffic.uri}
-              key={Icons.traffic.name}
-              onPress={() => this.setState({ issueType: 'traffic' })}
-              onLongPress={() => {this.setState({ longPress: 'traffic', issueType: 'traffic'}), this.explainIssue() }}            />
+              name={Icons.Pothole.name}
+              icon={Icons.Pothole.uri}
+              key={Icons.Pothole.name}
+              onPress={() => this.setState({ issueType: 'Pothole' })}
+              onLongPress={() => { this.setState({ longPress: 'Pothole', issueType: 'Pothole' }), this.explainIssue() }} />
             <IssueIcons
-              name={Icons.closed.name}
-              icon={Icons.closed.uri}
-              key={Icons.closed.name}
-              onPress={() => this.setState({ issueType: 'closed' })}
-              onLongPress={() => {this.setState({ longPress: 'closed', issueType: 'closed'}), this.explainIssue() }}            />
-            <IssueIcons
-              name={Icons.pothole.name}
-              icon={Icons.pothole.uri}
-              key={Icons.pothole.name}
-              onPress={() => this.setState({ issueType: 'pothole' })}
-              onLongPress={() => {this.setState({ longPress: 'pothole', issueType: 'pothole'}), this.explainIssue() }}            />
+              name={Icons.GeneralSafetyConcern.name}
+              icon={Icons.GeneralSafetyConcern.uri}
+              key={Icons.GeneralSafetyConcern.name}
+              onPress={() => this.setState({ issueType: 'General Safety Concern' })}
+              onLongPress={() => { this.setState({ longPress: 'GeneralSafetyConcern', issueType: 'GeneralSafetyConcern' }), this.explainIssue() }} />
           </View>
           <View style={{ marginTop: 20 }} />
           <View style={styles.contentContainer}>
@@ -174,6 +192,7 @@ console.log(data);
                 this.handleSubmit();
               }}
             >
+
               <Text style={styles.buttonText}>Submit</Text>
             </TouchableOpacity>
           </View>
@@ -199,7 +218,7 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: "space-around"
+    justifyContent: "space-around",
   },
   button: {
     backgroundColor: "#0b409c",
