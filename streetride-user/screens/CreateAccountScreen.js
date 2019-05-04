@@ -91,11 +91,6 @@ export default class CreateAccountScreen extends Component {
               underlineColorAndroid="rgba(0,0,0,0)"
               placeholder="Email"
               placeholderTextColor="#0b409c"
-<<<<<<< HEAD
-              textContentType="emailAddress"
-              value={this.state.email}
-=======
->>>>>>> master
               onChangeText={email => this.setState({ email })}
             />
             <TextInput
