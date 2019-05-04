@@ -4,8 +4,8 @@ const Icons = {
         uri: require("../assets/images/close.png"),
         description:
         `A vehicle passing within 3 feet of a bicycle or scooter on the road
-        A vehicle nearly hitting a pedestrian in a crosswalk
-        `
+
+        A vehicle nearly hitting a pedestrian in a crosswalk`
     },
     hazard: {
         name: 'Hazard',

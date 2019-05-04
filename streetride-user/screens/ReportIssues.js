@@ -114,35 +114,35 @@ export default class ReportIssues extends Component {
               name={Icons.close.name}
               icon={Icons.close.uri}
               key={Icons.close.name}
-              onPress={() => this.setState({ issueType: "close call" })}
-            />
+              onPress={() => this.setState({ issueType: 'close' })}
+              onLongPress={() => {this.setState({ longPress: 'close', issueType: 'close'}), this.explainIssue() }}            />
 
             <IssueIcons
               name={Icons.hazard.name}
               icon={Icons.hazard.uri}
               key={Icons.hazard.name}
-              onPress={() => this.setState({ issueType: "hazard" })}
-            />
+              onPress={() => this.setState({ issueType: 'hazard' })}
+              onLongPress={() => {this.setState({ longPress: 'hazard', issueType: 'hazard'}), this.explainIssue() }}            />
           </View>
           <View style={styles.contentContainer}>
             <IssueIcons
               name={Icons.traffic.name}
               icon={Icons.traffic.uri}
               key={Icons.traffic.name}
-              onPress={() => this.setState({ issueType: "traffic" })}
-            />
+              onPress={() => this.setState({ issueType: 'traffic' })}
+              onLongPress={() => {this.setState({ longPress: 'traffic', issueType: 'traffic'}), this.explainIssue() }}            />
             <IssueIcons
               name={Icons.closed.name}
               icon={Icons.closed.uri}
               key={Icons.closed.name}
-              onPress={() => this.setState({ issueType: "path closed" })}
-            />
+              onPress={() => this.setState({ issueType: 'closed' })}
+              onLongPress={() => {this.setState({ longPress: 'closed', issueType: 'closed'}), this.explainIssue() }}            />
             <IssueIcons
               name={Icons.pothole.name}
               icon={Icons.pothole.uri}
               key={Icons.pothole.name}
-              onPress={() => this.setState({ issueType: "pothole" })}
-            />
+              onPress={() => this.setState({ issueType: 'pothole' })}
+              onLongPress={() => {this.setState({ longPress: 'pothole', issueType: 'pothole'}), this.explainIssue() }}            />
           </View>
           <View style={{ marginTop: 20 }} />
           <View style={styles.contentContainer}>
