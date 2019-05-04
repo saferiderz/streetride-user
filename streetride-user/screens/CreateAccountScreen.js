@@ -28,6 +28,29 @@ export default class CreateAccountScreen extends Component {
     ) {
       Alert.alert("Please Complete Each Field");
     } else {
+      const data = {
+        firstname: this.state.firstname,
+        lastname: this.state.lastname,
+        username: this.state.username,
+        password: this.state.password
+      };
+
+      fetch("http://10.0.0.186:8000/api/users/create", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+        .then(response => response)
+        .then(response => {
+          // return responseJson.result;
+        })
+        .catch(error => {
+          console.error(error);
+        });
+
       this.props.navigation.navigate("Dashboard");
     }
   };
