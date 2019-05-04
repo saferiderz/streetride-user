@@ -1,7 +1,8 @@
 const Icons = {
     CarInBikeLane: {
         name: 'Car In Bike Lane',
-        uri: require("../assets/images/traffic.png")
+        uri: require("../assets/images/traffic.png"),
+        description: 'Car parked in bike lane \nDelivery truck in bike lane'
     },
     CloseCall: {
         name: 'Close Call',
