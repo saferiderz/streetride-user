@@ -19,16 +19,8 @@ export default class CreateAccountScreen extends Component {
     password: ""
   };
 
-  handleValidateEmail = email => {
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
-  };
-
   // user input validation for creating account
   handleCreateAccount = () => {
-    
-    let handle
-
     if (
       this.state.firstname === "" ||
       this.state.lastname === "" ||
@@ -37,8 +29,6 @@ export default class CreateAccountScreen extends Component {
       this.state.password === ""
     ) {
       Alert.alert("Please Complete Each Field");
-    } else if (!this.state.handleValidateEmail(this.state.email)) {
-      Alert.alert("Please Enter a Valid Email Address");
     } else if (this.state.username.length < 5) {
       Alert.alert("Username Must Be 5 or More Characters");
     } else if (this.state.password.length < 8) {
