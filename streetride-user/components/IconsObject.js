@@ -12,7 +12,7 @@ const Icons = {
     ClosedPath: {
         name: 'Closed Path',
         uri: require("../assets/images/blocked.png"),
-        description: 'Construction/bridge out'
+        description: 'Construction/bridge out \n\nPath closed for special event'
     },
     DocklessVehicleBlockingPath: {
         name: 'Dockless Vehicle Blocking Path',
