@@ -34,6 +34,30 @@ export default class CreateAccountScreen extends Component {
     } else if (this.state.password.length < 8) {
       Alert.alert("Password Must Be 8 or More Characters");
     } else {
+      const data = {
+        firstname: this.state.firstname,
+        lastname: this.state.lastname,
+        email: this.state.email,
+        username: this.state.username,
+        password: this.state.password
+      };
+
+      fetch("https://streetride.herokuapp.com/api/users/create", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+        .then(response => response)
+        .then(response => {
+          // return responseJson.result;
+        })
+        .catch(error => {
+          console.error(error);
+        });
+
       this.props.navigation.navigate("Dashboard");
     }
   };
@@ -67,8 +91,11 @@ export default class CreateAccountScreen extends Component {
               underlineColorAndroid="rgba(0,0,0,0)"
               placeholder="Email"
               placeholderTextColor="#0b409c"
+<<<<<<< HEAD
               textContentType="emailAddress"
               value={this.state.email}
+=======
+>>>>>>> master
               onChangeText={email => this.setState({ email })}
             />
             <TextInput

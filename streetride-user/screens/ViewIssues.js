@@ -1,5 +1,5 @@
 import React from "react";
-import { View, ActivityIndicator, StyleSheet } from "react-native";
+import { View, ActivityIndicator, StyleSheet, Text } from "react-native";
 
 import { MapView } from "expo";
 
@@ -27,12 +27,12 @@ export default class ViewIssues extends React.Component {
 
   // Fetch the issues data from the backend API
   fetchMarkerData() {
-    fetch("https://feeds.citibikenyc.com/stations/stations.json")
+    fetch("https://streetride.herokuapp.com/api/issues")
       .then(response => response.json())
       .then(responseJson => {
         this.setState({
           isLoading: false,
-          markers: responseJson.stationBeanList
+          markers: responseJson
         });
       })
       .catch(error => {
@@ -80,15 +80,16 @@ export default class ViewIssues extends React.Component {
           <MapView.Marker
             key={newMarkers.id}
             coordinate={{
-              latitude: newMarkers.latitude,
-              longitude: newMarkers.longitude
+              latitude: (newMarkers.lat === null ? parseFloat("0.0") : parseFloat(newMarkers.lat)),
+              longitude: (newMarkers.lon === null ? parseFloat("0.0") : parseFloat(newMarkers.lon))
             }}
-            title={newMarkers.stationName}
-            description={newMarkers.statusValue}
-            pinColor={newMarkers.statusKey === 1 ? "#00ff00" : "#ff0000"}
+            title={newMarkers.issueType}
+            description={newMarkers.lon}
+            //pinColor={newMarkers.statusKey === 1 ? "#00ff00" : "#ff0000"}
           />
         ))}
       </MapView>
+      
     );
   }
 }

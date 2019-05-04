@@ -8,7 +8,7 @@
       "ios",
       "android"
     ],
-    "version": "1.0.0",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/images/streetride_logo_icon.png",
     "splash": {
@@ -23,7 +23,20 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "bundleIdentifier": "com.saferiderz.streetride",
+      "config": {
+        "googleMapsApiKey": "AIzaSyAdul1sVW5ALJwRyY0OC911AHvANXOLbac"
+      }
+    },
+    "android": {
+      "versionCode": 3,
+      "package": "com.saferiderz.streetride",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyAdul1sVW5ALJwRyY0OC911AHvANXOLbac"
+        }
+      }
     }
   }
 }
