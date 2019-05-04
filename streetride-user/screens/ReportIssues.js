@@ -175,7 +175,6 @@ export default class ReportIssues extends Component {
               onPress={() => this.setState({ issueType: 'General Safety Concern' })}
               onLongPress={() => { this.setState({ longPress: 'GeneralSafetyConcern', issueType: 'GeneralSafetyConcern' }), this.explainIssue() }} />
           </View>
-          <View style={{ marginTop: 20 }} />
           <View style={styles.contentContainer}>
             <TouchableOpacity
               style={styles.button}
