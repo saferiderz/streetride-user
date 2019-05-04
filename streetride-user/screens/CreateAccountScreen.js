@@ -98,7 +98,6 @@ export default class CreateAccountScreen extends Component {
               underlineColorAndroid="rgba(0,0,0,0)"
               placeholder="Username"
               placeholderTextColor="#0b409c"
-              textContentType="username"
               onChangeText={username => this.setState({ username })}
             />
             <TextInput
@@ -107,7 +106,6 @@ export default class CreateAccountScreen extends Component {
               placeholder="Password"
               secureTextEntry={true}
               placeholderTextColor="#0b409c"
-              textContentType="password"
               onChangeText={password => this.setState({ password })}
             />
             <TouchableOpacity
