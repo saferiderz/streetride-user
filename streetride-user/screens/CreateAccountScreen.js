@@ -14,6 +14,7 @@ export default class CreateAccountScreen extends Component {
   state = {
     firstname: "",
     lastname: "",
+    email: "",
     username: "",
     password: ""
   };
@@ -23,11 +24,36 @@ export default class CreateAccountScreen extends Component {
     if (
       this.state.firstname === "" ||
       this.state.lastname === "" ||
+      this.state.email === "" ||
       this.state.username === "" ||
       this.state.password === ""
     ) {
       Alert.alert("Please Complete Each Field");
     } else {
+      const data = {
+        firstname: this.state.firstname,
+        lastname: this.state.lastname,
+        email: this.state.email,
+        username: this.state.username,
+        password: this.state.password
+      };
+
+      fetch("https://streetride.herokuapp.com/api/users/create", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+        .then(response => response)
+        .then(response => {
+          // return responseJson.result;
+        })
+        .catch(error => {
+          console.error(error);
+        });
+
       this.props.navigation.navigate("Dashboard");
     }
   };
@@ -55,6 +81,13 @@ export default class CreateAccountScreen extends Component {
               placeholder="Last Name"
               placeholderTextColor="#0b409c"
               onChangeText={lastname => this.setState({ lastname })}
+            />
+            <TextInput
+              style={styles.inputBox}
+              underlineColorAndroid="rgba(0,0,0,0)"
+              placeholder="Email"
+              placeholderTextColor="#0b409c"
+              onChangeText={email => this.setState({ email })}
             />
             <TextInput
               style={styles.inputBox}
