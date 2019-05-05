@@ -1,11 +1,5 @@
-import React from 'react';
-import {
-    Image,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
-} from 'react-native';
+import React from "react";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 function IssueIcons(props) {
     return (
@@ -17,23 +11,22 @@ function IssueIcons(props) {
                 </View>
             </TouchableOpacity>
         </View>
-    )
+    );
 }
 export default IssueIcons;
 
 const styles = StyleSheet.create({
     iconText: {
-        textAlign: 'center'
+        textAlign: "center"
     },
     iconImage: {
         width: 75,
         height: 75,
-        },
+    },
     iconContainer: {
-      width: 125,
-      height: 'auto',
-      flex: 1,
-      alignItems: 'center'
+        width: 125,
+        height: "auto",
+        flex: 1,
+        alignItems: "center"
     }
-
 });

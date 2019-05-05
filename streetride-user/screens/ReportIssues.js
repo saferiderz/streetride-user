@@ -1,12 +1,5 @@
 import React, { Component } from "react";
-import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  Alert
-} from "react-native";
+import {ScrollView, StyleSheet, Text, TouchableOpacity, View, Alert} from "react-native";
 
 import { Icons } from "../components/IconsObject";
 import IssueIcons from "../components/IssueIcons";
@@ -21,7 +14,7 @@ export default class ReportIssues extends Component {
     latitude: null,
     longitude: null,
     error: null,
-    longPress: ''
+    longPress: ""
   };
 
   componentDidMount() {
@@ -63,7 +56,6 @@ export default class ReportIssues extends Component {
       lat: this.state.latitude,
       lon: this.state.longitude
     };
-    console.log(data);
     fetch("http://streetride.herokuapp.com/api/issues/create", {
       method: "POST",
       headers: {
@@ -123,65 +115,64 @@ export default class ReportIssues extends Component {
       <View style={styles.container}>
         <ScrollView>
           <Text style={styles.subheaderText}>Select an Issue Type</Text>
-          <Text style={{ textAlign: 'center' }}>Hold your finger down on an issue for more information</Text>
+          <Text style={{ textAlign: "center" }}>Hold your finger down on an issue for more information</Text>
           <View style={styles.contentContainer}>
             <IssueIcons
               name={Icons.CarInBikeLane.name}
               icon={Icons.CarInBikeLane.uri}
-              onPress={() => this.setState({ issueType: 'Car In Bike Lane' })}
-              onLongPress={() => { this.setState({ longPress: 'CarInBikeLane', issueType: 'CarInBikeLane' }), this.explainIssue() }}
+              onPress={() => this.setState({ issueType: "Car In Bike Lane" })}
+              onLongPress={() => { this.setState({ longPress: "CarInBikeLane", issueType: "CarInBikeLane" }), this.explainIssue() }}
             />
             <IssueIcons
               name={Icons.CloseCall.name}
               icon={Icons.CloseCall.uri}
-              onPress={() => this.setState({ issueType: 'Close Call' })}
-              onLongPress={() => { this.setState({ longPress: 'CloseCall', issueType: 'CloseCall' }), this.explainIssue() }} />
+              onPress={() => this.setState({ issueType: "Close Call" })}
+              onLongPress={() => { this.setState({ longPress: "CloseCall", issueType: "CloseCall" }), this.explainIssue() }} />
           </View>
           <View style={styles.contentContainer}>
 
             <IssueIcons
               name={Icons.ClosedPath.name}
               icon={Icons.ClosedPath.uri}
-              onPress={() => this.setState({ issueType: 'Closed Path' })}
-              onLongPress={() => { this.setState({ longPress: 'ClosedPath', issueType: 'ClosedPath' }), this.explainIssue() }} />
+              onPress={() => this.setState({ issueType: "Closed Path" })}
+              onLongPress={() => { this.setState({ longPress: "ClosedPath", issueType: "ClosedPath" }), this.explainIssue() }} />
             <IssueIcons
               name={Icons.DocklessVehicleBlockingPath.name}
               icon={Icons.DocklessVehicleBlockingPath.uri}
-              onPress={() => this.setState({ issueType: 'Dockless Vehicle Blocking Path' })}
-              onLongPress={() => { this.setState({ longPress: 'DocklessVehicleBlockingPath', issueType: 'DocklessVehicleBlockingPath' }), this.explainIssue() }} />
+              onPress={() => this.setState({ issueType: "Dockless Vehicle Blocking Path" })}
+              onLongPress={() => { this.setState({ longPress: "DocklessVehicleBlockingPath", issueType: "DocklessVehicleBlockingPath" }), this.explainIssue() }} />
           </View>
           <View style={styles.contentContainer}>
 
             <IssueIcons
               name={Icons.Hazard.name}
               icon={Icons.Hazard.uri}
-              onPress={() => this.setState({ issueType: 'Hazard' })}
-              onLongPress={() => { this.setState({ longPress: 'Hazard', issueType: 'Hazard' }), this.explainIssue() }} />
+              onPress={() => this.setState({ issueType: "Hazard" })}
+              onLongPress={() => { this.setState({ longPress: "Hazard", issueType: "Hazard" }), this.explainIssue() }} />
             <IssueIcons
               name={Icons.MalfunctioningSignal.name}
               icon={Icons.MalfunctioningSignal.uri}
-              onPress={() => this.setState({ issueType: 'Malfunctioning Signal' })}
-              onLongPress={() => { this.setState({ longPress: 'MalfunctioningSignal', issueType: 'MalfunctioningSignal' }), this.explainIssue() }} />
+              onPress={() => this.setState({ issueType: "Malfunctioning Signal" })}
+              onLongPress={() => { this.setState({ longPress: "MalfunctioningSignal", issueType: "MalfunctioningSignal" }), this.explainIssue() }} />
           </View>
           <View style={styles.contentContainer}>
             <IssueIcons
               name={Icons.Pothole.name}
               icon={Icons.Pothole.uri}
-              onPress={() => this.setState({ issueType: 'Pothole' })}
-              onLongPress={() => { this.setState({ longPress: 'Pothole', issueType: 'Pothole' }), this.explainIssue() }} />
+              onPress={() => this.setState({ issueType: "Pothole" })}
+              onLongPress={() => { this.setState({ longPress: "Pothole", issueType: "Pothole" }), this.explainIssue() }} />
             <IssueIcons
               name={Icons.GeneralSafetyConcern.name}
               icon={Icons.GeneralSafetyConcern.uri}
-              onPress={() => this.setState({ issueType: 'General Safety Concern' })}
-              onLongPress={() => { this.setState({ longPress: 'GeneralSafetyConcern', issueType: 'GeneralSafetyConcern' }), this.explainIssue() }} />
+              onPress={() => this.setState({ issueType: "General Safety Concern" })}
+              onLongPress={() => { this.setState({ longPress: "GeneralSafetyConcern", issueType: "GeneralSafetyConcern" }), this.explainIssue() }} />
           </View>
           <View style={styles.contentContainer}>
             <TouchableOpacity
               style={styles.button}
               onPress={() => {
                 this.handleSubmit();
-              }}
-            >
+              }}>
 
               <Text style={styles.buttonText}>Submit</Text>
             </TouchableOpacity>
