@@ -22,9 +22,9 @@ export default class LoginScreen extends Component {
     if (this.state.username === "" || this.state.password === "") {
       Alert.alert("Enter Username & Password");
     } else if (this.state.username.length < 5) {
-      Alert.alert("Username Must Be 5 or More Characters");
+      Alert.alert("Invalid Username/Password");
     } else if (this.state.password.length < 8) {
-      Alert.alert("Password Must Be 8 or More Characters")
+      Alert.alert("Invalid Username/Password")
     } else {
       this.props.navigation.navigate("Dashboard");
     }

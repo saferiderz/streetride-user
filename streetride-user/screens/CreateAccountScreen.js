@@ -19,6 +19,11 @@ export default class CreateAccountScreen extends Component {
     password: ""
   };
 
+  validateEmail = email => {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+  };
+
   // user input validation for creating account
   handleCreateAccount = () => {
     if (
@@ -29,10 +34,12 @@ export default class CreateAccountScreen extends Component {
       this.state.password === ""
     ) {
       Alert.alert("Please Complete Each Field");
+    } else if (!this.validateEmail(this.state.email)) {
+      Alert.alert("Invalid Email Address");
     } else if (this.state.username.length < 5) {
-      Alert.alert("Username Must Be 5 or More Characters");
+      Alert.alert("Invalid Username/Password");
     } else if (this.state.password.length < 8) {
-      Alert.alert("Password Must Be 8 or More Characters");
+      Alert.alert("Invalid Username/Password");
     } else {
       const data = {
         firstname: this.state.firstname,
