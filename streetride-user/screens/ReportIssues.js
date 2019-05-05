@@ -121,13 +121,13 @@ export default class ReportIssues extends Component {
               name={Icons.CarInBikeLane.name}
               icon={Icons.CarInBikeLane.uri}
               onPress={() => this.setState({ issueType: "Car In Bike Lane" })}
-              onLongPress={() => { this.setState({ longPress: "CarInBikeLane", issueType: "CarInBikeLane" }), this.explainIssue() }}
+              onLongPress={() => { this.setState({ longPress: "CarInBikeLane", issueType: "Car In Bike Lane" }), this.explainIssue() }}
             />
             <IssueIcons
               name={Icons.CloseCall.name}
               icon={Icons.CloseCall.uri}
               onPress={() => this.setState({ issueType: "Close Call" })}
-              onLongPress={() => { this.setState({ longPress: "CloseCall", issueType: "CloseCall" }), this.explainIssue() }} />
+              onLongPress={() => { this.setState({ longPress: "CloseCall", issueType: "Close Call" }), this.explainIssue() }} />
           </View>
           <View style={styles.contentContainer}>
 
@@ -135,12 +135,12 @@ export default class ReportIssues extends Component {
               name={Icons.ClosedPath.name}
               icon={Icons.ClosedPath.uri}
               onPress={() => this.setState({ issueType: "Closed Path" })}
-              onLongPress={() => { this.setState({ longPress: "ClosedPath", issueType: "ClosedPath" }), this.explainIssue() }} />
+              onLongPress={() => { this.setState({ longPress: "ClosedPath", issueType: "Closed Path" }), this.explainIssue() }} />
             <IssueIcons
               name={Icons.DocklessVehicleBlockingPath.name}
               icon={Icons.DocklessVehicleBlockingPath.uri}
               onPress={() => this.setState({ issueType: "Dockless Vehicle Blocking Path" })}
-              onLongPress={() => { this.setState({ longPress: "DocklessVehicleBlockingPath", issueType: "DocklessVehicleBlockingPath" }), this.explainIssue() }} />
+              onLongPress={() => { this.setState({ longPress: "DocklessVehicleBlockingPath", issueType: "Dockless Vehicle Blocking Path" }), this.explainIssue() }} />
           </View>
           <View style={styles.contentContainer}>
 
@@ -153,7 +153,7 @@ export default class ReportIssues extends Component {
               name={Icons.MalfunctioningSignal.name}
               icon={Icons.MalfunctioningSignal.uri}
               onPress={() => this.setState({ issueType: "Malfunctioning Signal" })}
-              onLongPress={() => { this.setState({ longPress: "MalfunctioningSignal", issueType: "MalfunctioningSignal" }), this.explainIssue() }} />
+              onLongPress={() => { this.setState({ longPress: "MalfunctioningSignal", issueType: "Malfunctioning Signal" }), this.explainIssue() }} />
           </View>
           <View style={styles.contentContainer}>
             <IssueIcons
@@ -165,7 +165,7 @@ export default class ReportIssues extends Component {
               name={Icons.GeneralSafetyConcern.name}
               icon={Icons.GeneralSafetyConcern.uri}
               onPress={() => this.setState({ issueType: "General Safety Concern" })}
-              onLongPress={() => { this.setState({ longPress: "GeneralSafetyConcern", issueType: "GeneralSafetyConcern" }), this.explainIssue() }} />
+              onLongPress={() => { this.setState({ longPress: "GeneralSafetyConcern", issueType: "General Safety Concern" }), this.explainIssue() }} />
           </View>
           <View style={styles.contentContainer}>
             <TouchableOpacity
