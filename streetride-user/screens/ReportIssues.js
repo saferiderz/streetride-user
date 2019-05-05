@@ -1,12 +1,5 @@
 import React, { Component } from "react";
-import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  Alert
-} from "react-native";
+import {ScrollView, StyleSheet, Text, TouchableOpacity, View, Alert} from "react-native";
 
 import { Icons } from "../components/IconsObject";
 import IssueIcons from "../components/IssueIcons";
@@ -20,7 +13,8 @@ export default class ReportIssues extends Component {
     issueType: "",
     latitude: null,
     longitude: null,
-    error: null
+    error: null,
+    longPress: ""
   };
 
   componentDidMount() {
@@ -37,15 +31,48 @@ export default class ReportIssues extends Component {
     );
   }
 
-  // placeholder for now. Gives me some type of node module number when clicking on an issue
-  // will try to use this in place of hard coding in the future
-  handleAlert(anything) {
-    const iconValue = anything.target;
-    alert("Hello " + typeof iconValue + " " + iconValue);
+  explainIssue = () => {
+    Alert.alert(
+      "Explanation",
+      Icons[this.state.longPress].description,
+      [
+        {
+          text: "Submit",
+          onPress: () => { { this.props.navigation.navigate("ReportOrView") }; this.fetchData(); this.setState({ issueType: "" }) },
+        },
+        {
+          text: "Cancel",
+          style: "cancel",
+          onPress: () => { this.setState({ issueType: "" }) }
+        }
+      ],
+      { cancelable: false }
+    )
   }
 
-  // TODO
-  // currently a place holder that gives an alert with the issue type.
+  fetchData = () => {
+    const data = {
+      issueType: this.state.issueType,
+      lat: this.state.latitude,
+      lon: this.state.longitude
+    };
+    fetch("http://streetride.herokuapp.com/api/issues/create", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+      .then(response => response)
+      .then(response => {
+        // return responseJson.result;
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+
   handleSubmit = () => {
     if (this.state.issueType === "") {
       Alert.alert(
@@ -53,7 +80,7 @@ export default class ReportIssues extends Component {
         "Please select an issue before submitting",
         [
           {
-            text: "OK"
+            text: "OK",
           },
           {
             text: "Cancel",
@@ -63,16 +90,20 @@ export default class ReportIssues extends Component {
         { cancelable: false }
       );
     } else {
+
+      this.fetchData()
+
       Alert.alert(
-        "Issue selected",
-        "Issue: " +
-          this.state.issueType +
-          "\nLatitude: " +
-          this.state.latitude +
-          "\nLongitude: " +
-          this.state.longitude
+        "Issue Selected",
+        "You have successfully submitted a new issue: " + this.state.issueType,
+        [
+          {
+            text: "OK",
+            onPress: () => { { this.props.navigation.navigate("ReportOrView") }; this.setState({ issueType: "" }) }
+          }
+        ],
+        { cancelable: false }
       );
-      this.props.navigation.navigate("ReportOrView");
     }
     if (this.state.error) {
       Alert.alert("Error:", this.state.error);
@@ -84,55 +115,65 @@ export default class ReportIssues extends Component {
       <View style={styles.container}>
         <ScrollView>
           <Text style={styles.subheaderText}>Select an Issue Type</Text>
+          <Text style={{ textAlign: "center" }}>Hold your finger down on an issue for more information</Text>
           <View style={styles.contentContainer}>
             <IssueIcons
-              name={Icons.debris.name}
-              icon={Icons.debris.uri}
-              key={Icons.debris.name}
-              onPress={() => this.setState({ issueType: "debris" })}
+              name={Icons.CarInBikeLane.name}
+              icon={Icons.CarInBikeLane.uri}
+              onPress={() => this.setState({ issueType: "Car In Bike Lane" })}
+              onLongPress={() => { this.setState({ longPress: "CarInBikeLane", issueType: "Car In Bike Lane" }), this.explainIssue() }}
             />
             <IssueIcons
-              name={Icons.close.name}
-              icon={Icons.close.uri}
-              key={Icons.close.name}
-              onPress={() => this.setState({ issueType: "close call" })}
-            />
+              name={Icons.CloseCall.name}
+              icon={Icons.CloseCall.uri}
+              onPress={() => this.setState({ issueType: "Close Call" })}
+              onLongPress={() => { this.setState({ longPress: "CloseCall", issueType: "Close Call" }), this.explainIssue() }} />
+          </View>
+          <View style={styles.contentContainer}>
 
             <IssueIcons
-              name={Icons.hazard.name}
-              icon={Icons.hazard.uri}
-              key={Icons.hazard.name}
-              onPress={() => this.setState({ issueType: "hazard" })}
-            />
+              name={Icons.ClosedPath.name}
+              icon={Icons.ClosedPath.uri}
+              onPress={() => this.setState({ issueType: "Closed Path" })}
+              onLongPress={() => { this.setState({ longPress: "ClosedPath", issueType: "Closed Path" }), this.explainIssue() }} />
+            <IssueIcons
+              name={Icons.DocklessVehicleBlockingPath.name}
+              icon={Icons.DocklessVehicleBlockingPath.uri}
+              onPress={() => this.setState({ issueType: "Dockless Vehicle Blocking Path" })}
+              onLongPress={() => { this.setState({ longPress: "DocklessVehicleBlockingPath", issueType: "Dockless Vehicle Blocking Path" }), this.explainIssue() }} />
+          </View>
+          <View style={styles.contentContainer}>
+
+            <IssueIcons
+              name={Icons.Hazard.name}
+              icon={Icons.Hazard.uri}
+              onPress={() => this.setState({ issueType: "Hazard" })}
+              onLongPress={() => { this.setState({ longPress: "Hazard", issueType: "Hazard" }), this.explainIssue() }} />
+            <IssueIcons
+              name={Icons.MalfunctioningSignal.name}
+              icon={Icons.MalfunctioningSignal.uri}
+              onPress={() => this.setState({ issueType: "Malfunctioning Signal" })}
+              onLongPress={() => { this.setState({ longPress: "MalfunctioningSignal", issueType: "Malfunctioning Signal" }), this.explainIssue() }} />
           </View>
           <View style={styles.contentContainer}>
             <IssueIcons
-              name={Icons.traffic.name}
-              icon={Icons.traffic.uri}
-              key={Icons.traffic.name}
-              onPress={() => this.setState({ issueType: "traffic" })}
-            />
+              name={Icons.Pothole.name}
+              icon={Icons.Pothole.uri}
+              onPress={() => this.setState({ issueType: "Pothole" })}
+              onLongPress={() => { this.setState({ longPress: "Pothole", issueType: "Pothole" }), this.explainIssue() }} />
             <IssueIcons
-              name={Icons.closed.name}
-              icon={Icons.closed.uri}
-              key={Icons.closed.name}
-              onPress={() => this.setState({ issueType: "path closed" })}
-            />
-            <IssueIcons
-              name={Icons.pothole.name}
-              icon={Icons.pothole.uri}
-              key={Icons.pothole.name}
-              onPress={() => this.setState({ issueType: "pothole" })}
-            />
+              name={Icons.GeneralSafetyConcern.name}
+              icon={Icons.GeneralSafetyConcern.uri}
+              onPress={() => this.setState({ issueType: "General Safety Concern" })}
+              onLongPress={() => { this.setState({ longPress: "GeneralSafetyConcern", issueType: "General Safety Concern" }), this.explainIssue() }} />
           </View>
-          <View style={{ marginTop: 20 }} />
           <View style={styles.contentContainer}>
             <TouchableOpacity
               style={styles.button}
               onPress={() => {
                 this.handleSubmit();
-              }}
-            >
+              }}>
+
               <Text style={styles.buttonText}>Submit</Text>
             </TouchableOpacity>
           </View>
@@ -147,14 +188,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff"
   },
-  headerText: {
-    marginBottom: 10,
-    marginTop: 30,
-    color: "rgba(0,0,0,0.9)",
-    fontSize: 40,
-    textAlign: "center",
-    fontWeight: "bold"
-  },
   subheaderText: {
     marginBottom: 10,
     marginTop: 20,
@@ -166,7 +199,7 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: "space-around"
+    justifyContent: "space-around",
   },
   button: {
     backgroundColor: "#0b409c",
