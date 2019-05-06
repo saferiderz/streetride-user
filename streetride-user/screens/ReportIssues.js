@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {ScrollView, StyleSheet, Text, TouchableOpacity, View, Alert} from "react-native";
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View, Alert } from "react-native";
 
 import { Icons } from "../components/IconsObject";
 import IssueIcons from "../components/IssueIcons";
@@ -74,23 +74,6 @@ export default class ReportIssues extends Component {
   }
 
   handleSubmit = () => {
-    if (this.state.latitude === null || this.state.longitude === null) {
-      return Alert.alert(
-        "Missing Location",
-        "We are unable to find your location. Please make sure your location services are turned on and try again.",
-        [
-          {
-            text: "OK",
-          },
-          {
-            text: "Cancel",
-            style: "cancel"
-          }
-        ],
-        { cancelable: false }
-      )
-    }
-
     if (this.state.issueType === "") {
       Alert.alert(
         "Select Issue",
@@ -106,6 +89,21 @@ export default class ReportIssues extends Component {
         ],
         { cancelable: false }
       );
+    } else if (this.state.latitude === null || this.state.longitude === null) {
+      Alert.alert(
+        "Missing Location",
+        "We are unable to find your location. Please make sure your location services are turned on and try again.",
+        [
+          {
+            text: "OK",
+          },
+          {
+            text: "Cancel",
+            style: "cancel"
+          }
+        ],
+        { cancelable: false }
+      )
     } else {
 
       this.fetchData()
