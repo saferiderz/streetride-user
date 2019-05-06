@@ -38,7 +38,7 @@ export default class ReportIssues extends Component {
       [
         {
           text: "Submit",
-          onPress: () => { { this.props.navigation.navigate("ReportOrView") }; this.fetchData(); this.setState({ issueType: "" }) },
+          onPress: () => { this.checkLocation()  },
         },
         {
           text: "Cancel",
@@ -73,22 +73,29 @@ export default class ReportIssues extends Component {
       });
   }
 
+checkLocation = () => {
+  if (this.state.latitude === null || this.state.longitude === null){
+    Alert.alert(
+      "Missing Location",
+      "We are unable to find your location. Please make sure your location services are turned on and try again.",
+      [
+        {
+          text: "OK",
+        },
+        {
+          text: "Cancel",
+          style: "cancel"
+        }
+      ],
+      { cancelable: false }
+    ); 
+    return true;
+  }
+}
+
   handleSubmit = () => {
-    if (this.state.latitude === null || this.state.longitude === null) {
-      Alert.alert(
-        "Missing Location",
-        "We are unable to find your location. Please make sure your location services are turned on and try again.",
-        [
-          {
-            text: "OK",
-          },
-          {
-            text: "Cancel",
-            style: "cancel"
-          }
-        ],
-        { cancelable: false }
-      )
+    if (this.checkLocation()){
+      return true;
     } else if (this.state.issueType === "") {
       Alert.alert(
         "Select Issue",
