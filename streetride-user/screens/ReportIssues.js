@@ -74,22 +74,7 @@ export default class ReportIssues extends Component {
   }
 
   handleSubmit = () => {
-    if (this.state.issueType === "") {
-      Alert.alert(
-        "Select Issue",
-        "Please select an issue before submitting",
-        [
-          {
-            text: "OK",
-          },
-          {
-            text: "Cancel",
-            style: "cancel"
-          }
-        ],
-        { cancelable: false }
-      );
-    } else if (this.state.latitude === null || this.state.longitude === null) {
+    if (this.state.latitude === null || this.state.longitude === null) {
       Alert.alert(
         "Missing Location",
         "We are unable to find your location. Please make sure your location services are turned on and try again.",
@@ -104,6 +89,21 @@ export default class ReportIssues extends Component {
         ],
         { cancelable: false }
       )
+    } else if (this.state.issueType === "") {
+      Alert.alert(
+        "Select Issue",
+        "Please select an issue before submitting",
+        [
+          {
+            text: "OK",
+          },
+          {
+            text: "Cancel",
+            style: "cancel"
+          }
+        ],
+        { cancelable: false }
+      );
     } else {
 
       this.fetchData()
