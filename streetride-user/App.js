@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Platform,
-  StatusBar,
-  StyleSheet,
-  View,
-  Text,
-  Image
-} from "react-native";
+import { Platform, StatusBar, StyleSheet, View, Image } from "react-native";
 import { AppLoading, Asset, Font } from "expo";
 
 import {
@@ -115,7 +108,12 @@ const AppBottomTabNavigator = createBottomTabNavigator(
       navigationOptions: () => ({
         headerTitle: "View Issues",
         tabBarLabel: "View Issues",
-        tabBarOptions: { activeTintColor: "#0b409c" },
+        tabBarOptions: {
+          activeTintColor: "#0b409c",
+          labelStyle: {
+            fontWeight: "bold"
+          }
+        },
         tabBarIcon: ({ focused }) => (
           <Image
             source={require("./assets/images/eye.png")}
@@ -130,7 +128,12 @@ const AppBottomTabNavigator = createBottomTabNavigator(
       navigationOptions: () => ({
         headerTitle: "Report Issues",
         tabBarLabel: "Report Issues",
-        tabBarOptions: { activeTintColor: "#0b409c" },
+        tabBarOptions: {
+          activeTintColor: "#0b409c",
+          labelStyle: {
+            fontWeight: "bold"
+          }
+        },
         tabBarIcon: ({ focused }) => (
           <Image
             source={require("./assets/images/submit.png")}
@@ -145,16 +148,6 @@ const AppBottomTabNavigator = createBottomTabNavigator(
     // Resets the state of any nested navigators when switching away from a screen
     resetOnBlur: true
   }
-  // {
-  //   navigationOptions: ({ navigation }) => {
-  //     // gets the index of the active tab and prints the routeName + " Issues" on the header
-  //     const { routeName } = navigation.state.routes[navigation.state.index];
-  //     return {
-  //       headerTitle: routeName + " Issues",
-  //       headerLayoutPreset: "center"
-  //     };
-  //   }
-  // }
 );
 
 const AppStackNavigator = createStackNavigator(

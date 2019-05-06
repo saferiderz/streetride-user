@@ -19,6 +19,11 @@ export default class CreateAccountScreen extends Component {
     password: ""
   };
 
+  validateEmail = email => {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+  };
+
   // user input validation for creating account
   handleCreateAccount = () => {
     if (
@@ -29,6 +34,12 @@ export default class CreateAccountScreen extends Component {
       this.state.password === ""
     ) {
       Alert.alert("Please Complete Each Field");
+    } else if (!this.validateEmail(this.state.email)) {
+      Alert.alert("Invalid Email Address");
+    } else if (this.state.username.length < 5) {
+      Alert.alert("Invalid Username/Password");
+    } else if (this.state.password.length < 8) {
+      Alert.alert("Invalid Username/Password");
     } else {
       const data = {
         firstname: this.state.firstname,
@@ -108,7 +119,6 @@ export default class CreateAccountScreen extends Component {
               style={styles.buttonNavy}
               onPress={() => {
                 this.handleCreateAccount();
-                // this.props.navigation.navigate("Dashboard");
               }}
             >
               <Text style={styles.buttonTextSubmit}>Submit</Text>
@@ -135,7 +145,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     marginBottom: 10,
-    marginTop: 100,
+    marginTop: 60,
     textAlign: "center",
     alignItems: "center",
     justifyContent: "center"
@@ -145,9 +155,11 @@ const styles = StyleSheet.create({
     height: 50,
     marginBottom: 10,
     backgroundColor: "#dcdcdc",
-    borderRadius: 25,
+    borderRadius: 15,
     paddingHorizontal: 16,
-    textAlign: "center"
+    textAlign: "center",
+    borderWidth: 1,
+    borderColor: "#0b409c"
   },
   button: {
     color: "#ffffff",
@@ -155,7 +167,7 @@ const styles = StyleSheet.create({
   },
   buttonNavy: {
     backgroundColor: "#0b409c",
-    borderRadius: 25,
+    borderRadius: 15,
     width: 200,
     height: 35,
     color: "#ffffff",

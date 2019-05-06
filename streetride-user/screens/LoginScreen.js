@@ -6,7 +6,6 @@ import {
   Text,
   ScrollView,
   Alert,
-  Linking,
   TouchableOpacity
 } from "react-native";
 import { KeyboardAvoidingView } from "react-native";
@@ -22,6 +21,10 @@ export default class LoginScreen extends Component {
   handleLogin = () => {
     if (this.state.username === "" || this.state.password === "") {
       Alert.alert("Enter Username & Password");
+    } else if (this.state.username.length < 5) {
+      Alert.alert("Invalid Username/Password");
+    } else if (this.state.password.length < 8) {
+      Alert.alert("Invalid Username/Password")
     } else {
       this.props.navigation.navigate("Dashboard");
     }
@@ -138,7 +141,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#dcdcdc",
     borderRadius: 15,
     paddingHorizontal: 16,
-    textAlign: "center"
+    textAlign: "center",
+    borderWidth: 1,
+    borderColor: "#0b409c"
   },
   button: {
     color: "#ffffff",
@@ -180,12 +185,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 10,
-    color: "black",
-    
+    color: "black"
   },
   privacyText: {
     fontSize: 14,
     color: "black",
-    textDecorationLine: 'underline'
+    textDecorationLine: "underline"
   }
 });
