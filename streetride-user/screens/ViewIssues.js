@@ -25,6 +25,28 @@ export default class ViewIssues extends React.Component {
     header: null
   };
 
+  getPinColor(issueType) {
+    switch(issueType) {
+      case 'Car In Bike Lane':
+        return '#0000cc'
+      case 'Close Call':
+        return '#00aa00'
+      case 'Closed Path':
+        return '#cc0000'
+      case 'Dockless Vehicle Blocking Path':
+        return '#eeeeee'
+      case 'Hazard':
+        return '#ffff00'
+      case 'Malfunctioning Signal':
+        return '#ff00ff'
+      case 'Pothole':
+        return '#ffaa00'
+      case 'General Safety Concern':
+        return '#ccccaa'
+      default:
+        return "#000000"
+    }
+  }
   // Fetch the issues data from the backend API
   fetchMarkerData() {
     fetch("https://streetride.herokuapp.com/api/issues")
@@ -84,8 +106,8 @@ export default class ViewIssues extends React.Component {
               longitude: (newMarkers.lon === null ? parseFloat("0.0") : parseFloat(newMarkers.lon))
             }}
             title={newMarkers.issueType}
-            description={newMarkers.lon}
-            //pinColor={newMarkers.statusKey === 1 ? "#00ff00" : "#ff0000"}
+            description={newMarkers.updatedAt.toString().split("T")[0]}
+            pinColor={this.getPinColor(newMarkers.issueType)}
           />
         ))}
       </MapView>
