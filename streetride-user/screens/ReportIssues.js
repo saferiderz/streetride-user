@@ -77,7 +77,7 @@ export default class ReportIssues extends Component {
     if (this.state.latitude === null || this.state.longitude === null) {
       return Alert.alert(
         "Missing Location",
-        "We don't quite have your location yet. Please wait a moment and try to submit again",
+        "We don't quite have your location yet. Please wait a moment and try to submit again.",
         [
           {
             text: "OK",
