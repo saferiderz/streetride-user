@@ -74,6 +74,23 @@ export default class ReportIssues extends Component {
   }
 
   handleSubmit = () => {
+    if (this.state.latitude === null || this.state.longitude === null) {
+      return Alert.alert(
+        "Missing Location",
+        "We don't quite have your location yet. Please wait a moment and try to submit again",
+        [
+          {
+            text: "OK",
+          },
+          {
+            text: "Cancel",
+            style: "cancel"
+          }
+        ],
+        { cancelable: false }
+      )
+    }
+
     if (this.state.issueType === "") {
       Alert.alert(
         "Select Issue",
