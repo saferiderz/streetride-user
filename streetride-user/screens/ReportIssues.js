@@ -42,7 +42,7 @@ export default class ReportIssues extends Component {
             if (this.checkLocation()) {
               return true;
             } else {
-              { this.props.navigation.navigate("ReportOrView") }; this.setState({ issueType: "" })
+              this.fetchData();this.props.navigation.navigate("ReportOrView"); this.setState({ issueType: "" })
             }
           },
         },
