@@ -43,8 +43,8 @@ export default class LoginScreen extends Component {
         Accept: "application/json",
         "Content-Type": "application/json"
       },
-        body: JSON.stringify(data)
-      })
+      body: JSON.stringify(data)
+    })
       .then(response => {
         body = JSON.parse(response._bodyText);
         if (body.isLoggedIn) {
@@ -54,7 +54,7 @@ export default class LoginScreen extends Component {
             'Access Denied',
             'The username or password was incorrect.',
             [
-              {text: 'Try Again', onPress: () => console.log('Ask me later pressed')}
+              {text: 'Try Again', onPress: () => {}}  // Empty function that is a noop because onPress is waiting for a promise. 
             ],
             {cancelable: false},
           );
