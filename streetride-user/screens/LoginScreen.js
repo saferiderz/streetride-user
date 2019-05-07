@@ -26,7 +26,7 @@ export default class LoginScreen extends Component {
     } else if (this.state.password.length < 8) {
       Alert.alert("Invalid Username/Password")
     } else {
-      this.props.navigation.navigate("Dashboard");
+      this.handleSubmit();
     }
   };
 
@@ -37,13 +37,7 @@ export default class LoginScreen extends Component {
       password: this.state.password
     };
 
-    // Following is commented out for now, waiting on backend
-    // Note to the team - the code below is generally how we'll have the
-    // front end pass information to the backend, the route/endpoints will change
-    // as will the data object, but after this is tested and running, we should
-    // be able to roll pretty quickly.
-
-    fetch("http://192.168.1.254:9000/users", {
+    fetch("https://streetride.herokuapp.com/api/users/signin", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -51,9 +45,20 @@ export default class LoginScreen extends Component {
       },
       body: JSON.stringify(data)
     })
-      .then(response => response)
       .then(response => {
-        // return responseJson.result;
+        body = JSON.parse(response._bodyText);
+        if (body.isLoggedIn) {
+          this.props.navigation.navigate("Dashboard");
+        } else {
+          Alert.alert(
+            'Access Denied',
+            'The username or password was incorrect.',
+            [
+              {text: 'Try Again', onPress: () => {}}  // Empty function that is a noop because onPress is waiting for a promise. 
+            ],
+            {cancelable: false},
+          );
+        }
       })
       .catch(error => {
         console.error(error);
@@ -89,8 +94,6 @@ export default class LoginScreen extends Component {
               style={styles.buttonNavy}
               onPress={() => {
                 this.handleLogin();
-                // this.handleSubmit();
-                // this.props.navigation.navigate("Dashboard");
               }}
             >
               <Text style={styles.buttonTextSubmit}>Login</Text>
@@ -103,7 +106,19 @@ export default class LoginScreen extends Component {
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.button}
-              onPress={() => this.props.navigation.navigate("Dashboard")}
+              onPress={() => {
+                this.setState({ 
+                  username: "Guest",
+                  password: "lkjhgfds99" 
+                });
+                // The timeout is not ideal, but it works
+                // setState is asynchronus and doesn't update before
+                // handleSubmit is called. The recommended solution is to use a callback,
+                // however, that didn't actually work, hence this dirty hack
+                setTimeout(() => {
+                  this.handleSubmit()
+                }, 100)
+              }}
             >
               <Text style={styles.buttonText}>Guest</Text>
             </TouchableOpacity>
