@@ -25,9 +25,12 @@
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.saferiderz.streetride",
-      "buildNumber": "1.2.0",
+      "buildNumber": "1.2.1",
       "config": {
         "googleMapsApiKey": "AIzaSyAdul1sVW5ALJwRyY0OC911AHvANXOLbac"
+      },
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Turn on location services to find and report issues near you."
       }
     },
     "android": {
