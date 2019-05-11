@@ -1,5 +1,5 @@
 import React from "react";
-import { View, ActivityIndicator, StyleSheet, Text } from "react-native";
+import { View, ActivityIndicator, StyleSheet, Image } from "react-native";
 
 import { MapView } from "expo";
 
@@ -108,7 +108,9 @@ export default class ViewIssues extends React.Component {
             title={newMarkers.issueType}
             description={newMarkers.updatedAt.toString().split("T")[0]}
             pinColor={this.getPinColor(newMarkers.issueType)}
-          />
+          >
+          <Image source={require("../assets/images/cone.png")} style={{width:20, height:20}}/>
+          </MapView.Marker>
         ))}
       </MapView>
       
