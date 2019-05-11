@@ -81,6 +81,7 @@ export default class ReportIssues extends Component {
       UserId: userIdInt
     };
 
+    // 
     fetch("https://streetride.herokuapp.com/api/issues/create", {
       method: "POST",
       headers: {
