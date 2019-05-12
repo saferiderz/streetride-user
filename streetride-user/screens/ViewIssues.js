@@ -1,5 +1,6 @@
 import React from "react";
 import { View, ActivityIndicator, StyleSheet, Image } from "react-native";
+import { Icons } from "../components/IconsObject"
 
 import { MapView } from "expo";
 
@@ -25,49 +26,26 @@ export default class ViewIssues extends React.Component {
     header: null
   };
 
-  // getPinColor(issueType) {
-  //   switch(issueType) {
-  //     case 'Car In Bike Lane':
-  //       return '#0000cc'
-  //     case 'Close Call':
-  //       return '#00aa00'
-  //     case 'Closed Path':
-  //       return '#cc0000'
-  //     case 'Dockless Vehicle Blocking Path':
-  //       return '#eeeeee'
-  //     case 'Hazard':
-  //       return '#ffff00'
-  //     case 'Malfunctioning Signal':
-  //       return '#ff00ff'
-  //     case 'Pothole':
-  //       return '#ffaa00'
-  //     case 'General Safety Concern':
-  //       return '#ccccaa'
-  //     default:
-  //       return "#000000"
-  //   }
-  // }
-
   getIconType(issueType) {
     switch(issueType) {
       case 'Car In Bike Lane':
-        return require("../assets/images/traffic.png")
+        return Icons.CarInBikeLane.uri
       case 'Close Call':
-        return require("../assets/images/close.png")
+        return Icons.CloseCall.uri
       case 'Closed Path':
-        return require("../assets/images/blocked.png")
+        return Icons.ClosedPath.uri
       case 'Dockless Vehicle Blocking Path':
-        return require("../assets/images/scooter.png")
+        return Icons.DocklessVehicleBlockingPath.uri
       case 'Hazard':
-        return require("../assets/images/caution.png")
+        return Icons.Hazard.uri
       case 'Malfunctioning Signal':
-        return require("../assets/images/walk.png")
+        return Icons.MalfunctioningSignal.uri
       case 'Pothole':
-        return require("../assets/images/cone.png")
+        return Icons.Pothole.uri
       case 'General Safety Concern':
-        return require("../assets/images/helmet.png")
+        return Icons.GeneralSafetyConcern.uri
       default:
-        return "#000000"
+        return Icons.GeneralSafetyConcern.uri
     }
   }
 
