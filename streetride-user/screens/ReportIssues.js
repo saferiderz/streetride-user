@@ -1,5 +1,13 @@
 import React, { Component } from "react";
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View, Alert } from "react-native";
+import { 
+  ScrollView, 
+  StyleSheet, 
+  Text, 
+  TouchableOpacity, 
+  View, 
+  Alert, 
+  AsyncStorage 
+} from "react-native";
 
 import { Icons } from "../components/IconsObject";
 import IssueIcons from "../components/IssueIcons";
@@ -10,6 +18,7 @@ export default class ReportIssues extends Component {
   };
 
   state = {
+    userId: null,
     issueType: "",
     latitude: null,
     longitude: null,
@@ -17,7 +26,7 @@ export default class ReportIssues extends Component {
     longPress: ""
   };
 
-  componentDidMount() {
+ async componentDidMount() {
     navigator.geolocation.getCurrentPosition(
       position => {
         this.setState({
@@ -29,6 +38,13 @@ export default class ReportIssues extends Component {
       error => this.setState({ error: error.message }),
       { enableHighAccuracy: false, timeout: 20000, maximumAge: 1000 }
     );
+    let userData = await AsyncStorage.getItem("@MySuperStore:_streetRide_userData");
+    if (userData != null) {
+      userDataJSON = JSON.parse(userData);
+      this.setState({
+        userId: userDataJSON.userId
+      });
+    }
   }
 
   explainIssue = () => {
@@ -57,12 +73,16 @@ export default class ReportIssues extends Component {
   }
 
   fetchData = () => {
+    userIdInt = parseInt(this.state.userId);
     const data = {
       issueType: this.state.issueType,
       lat: this.state.latitude,
-      lon: this.state.longitude
+      lon: this.state.longitude,
+      UserId: userIdInt
     };
-    fetch("http://streetride.herokuapp.com/api/issues/create", {
+
+    // 
+    fetch("https://streetride.herokuapp.com/api/issues/create", {
       method: "POST",
       headers: {
         Accept: "application/json",

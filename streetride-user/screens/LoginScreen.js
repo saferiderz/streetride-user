@@ -6,7 +6,8 @@ import {
   Text,
   ScrollView,
   Alert,
-  TouchableOpacity
+  TouchableOpacity,
+  AsyncStorage
 } from "react-native";
 import { KeyboardAvoidingView } from "react-native";
 import Logo from "../components/Logo";
@@ -37,7 +38,7 @@ export default class LoginScreen extends Component {
       password: this.state.password
     };
 
-    fetch("https://streetride.herokuapp.com/api/users/signin", {
+    fetch("/https://streetride.herokuapp.com/api/users/signin", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -48,6 +49,13 @@ export default class LoginScreen extends Component {
       .then(response => {
         body = JSON.parse(response._bodyText);
         if (body.isLoggedIn) {
+          let userData = {
+            token: body.token,
+            userId: body.userId,
+            userName: body.userName,
+            isLoggedIn: body.isLoggedIn
+          }
+          this.storeItem("@MySuperStore:_streetRide_userData", userData);
           this.props.navigation.navigate("Dashboard");
         } else {
           Alert.alert(
@@ -64,6 +72,25 @@ export default class LoginScreen extends Component {
         console.error(error);
       });
   };
+
+  async componentDidMount() {
+    let userData = await AsyncStorage.getItem("@MySuperStore:_streetRide_userData");
+    userDataJSON = JSON.parse(userData);
+    if (userData != null) {
+      userDataJSON = JSON.parse(userData);
+      if (userDataJSON.isLoggedIn) {
+        this.props.navigation.navigate("Dashboard");
+      }
+    }
+  }
+  
+  async storeItem(key, item) {
+    try {
+      let jsonOfItem = await AsyncStorage.setItem(key, JSON.stringify(item));
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
   render() {
     return (
