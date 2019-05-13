@@ -233,7 +233,7 @@ const AppDrawerNavigator = createDrawerNavigator({
           style={{ width: 20, height: 20 }}
         />
       ),
-      title: "Logout"
+      title: "Logout",
     })
   }
 });
