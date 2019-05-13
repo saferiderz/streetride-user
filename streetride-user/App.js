@@ -229,7 +229,7 @@ const AppDrawerNavigator = createDrawerNavigator({
     navigationOptions: () => ({
       drawerIcon: (
         <Image
-          source={require("./assets/images/submit.png")}
+          source={require("./assets/images/logout.png")}
           style={{ width: 20, height: 20 }}
         />
       ),
