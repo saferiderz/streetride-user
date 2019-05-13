@@ -100,6 +100,17 @@ const ReportStack = createStackNavigator(
   }
 );
 
+const LogInOutStack = createStackNavigator({
+  LogInOut: {
+    screen: LoginScreen,
+    navigationOptions: ({}) => {
+      return {
+        header: null
+      };
+    }
+  }
+});
+
 // this creates the 2 bottom tabs to access the View and Report screens
 const AppBottomTabNavigator = createBottomTabNavigator(
   {
@@ -211,6 +222,18 @@ const AppDrawerNavigator = createDrawerNavigator({
         />
       ),
       title: "Report Issues"
+    })
+  },
+  LogInOut: {
+    screen: LogInOutStack,
+    navigationOptions: () => ({
+      drawerIcon: (
+        <Image
+          source={require("./assets/images/submit.png")}
+          style={{ width: 20, height: 20 }}
+        />
+      ),
+      title: "Logout"
     })
   }
 });
