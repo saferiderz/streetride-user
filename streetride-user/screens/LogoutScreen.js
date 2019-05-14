@@ -5,7 +5,8 @@ import {
   Text,
   ScrollView,
   TouchableOpacity,
-  AsyncStorage
+  AsyncStorage,
+  Alert
 } from "react-native";
 
 export default class LogoutScreen extends Component {
@@ -16,6 +17,7 @@ export default class LogoutScreen extends Component {
   _handleLogOut = () => {
     AsyncStorage.removeItem("@MySuperStore:_streetRide_userData");
     Alert.alert("Come back soon!");
+    this.props.navigation.navigate("Login");
   };
 
   render() {

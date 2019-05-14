@@ -101,17 +101,6 @@ const ReportStack = createStackNavigator(
   }
 );
 
-// const LogoutStack = createStackNavigator({
-//   Logout: {
-//     screen: LogoutScreen,
-//     navigationOptions: ({}) => {
-//       return {
-//         header: null
-//       };
-//     }
-//   },
-// });
-
 // this creates the 2 bottom tabs to access the View and Report screens
 const AppBottomTabNavigator = createBottomTabNavigator(
   {
@@ -234,7 +223,7 @@ const AppDrawerNavigator = createDrawerNavigator({
           style={{ width: 20, height: 20 }}
         />
       ),
-      title: "Logout",
+      title: "Logout"
     })
   }
 });
