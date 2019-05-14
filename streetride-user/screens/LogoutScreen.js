@@ -29,14 +29,14 @@ export default class LogoutScreen extends Component {
             style={styles.buttonNavy}
             onPress={this._handleLogOut}
           >
-            <Text style={styles.buttonTextReport}>Yes</Text>
+            <Text style={styles.buttonTextReport}>YES</Text>
           </TouchableOpacity>
           <Text style={styles.orText}>or</Text>
           <TouchableOpacity
             style={styles.buttonGray}
             onPress={() => this.props.navigation.navigate("Dashboard")}
           >
-            <Text style={styles.buttonTextView}>No</Text>
+            <Text style={styles.buttonTextView}>NO</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     color: "black"
   },
   buttonTextReport: {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: "500",
     color: "white",
     textAlign: "center",
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     marginTop: 5
   },
   buttonTextView: {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: "500",
     color: "#0b409c",
     textAlign: "center",

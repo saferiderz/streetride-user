@@ -220,7 +220,7 @@ const AppDrawerNavigator = createDrawerNavigator({
       drawerIcon: (
         <Image
           source={require("./assets/images/logout.png")}
-          style={{ width: 20, height: 20 }}
+          style={{ width: 21, height: 21 }}
         />
       ),
       title: "Logout"
