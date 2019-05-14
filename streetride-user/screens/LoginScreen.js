@@ -38,7 +38,7 @@ export default class LoginScreen extends Component {
       password: this.state.password
     };
 
-    fetch("/https://streetride.herokuapp.com/api/users/signin", {
+    fetch("https://streetride.herokuapp.com/api/users/signin", {
       method: "POST",
       headers: {
         Accept: "application/json",

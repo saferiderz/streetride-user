@@ -13,6 +13,11 @@ export default class LogoutScreen extends Component {
     header: null
   };
 
+  _handleLogOut = () => {
+    AsyncStorage.removeItem("@MySuperStore:_streetRide_userData");
+    Alert.alert("Come back soon!");
+  };
+
   render() {
     return (
       <ScrollView>
@@ -20,10 +25,7 @@ export default class LogoutScreen extends Component {
         <View style={styles.inputContainer}>
           <TouchableOpacity
             style={styles.buttonNavy}
-            onPress={() => {
-              AsyncStorage.clear();
-              this.props.navigation.navigate("Login");
-            }}
+            onPress={this._handleLogOut}
           >
             <Text style={styles.buttonTextReport}>Yes</Text>
           </TouchableOpacity>
