@@ -4,10 +4,11 @@ import {
   View,
   Text,
   ScrollView,
-  TouchableOpacity
+  TouchableOpacity,
+  AsyncStorage
 } from "react-native";
 
-export default class ReportOrView extends Component {
+export default class LogoutScreen extends Component {
   static navigationOptions = {
     header: null
   };
@@ -15,22 +16,23 @@ export default class ReportOrView extends Component {
   render() {
     return (
       <ScrollView>
-        <Text style={styles.subheaderText}>
-          What would you like to do next?
-        </Text>
+        <Text style={styles.subheaderText}>Sure you want to logout?</Text>
         <View style={styles.inputContainer}>
           <TouchableOpacity
             style={styles.buttonNavy}
-            onPress={() => this.props.navigation.push("Report")}
+            onPress={() => {
+              AsyncStorage.clear();
+              this.props.navigation.navigate("Login");
+            }}
           >
-            <Text style={styles.buttonTextReport}>Report Another Issue</Text>
+            <Text style={styles.buttonTextReport}>Yes</Text>
           </TouchableOpacity>
           <Text style={styles.orText}>or</Text>
           <TouchableOpacity
             style={styles.buttonGray}
-            onPress={() => this.props.navigation.navigate("View")}
+            onPress={() => this.props.navigation.navigate("Dashboard")}
           >
-            <Text style={styles.buttonTextView}>View Issues</Text>
+            <Text style={styles.buttonTextView}>No</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -47,7 +49,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     marginBottom: 10,
-    marginTop: 60,
+    marginTop: 80,
     textAlign: "center",
     alignItems: "center",
     justifyContent: "center"
@@ -121,7 +123,7 @@ const styles = StyleSheet.create({
   },
   subheaderText: {
     marginTop: 20,
-    paddingTop: 30,
+    paddingTop: 50,
     color: "#0b409c",
     fontSize: 25,
     textAlign: "center"

@@ -16,6 +16,7 @@ import PrivacyPolicyScreen from "./screens/PrivacyPolicyScreen";
 import ViewIssues from "./screens/ViewIssues";
 import ReportIssues from "./screens/ReportIssues";
 import ReportOrView from "./screens/ReportOrView";
+import LogoutScreen from "./screens/LogoutScreen";
 import HeaderImage from "./components/HeaderImage";
 
 export default class App extends React.Component {
@@ -100,15 +101,15 @@ const ReportStack = createStackNavigator(
   }
 );
 
-const LogInOutStack = createStackNavigator({
-  LogInOut: {
-    screen: LoginScreen,
+const LogoutStack = createStackNavigator({
+  Logout: {
+    screen: LogoutScreen,
     navigationOptions: ({}) => {
       return {
         header: null
       };
     }
-  }
+  },
 });
 
 // this creates the 2 bottom tabs to access the View and Report screens
@@ -224,8 +225,8 @@ const AppDrawerNavigator = createDrawerNavigator({
       title: "Report Issues"
     })
   },
-  LogInOut: {
-    screen: LogInOutStack,
+  Logout: {
+    screen: LogoutStack,
     navigationOptions: () => ({
       drawerIcon: (
         <Image
