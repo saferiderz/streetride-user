@@ -4,33 +4,39 @@ import {
   View,
   Text,
   ScrollView,
-  TouchableOpacity
+  TouchableOpacity,
+  AsyncStorage,
+  Alert
 } from "react-native";
 
-export default class ReportOrView extends Component {
+export default class LogoutScreen extends Component {
   static navigationOptions = {
     header: null
+  };
+
+  _handleLogOut = () => {
+    AsyncStorage.removeItem("@MySuperStore:_streetRide_userData");
+    Alert.alert("Come back soon!");
+    this.props.navigation.navigate("Login");
   };
 
   render() {
     return (
       <ScrollView>
-        <Text style={styles.subheaderText}>
-          What would you like to do next?
-        </Text>
+        <Text style={styles.subheaderText}>Sure you want to logout?</Text>
         <View style={styles.inputContainer}>
           <TouchableOpacity
             style={styles.buttonNavy}
-            onPress={() => this.props.navigation.push("Report")}
+            onPress={this._handleLogOut}
           >
-            <Text style={styles.buttonTextReport}>Report Another Issue</Text>
+            <Text style={styles.buttonTextReport}>YES</Text>
           </TouchableOpacity>
           <Text style={styles.orText}>or</Text>
           <TouchableOpacity
             style={styles.buttonGray}
-            onPress={() => this.props.navigation.navigate("View")}
+            onPress={() => this.props.navigation.navigate("Dashboard")}
           >
-            <Text style={styles.buttonTextView}>View Issues</Text>
+            <Text style={styles.buttonTextView}>NO</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -47,7 +53,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     marginBottom: 10,
-    marginTop: 60,
+    marginTop: 80,
     textAlign: "center",
     alignItems: "center",
     justifyContent: "center"
@@ -96,7 +102,7 @@ const styles = StyleSheet.create({
     color: "black"
   },
   buttonTextReport: {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: "500",
     color: "white",
     textAlign: "center",
@@ -104,7 +110,7 @@ const styles = StyleSheet.create({
     marginTop: 5
   },
   buttonTextView: {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: "500",
     color: "#0b409c",
     textAlign: "center",
@@ -121,7 +127,7 @@ const styles = StyleSheet.create({
   },
   subheaderText: {
     marginTop: 20,
-    paddingTop: 30,
+    paddingTop: 50,
     color: "#0b409c",
     fontSize: 25,
     textAlign: "center"

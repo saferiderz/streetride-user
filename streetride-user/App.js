@@ -16,6 +16,7 @@ import PrivacyPolicyScreen from "./screens/PrivacyPolicyScreen";
 import ViewIssues from "./screens/ViewIssues";
 import ReportIssues from "./screens/ReportIssues";
 import ReportOrView from "./screens/ReportOrView";
+import LogoutScreen from "./screens/LogoutScreen";
 import HeaderImage from "./components/HeaderImage";
 
 export default class App extends React.Component {
@@ -211,6 +212,18 @@ const AppDrawerNavigator = createDrawerNavigator({
         />
       ),
       title: "Report Issues"
+    })
+  },
+  Logout: {
+    screen: LogoutScreen,
+    navigationOptions: () => ({
+      drawerIcon: (
+        <Image
+          source={require("./assets/images/logout.png")}
+          style={{ width: 21, height: 21 }}
+        />
+      ),
+      title: "Logout"
     })
   }
 });
