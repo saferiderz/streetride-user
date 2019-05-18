@@ -38,6 +38,7 @@ export default class ReportIssues extends Component {
       error => this.setState({ error: error.message }),
       { enableHighAccuracy: false, timeout: 20000, maximumAge: 1000 }
     );
+    this.logLocation();
     let userData = await AsyncStorage.getItem("@MySuperStore:_streetRide_userData");
     if (userData != null) {
       userDataJSON = JSON.parse(userData);
@@ -47,6 +48,11 @@ export default class ReportIssues extends Component {
     }
   }
 
+  logLocation = () => {
+let date = new Date();
+console.log(date)
+    console.log("latitude: " + this.state.latitude + "\nlongitude: " + this.state.longitude);
+  }
   explainIssue = () => {
     Alert.alert(
       "Explanation",
