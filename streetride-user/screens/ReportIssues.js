@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { 
-  ScrollView, 
-  StyleSheet, 
-  Text, 
-  TouchableOpacity, 
-  View, 
-  Alert, 
-  AsyncStorage 
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Alert,
+  AsyncStorage
 } from "react-native";
 
 import { Icons } from "../components/IconsObject";
@@ -23,10 +23,33 @@ export default class ReportIssues extends Component {
     latitude: null,
     longitude: null,
     error: null,
-    longPress: ""
+    longPress: "",
+    timer: null
   };
 
- async componentDidMount() {
+  async componentDidMount() {
+    this.locate();
+    this.refreshLocation();
+    let userData = await AsyncStorage.getItem("@MySuperStore:_streetRide_userData");
+    if (userData != null) {
+      userDataJSON = JSON.parse(userData);
+      this.setState({
+        userId: userDataJSON.userId
+      });
+    }
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.state.timer)
+  }
+
+refreshLocation= () => {
+  let timer;
+  timer=setInterval(this.locate, 5000)
+  this.setState({timer});
+}
+
+  locate = () => {
     navigator.geolocation.getCurrentPosition(
       position => {
         this.setState({
@@ -39,20 +62,14 @@ export default class ReportIssues extends Component {
       { enableHighAccuracy: false, timeout: 20000, maximumAge: 1000 }
     );
     this.logLocation();
-    let userData = await AsyncStorage.getItem("@MySuperStore:_streetRide_userData");
-    if (userData != null) {
-      userDataJSON = JSON.parse(userData);
-      this.setState({
-        userId: userDataJSON.userId
-      });
-    }
   }
 
   logLocation = () => {
-let date = new Date();
-console.log(date)
+    let date = new Date();
+    console.log(date)
     console.log("latitude: " + this.state.latitude + "\nlongitude: " + this.state.longitude);
   }
+
   explainIssue = () => {
     Alert.alert(
       "Explanation",
@@ -64,7 +81,7 @@ console.log(date)
             if (this.checkLocation()) {
               return true;
             } else {
-              this.fetchData();this.props.navigation.navigate("ReportOrView"); this.setState({ issueType: "" })
+              this.fetchData(); this.props.navigation.navigate("ReportOrView"); this.setState({ issueType: "" })
             }
           },
         },
