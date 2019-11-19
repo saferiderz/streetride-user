@@ -1,7 +1,7 @@
 import React from "react";
 import { View, ActivityIndicator, StyleSheet, Text } from "react-native";
 
-import { MapView } from "expo";
+import MapView from 'react-native-maps';
 
 defaultRegion = {
   latitude: 42.1255,
