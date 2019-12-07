@@ -1,5 +1,7 @@
 import React from "react";
 import { View, ActivityIndicator, StyleSheet, Text } from "react-native";
+import Slider from '@react-native-community/slider';
+
 
 import MapView from 'react-native-maps';
 
@@ -110,6 +112,7 @@ export default class ViewIssues extends React.Component {
             pinColor={this.getPinColor(newMarkers.issueType)}
           />
         ))}
+
       </MapView>
       
     );
