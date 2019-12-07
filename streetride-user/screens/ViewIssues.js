@@ -1,6 +1,5 @@
 import React from "react";
-import { View, ActivityIndicator, StyleSheet, Text } from "react-native";
-import Slider from '@react-native-community/slider';
+import { View, ActivityIndicator, StyleSheet, Slider, Text } from "react-native";
 
 
 import MapView from 'react-native-maps';
@@ -19,7 +18,9 @@ export default class ViewIssues extends React.Component {
     this.state = {
       region: defaultRegion,
       isLoading: true,
-      markers: []
+      markers: [],
+      sliderValue: 0,
+      myText: ''
     };
   }
 
@@ -84,6 +85,14 @@ export default class ViewIssues extends React.Component {
     });
   }
 
+  // Dynamically change text
+  changeText = (value) => {
+    this.setState({
+      sliderValue: value,
+      myText: value
+    })
+  }
+
   render() {
     if (this.state.isLoading) {
       return (
@@ -112,9 +121,15 @@ export default class ViewIssues extends React.Component {
             pinColor={this.getPinColor(newMarkers.issueType)}
           />
         ))}
-
+      <Slider
+          value={this.state.value}
+          onValueChange={value => this.changeText(value)}
+          minimumValue={0}
+          maximumValue={30}
+          step={1}
+        />
+        <Text>{this.state.myText}</Text>
       </MapView>
-      
     );
   }
 }
