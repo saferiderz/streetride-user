@@ -19,8 +19,8 @@ export default class ViewIssues extends React.Component {
       region: defaultRegion,
       isLoading: true,
       markers: [],
-      sliderValue: 0,
-      myText: ''
+      sliderValue: 15,
+      sliderText: ''
     };
   }
 
@@ -52,7 +52,13 @@ export default class ViewIssues extends React.Component {
   }
   // Fetch the issues data from the backend API
   fetchMarkerData() {
-    fetch("https://streetride.herokuapp.com/api/issues")
+    let api;
+    if (__DEV__) {
+      api = "https://streetride-dev.herokuapp.com/api/issues"
+    } else {
+      api = "https://streetride.herokuapp.com/api/issues"
+    }
+    fetch(api)
       .then(response => response.json())
       .then(responseJson => {
         this.setState({
@@ -68,6 +74,23 @@ export default class ViewIssues extends React.Component {
   // Start fetching marker data prior to the component mounting to speed up load time
   componentWillMount() {
     this.fetchMarkerData();
+  }
+
+  getUpdatedMarkers() {
+    let days = this.state.sliderValue.toString()
+    let query  = "https://streetride-dev.herokuapp.com/api/issues/days/"
+    let totalQuery = query + days
+    fetch(totalQuery)
+      .then(response => response.json())
+      .then(responseJson => {
+        this.setState({
+          isLoading: false,
+          markers: responseJson
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   // After the component mounts, set the initial map screen to center on the user's current location
@@ -89,7 +112,7 @@ export default class ViewIssues extends React.Component {
   changeText = (value) => {
     this.setState({
       sliderValue: value,
-      myText: value
+      sliderText: value
     })
   }
 
@@ -122,13 +145,14 @@ export default class ViewIssues extends React.Component {
           />
         ))}
       <Slider
-          value={this.state.value}
+          value={this.state.sliderValue}
           onValueChange={value => this.changeText(value)}
           minimumValue={0}
           maximumValue={30}
           step={1}
+          onSlidingComplete={this.getUpdatedMarkers()}
         />
-        <Text>{this.state.myText}</Text>
+        <Text>{this.state.sliderText}</Text>
       </MapView>
     );
   }
