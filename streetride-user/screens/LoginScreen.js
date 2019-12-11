@@ -45,15 +45,14 @@ export default class LoginScreen extends Component {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(data)
-    })
+    }).then(response =>response.json())
       .then(response => {
-        body = JSON.parse(response._bodyText);
-        if (body.isLoggedIn) {
+        if (response.isLoggedIn) {
           let userData = {
-            token: body.token,
-            userId: body.userId,
-            userName: body.userName,
-            isLoggedIn: body.isLoggedIn
+            token: response.token,
+            userId: response.userId,
+            userName: response.userName,
+            isLoggedIn: response.isLoggedIn
           }
           this.storeItem("@MySuperStore:_streetRide_userData", userData);
           this.props.navigation.navigate("Dashboard");
