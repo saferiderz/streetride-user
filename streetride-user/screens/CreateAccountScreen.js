@@ -48,8 +48,13 @@ export default class CreateAccountScreen extends Component {
         username: this.state.username,
         password: this.state.password
       };
-
-      fetch("https://streetride.herokuapp.com/api/users/create", {
+      let api;
+      if (__DEV__) {
+        api = "https://streetride-dev.herokuapp.com/api/issues"
+      } else {
+        api = "https://streetride.herokuapp.com/api/issues"
+      }
+      fetch(api, {
         method: "POST",
         headers: {
           Accept: "application/json",
