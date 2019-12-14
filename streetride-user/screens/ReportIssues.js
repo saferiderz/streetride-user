@@ -6,7 +6,7 @@ import {
   TouchableOpacity, 
   View, 
   Alert, 
-  AsyncStorage 
+  AsyncStorage
 } from "react-native";
 
 import { Icons } from "../components/IconsObject";
@@ -23,7 +23,7 @@ export default class ReportIssues extends Component {
     latitude: null,
     longitude: null,
     error: null,
-    longPress: ""
+    longPress: ""  
   };
 
  async componentDidMount() {
@@ -73,6 +73,12 @@ export default class ReportIssues extends Component {
   }
 
   fetchData = () => {
+    let api;
+    if (__DEV__) {
+      api = "https://streetride-dev.herokuapp.com/api/issues/create" 
+    } else {
+      api = "https://streetride.herokuapp.com/api/issues/create" 
+    }
     userIdInt = parseInt(this.state.userId);
     const data = {
       issueType: this.state.issueType,
@@ -80,12 +86,6 @@ export default class ReportIssues extends Component {
       lon: this.state.longitude,
       UserId: userIdInt
     };
-    let api;
-    if (__DEV__) {
-      api = "https://streetride-dev.herokuapp.com/api/issues"
-    } else {
-      api = "https://streetride.herokuapp.com/api/issues"
-    }
     fetch(api, {
       method: "POST",
       headers: {
