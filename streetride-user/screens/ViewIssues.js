@@ -1,5 +1,5 @@
 import React from "react";
-import { View, ActivityIndicator, StyleSheet, Slider, Text } from "react-native";
+import { View, ActivityIndicator, StyleSheet, Slider, Text, Modal, TouchableOpacity, Image } from "react-native";
 
 
 import MapView from 'react-native-maps';
@@ -20,7 +20,8 @@ export default class ViewIssues extends React.Component {
       isLoading: true,
       markers: [],
       sliderValue: 15,
-      sliderText: ''
+      sliderText: '',
+      modalVisible: false
     };
   }
 
@@ -29,7 +30,7 @@ export default class ViewIssues extends React.Component {
   };
 
   getPinColor(issueType) {
-    switch(issueType) {
+    switch (issueType) {
       case 'Car In Bike Lane':
         return '#0000cc'
       case 'Close Call':
@@ -74,11 +75,16 @@ export default class ViewIssues extends React.Component {
   // Start fetching marker data prior to the component mounting to speed up load time
   componentWillMount() {
     this.fetchMarkerData();
+    if (__DEV__) {
+      api = "https://streetride-dev.herokuapp.com/api/issues"
+    } else {
+      api = "https://streetride.herokuapp.com/api/issues"
+    }
   }
 
   getUpdatedMarkers() {
     let days = this.state.sliderValue.toString()
-    let query  = "https://streetride-dev.herokuapp.com/api/issues/days/"
+    let query = "https://streetride-dev.herokuapp.com/api/issues/days/"
     let totalQuery = query + days
     fetch(totalQuery)
       .then(response => response.json())
@@ -116,6 +122,10 @@ export default class ViewIssues extends React.Component {
     })
   }
 
+  setModalVisible(visible) {
+    this.setState({ modalVisible: visible });
+  }
+
   render() {
     if (this.state.isLoading) {
       return (
@@ -127,7 +137,7 @@ export default class ViewIssues extends React.Component {
 
     return (
       <MapView
-        style={{ flex: 1 }}
+        style={{ flex: 1, justifyContent: "flex-end" }}
         provider="google"
         showsUserLocation={true}
         initialRegion={this.state.region}
@@ -144,15 +154,44 @@ export default class ViewIssues extends React.Component {
             pinColor={this.getPinColor(newMarkers.issueType)}
           />
         ))}
-      <Slider
-          value={this.state.sliderValue}
-          onValueChange={value => this.changeText(value)}
-          minimumValue={0}
-          maximumValue={30}
-          step={1}
-          onSlidingComplete={this.getUpdatedMarkers()}
-        />
         <Text>{this.state.sliderText}</Text>
+        <View>
+          <Modal
+            animationType="slide"
+            transparent={false}
+            visible={this.state.modalVisible}
+            onRequestClose={() => {
+              Alert.alert('Modal has been closed.');
+            }}>
+            <View style={{ marginTop: 100 }}>
+              <View>
+                <Slider
+                  value={this.state.sliderValue}
+                  onValueChange={value => this.changeText(value)}
+                  minimumValue={0}
+                  maximumValue={30}
+                  step={1}
+                  onSlidingComplete={this.getUpdatedMarkers()}
+                />
+                <Text>{this.state.sliderValue}</Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    this.setModalVisible(!this.state.modalVisible);
+                  }}>
+                  <Text>Hide Modal</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </Modal>
+        </View>
+        <View style={{ alignSelf: "flex-end" }}>
+          <TouchableOpacity
+            onPress={() => {
+              this.setModalVisible(true);
+            }}>
+            <Image source={require('../assets/images/filter.png')} style={{ width: 30, height: 30, margin: 10, backgroundColor: "white" }} />
+          </TouchableOpacity>
+        </View>
       </MapView>
     );
   }
