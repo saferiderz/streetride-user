@@ -1,5 +1,8 @@
 import React from "react";
 import { View, ActivityIndicator, StyleSheet, Slider, Text, Modal, TouchableOpacity, Image } from "react-native";
+import IssueIcons from "../components/IssueIcons"
+import { Icons } from "../components/IconsObject";
+import icons from "../icons.json"
 
 
 import MapView from 'react-native-maps';
@@ -21,7 +24,8 @@ export default class ViewIssues extends React.Component {
       markers: [],
       sliderValue: 15,
       sliderText: '',
-      modalVisible: false
+      modalVisible: false,
+      iconsObject: Icons
     };
   }
 
@@ -75,11 +79,6 @@ export default class ViewIssues extends React.Component {
   // Start fetching marker data prior to the component mounting to speed up load time
   componentWillMount() {
     this.fetchMarkerData();
-    if (__DEV__) {
-      api = "https://streetride-dev.herokuapp.com/api/issues"
-    } else {
-      api = "https://streetride.herokuapp.com/api/issues"
-    }
   }
 
   getUpdatedMarkers() {
@@ -163,7 +162,7 @@ export default class ViewIssues extends React.Component {
             onRequestClose={() => {
               Alert.alert('Modal has been closed.');
             }}>
-            <View style={{ marginTop: 100 }}>
+            <View style={{ marginTop: 200 }}>
               <View>
                 <Slider
                   value={this.state.sliderValue}
@@ -173,7 +172,13 @@ export default class ViewIssues extends React.Component {
                   step={1}
                   onSlidingComplete={this.getUpdatedMarkers()}
                 />
-                <Text>{this.state.sliderValue}</Text>
+                <Text>{this.state.sliderValue} days</Text>
+                <View style={{ marginRight: 20 }}>
+                {Object.keys(this.state.iconsObject).map(newIcons => (
+                <IssueIcons name={this.state.iconsObject[newIcons].name}
+              icon={this.state.iconsObject[newIcons].uri} key={this.state.iconsObject[newIcons].key} />
+                ))}
+              </View>
                 <TouchableOpacity
                   onPress={() => {
                     this.setModalVisible(!this.state.modalVisible);
