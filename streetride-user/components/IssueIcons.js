@@ -4,7 +4,7 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 function IssueIcons(props) {
     return (
         <View>
-            <TouchableOpacity name={props.name} description={props.description} onPress={props.onPress} onLongPress={props.onLongPress}>
+            <TouchableOpacity name={props.name} description={props.description} onPress={props.onPress} onLongPress={props.onLongPress} key={props.name}>
                 <View style={styles.iconContainer} >
                     <Image style={styles.iconImage} source={props.icon} />
                     <Text style={styles.iconText}>{props.name}</Text>
