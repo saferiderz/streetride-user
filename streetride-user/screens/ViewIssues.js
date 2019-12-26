@@ -172,13 +172,17 @@ export default class ViewIssues extends React.Component {
                   step={1}
                   onSlidingComplete={this.getUpdatedMarkers()}
                 />
-                <Text>{this.state.sliderValue} days</Text>
-                <View style={{ marginRight: 20 }}>
-                {Object.keys(this.state.iconsObject).map(newIcons => (
-                <IssueIcons name={this.state.iconsObject[newIcons].name}
-              icon={this.state.iconsObject[newIcons].uri} key={this.state.iconsObject[newIcons].key} />
-                ))}
-              </View>
+                <Text style={{ marginRight: 200 }}>{this.state.sliderValue} days</Text>
+                <View style={{ marginRight: 200 }}>
+                  {Object.keys(this.state.iconsObject).map(newIcons => (
+                    <IssueIcons
+                      name={this.state.iconsObject[newIcons].name}
+                      icon={this.state.iconsObject[newIcons].uri}
+                      key={this.state.iconsObject[newIcons].name}
+                      onPress={() => {console.log("name")}} />
+                      
+                  ))}
+                </View>
                 <TouchableOpacity
                   onPress={() => {
                     this.setModalVisible(!this.state.modalVisible);
